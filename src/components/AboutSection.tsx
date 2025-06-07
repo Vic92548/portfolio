@@ -93,11 +93,11 @@ const AboutSection = ({ language }: AboutSectionProps) => {
   const t = translations[language];
 
   return (
-    <section id="about" className="py-24 bg-background">
+    <section id="about" className="py-28 bg-mercury-white/50 dark:bg-nordic-gray/30">
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4 animate-fade-in">
+        <div className="max-w-4xl mx-auto text-center mb-20">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 animate-fade-in">
             {t.title}
           </h2>
           <p className="text-xl text-muted-foreground animate-fade-in delay-100">
@@ -105,38 +105,38 @@ const AboutSection = ({ language }: AboutSectionProps) => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
           {/* Description */}
           <div className="animate-fade-in delay-200">
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-12">
               {t.description}
             </p>
             
-            <div className="grid grid-cols-2 gap-6">
-              <div className="text-center p-4 bg-background border border-border rounded-lg">
-                <div className="text-2xl font-bold text-primary mb-1">8+</div>
+            <div className="grid grid-cols-2 gap-8">
+              <div className="text-center p-6 bg-background border border-border rounded-2xl shadow-sm">
+                <div className="text-3xl font-bold text-magic-blue mb-2">8+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
-              <div className="text-center p-4 bg-background border border-border rounded-lg">
-                <div className="text-2xl font-bold text-primary mb-1">50+</div>
+              <div className="text-center p-6 bg-background border border-border rounded-2xl shadow-sm">
+                <div className="text-3xl font-bold text-magic-blue mb-2">50+</div>
                 <div className="text-sm text-muted-foreground">Projects Delivered</div>
               </div>
             </div>
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {t.skills.map((skill, index) => (
               <div 
                 key={index}
-                className={`p-6 bg-card border border-border rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in`}
+                className={`p-8 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-2 animate-fade-in group`}
                 style={{ animationDelay: `${300 + index * 100}ms` }}
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <skill.icon className="w-6 h-6 text-primary" />
+                <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-magic-blue/20 transition-colors">
+                  <skill.icon className="w-7 h-7 text-magic-blue" />
                 </div>
-                <h3 className="font-semibold mb-2">{skill.title}</h3>
-                <p className="text-sm text-muted-foreground">{skill.description}</p>
+                <h3 className="font-semibold mb-3 text-lg">{skill.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{skill.description}</p>
               </div>
             ))}
           </div>

@@ -67,37 +67,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom Victor Chanet brand colors
-				'vc-gray': {
-					0: '#FFFFFF',
-					50: '#FAFAFA',
-					100: '#F4F4F5',
-					200: '#E4E4E7',
-					300: '#D4D4D8',
-					400: '#A1A1AA',
-					500: '#71717A',
-					600: '#52525B',
-					700: '#3F3F46',
-					800: '#27272A',
-					900: '#18181B',
-					950: '#09090B',
-				},
-				'vc-primary': {
-					50: '#EFF6FF',
-					100: '#DBEAFE',
-					200: '#BFDBFE',
-					300: '#93C5FD',
-					400: '#60A5FA',
-					500: '#3B82F6',
-					600: '#2563EB',
-					700: '#1D4ED8',
-					800: '#1E40AF',
-					900: '#1E3A8A',
-				},
-				'vc-success': {
-					400: '#4ADE80',
-					500: '#22C55E',
-				},
+				// Custom Victor Chanet brand colors - Linear-inspired
+				'nordic-gray': '#222326',
+				'magic-blue': '#5E6AD2',
+				'mercury-white': '#F4F5F8',
+				'pure-white': '#FFFFFF',
+				'dark-text': '#E5E5E5',
+				'darker-gray': '#1A1A1C',
+				'border-dark': '#333338',
+				'light-gray': '#8a8f98',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -156,12 +134,12 @@ export default {
 					'100%': { transform: 'translate(64px, 64px)' }
 				},
 				'glow-pulse': {
-					'0%': { opacity: '0.5', transform: 'translate(-50%, -50%) scale(0.8)' },
-					'100%': { opacity: '1', transform: 'translate(-50%, -50%) scale(1.2)' }
+					'0%': { opacity: '0.3', transform: 'translate(-50%, -50%) scale(0.8)' },
+					'100%': { opacity: '0.6', transform: 'translate(-50%, -50%) scale(1.2)' }
 				},
 				'pulse': {
 					'0%, 100%': { opacity: '1', transform: 'scale(1)' },
-					'50%': { opacity: '0.5', transform: 'scale(1.2)' }
+					'50%': { opacity: '0.7', transform: 'scale(1.05)' }
 				},
 				'blink': {
 					'0%, 50%': { opacity: '1' },

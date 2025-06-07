@@ -127,11 +127,11 @@ const WorkSection = ({ language }: WorkSectionProps) => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="work" className="py-24 bg-muted/30">
+    <section id="work" className="py-28 bg-background">
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4 animate-fade-in">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 animate-fade-in">
             {t.title}
           </h2>
           <p className="text-xl text-muted-foreground animate-fade-in delay-100">
@@ -140,16 +140,16 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 animate-fade-in delay-200">
-          <div className="flex gap-1 p-1 bg-background rounded-lg border border-border">
+        <div className="flex flex-wrap justify-center gap-2 mb-16 animate-fade-in delay-200">
+          <div className="flex gap-1 p-1 bg-mercury-white/50 dark:bg-border-dark/50 rounded-2xl border border-border backdrop-blur-sm">
             {Object.entries(t.filters).map(([key, label]) => (
               <button
                 key={key}
                 onClick={() => setActiveFilter(key)}
-                className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+                className={`px-6 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
                   activeFilter === key
-                    ? 'bg-primary text-primary-foreground shadow-sm'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    ? 'bg-magic-blue text-white shadow-lg'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-background/80'
                 }`}
               >
                 {label}
@@ -159,31 +159,31 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-7xl mx-auto">
           {filteredProjects.map((project, index) => (
             <article 
               key={project.id}
-              className={`group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in`}
+              className={`group bg-background border border-border rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in`}
               style={{ animationDelay: `${300 + index * 100}ms` }}
             >
               {/* Project Image */}
-              <div className="relative aspect-video bg-muted overflow-hidden">
+              <div className="relative aspect-video bg-mercury-white/50 dark:bg-border-dark/50 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
                   <a 
                     href={project.links.live}
-                    className="btn btn-primary btn-sm"
+                    className="btn btn-primary btn-sm shadow-lg"
                   >
                     <ExternalLink className="w-4 h-4" />
                     {t.viewLive}
                   </a>
                   <a 
                     href={project.links.github}
-                    className="btn btn-secondary btn-sm"
+                    className="btn btn-secondary btn-sm backdrop-blur-sm"
                   >
                     <Github className="w-4 h-4" />
                     {t.sourceCode}
@@ -192,25 +192,25 @@ const WorkSection = ({ language }: WorkSectionProps) => {
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-md">
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="px-3 py-1 text-xs font-medium bg-magic-blue/10 text-magic-blue rounded-lg">
                     {project.category === 'devTools' ? 'Developer Tool' : 
                      project.category === 'webApps' ? 'Web App' : 'Open Source'}
                   </span>
-                  <span className="flex items-center gap-1 text-xs text-vc-success-500">
-                    <div className="w-2 h-2 bg-vc-success-500 rounded-full"></div>
+                  <span className="flex items-center gap-2 text-xs text-magic-blue">
+                    <div className="w-2 h-2 bg-magic-blue rounded-full animate-pulse"></div>
                     Active
                   </span>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-4">{project.title}</h3>
+                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                   {project.description[language]}
                 </p>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-3 mb-4">
+                <div className="grid grid-cols-3 gap-4 mb-6">
                   {project.metrics.map((metric, idx) => (
                     <div key={idx} className="text-center">
                       <div className="text-sm font-bold text-foreground">{metric.number}</div>
@@ -220,11 +220,11 @@ const WorkSection = ({ language }: WorkSectionProps) => {
                 </div>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, idx) => (
                     <span 
                       key={idx}
-                      className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded-md"
+                      className="px-3 py-1 text-xs bg-mercury-white/70 dark:bg-border-dark/50 text-muted-foreground rounded-lg"
                     >
                       {tech}
                     </span>

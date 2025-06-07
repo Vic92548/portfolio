@@ -69,50 +69,50 @@ const HeroSection = ({ language }: HeroSectionProps) => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 opacity-50 pointer-events-none">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-mercury-white/30 to-background">
+      {/* Animated Background - Linear style */}
+      <div className="absolute inset-0 opacity-40 pointer-events-none">
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-transparent via-vc-primary-50 to-transparent"
+          className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px)
+              linear-gradient(rgba(94, 106, 210, 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(94, 106, 210, 0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '64px 64px',
-            animation: 'grid-move 20s linear infinite'
+            backgroundSize: '80px 80px',
+            animation: 'grid-move 25s linear infinite'
           }}
         />
         <div 
-          className="absolute top-1/4 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 rounded-full"
+          className="absolute top-1/3 left-1/2 w-[600px] h-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
-            animation: 'glow-pulse 4s ease-in-out infinite alternate'
+            background: 'radial-gradient(ellipse at center, rgba(94, 106, 210, 0.08) 0%, transparent 70%)',
+            animation: 'glow-pulse 6s ease-in-out infinite alternate'
           }}
         />
       </div>
 
       <div className="relative container mx-auto px-6 pt-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
           {/* Content */}
           <div className="text-center lg:text-left">
             {/* Badge */}
             <div 
-              className={`inline-flex items-center gap-2 px-4 py-2 bg-background/80 border border-border rounded-full text-sm font-medium text-muted-foreground mb-8 animate-fade-in delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`inline-flex items-center gap-3 px-4 py-2 bg-background/80 border border-border rounded-full text-sm font-medium text-muted-foreground mb-8 animate-fade-in delay-100 backdrop-blur-sm ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.1s' }}
             >
-              <div className="w-2 h-2 bg-vc-success-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-magic-blue rounded-full animate-pulse" />
               {t.badge}
             </div>
 
             {/* Title */}
             <h1 
-              className={`text-4xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 animate-fade-in delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.2s' }}
             >
               {t.title}
               <br />
-              <span className="bg-gradient-to-r from-vc-primary-600 to-vc-primary-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-magic-blue to-magic-blue/80 bg-clip-text text-transparent">
                 <TypingAnimation 
                   words={t.titleHighlight}
                   className="inline-block"
@@ -122,7 +122,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
 
             {/* Subtitle */}
             <p 
-              className={`text-lg lg:text-xl text-muted-foreground mb-8 leading-relaxed animate-fade-in delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`text-xl lg:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl lg:max-w-none animate-fade-in delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.3s' }}
             >
               {t.subtitle}
@@ -130,29 +130,29 @@ const HeroSection = ({ language }: HeroSectionProps) => {
 
             {/* Stats */}
             <div 
-              className={`grid grid-cols-3 gap-6 mb-8 animate-fade-in delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`grid grid-cols-3 gap-8 mb-10 animate-fade-in delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.4s' }}
             >
-              <div className="text-center">
+              <div className="text-center lg:text-left">
                 <CounterAnimation 
                   target={150000} 
-                  className="text-2xl lg:text-3xl font-bold text-foreground"
+                  className="text-3xl lg:text-4xl font-bold text-foreground"
                 />
-                <div className="text-sm text-muted-foreground">{t.stats.downloads}</div>
+                <div className="text-sm text-muted-foreground mt-1">{t.stats.downloads}</div>
               </div>
-              <div className="text-center">
+              <div className="text-center lg:text-left">
                 <CounterAnimation 
                   target={2100} 
-                  className="text-2xl lg:text-3xl font-bold text-foreground"
+                  className="text-3xl lg:text-4xl font-bold text-foreground"
                 />
-                <div className="text-sm text-muted-foreground">{t.stats.stars}</div>
+                <div className="text-sm text-muted-foreground mt-1">{t.stats.stars}</div>
               </div>
-              <div className="text-center">
+              <div className="text-center lg:text-left">
                 <CounterAnimation 
                   target={12} 
-                  className="text-2xl lg:text-3xl font-bold text-foreground"
+                  className="text-3xl lg:text-4xl font-bold text-foreground"
                 />
-                <div className="text-sm text-muted-foreground">{t.stats.products}</div>
+                <div className="text-sm text-muted-foreground mt-1">{t.stats.products}</div>
               </div>
             </div>
 
@@ -161,7 +161,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               className={`flex flex-col sm:flex-row gap-4 animate-fade-in delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.5s' }}
             >
-              <button onClick={scrollToWork} className="btn btn-primary btn-lg group">
+              <button onClick={scrollToWork} className="btn btn-primary btn-lg group shadow-lg">
                 {t.cta}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>

@@ -81,70 +81,70 @@ const ContactSection = ({ language }: ContactSectionProps) => {
   const t = translations[language];
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-28 bg-mercury-white/30 dark:bg-nordic-gray/20">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-vc-success-500/10 text-vc-success-500 rounded-full text-sm font-medium mb-6 animate-fade-in">
-              <div className="w-2 h-2 bg-vc-success-500 rounded-full animate-pulse" />
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-magic-blue/10 text-magic-blue rounded-full text-sm font-medium mb-8 animate-fade-in">
+              <div className="w-2 h-2 bg-magic-blue rounded-full animate-pulse" />
               {t.availability}
             </div>
             
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 animate-fade-in delay-100">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 animate-fade-in delay-100">
               {t.title}
             </h2>
-            <p className="text-xl text-muted-foreground mb-4 animate-fade-in delay-200">
+            <p className="text-xl text-muted-foreground mb-6 animate-fade-in delay-200">
               {t.subtitle}
             </p>
-            <p className="text-muted-foreground max-w-2xl mx-auto animate-fade-in delay-300">
+            <p className="text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-300">
               {t.description}
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Options */}
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold mb-6 animate-fade-in delay-400">
+              <h3 className="text-2xl font-semibold mb-8 animate-fade-in delay-400">
                 Get in Touch
               </h3>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <a 
                   href="mailto:victor@example.com"
-                  className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:shadow-md transition-all duration-200 group animate-fade-in delay-500"
+                  className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-500"
                 >
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Mail className="w-6 h-6 text-primary" />
+                  <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-magic-blue/20 transition-colors">
+                    <Mail className="w-7 h-7 text-magic-blue" />
                   </div>
                   <div>
-                    <div className="font-medium">{t.email}</div>
+                    <div className="font-medium text-lg">{t.email}</div>
                     <div className="text-sm text-muted-foreground">victor@example.com</div>
                   </div>
                 </a>
 
                 <a 
                   href="#"
-                  className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:shadow-md transition-all duration-200 group animate-fade-in delay-600"
+                  className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-600"
                 >
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Calendar className="w-6 h-6 text-primary" />
+                  <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-magic-blue/20 transition-colors">
+                    <Calendar className="w-7 h-7 text-magic-blue" />
                   </div>
                   <div>
-                    <div className="font-medium">{t.schedule}</div>
+                    <div className="font-medium text-lg">{t.schedule}</div>
                     <div className="text-sm text-muted-foreground">30-minute strategy session</div>
                   </div>
                 </a>
 
                 <a 
                   href="#"
-                  className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:shadow-md transition-all duration-200 group animate-fade-in delay-700"
+                  className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-700"
                 >
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <MessageCircle className="w-6 h-6 text-primary" />
+                  <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-magic-blue/20 transition-colors">
+                    <MessageCircle className="w-7 h-7 text-magic-blue" />
                   </div>
                   <div>
-                    <div className="font-medium">{t.discord}</div>
+                    <div className="font-medium text-lg">{t.discord}</div>
                     <div className="text-sm text-muted-foreground">Quick questions & community</div>
                   </div>
                 </a>
@@ -154,28 +154,28 @@ const ContactSection = ({ language }: ContactSectionProps) => {
             {/* Contact Form */}
             <div className="animate-fade-in delay-800">
               <form className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">{t.form.name}</label>
+                    <label className="block text-sm font-medium mb-3">{t.form.name}</label>
                     <input 
                       type="text" 
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all bg-background"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">{t.form.email}</label>
+                    <label className="block text-sm font-medium mb-3">{t.form.email}</label>
                     <input 
                       type="email" 
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all bg-background"
                       placeholder="john@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">{t.form.project}</label>
-                  <select className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                  <label className="block text-sm font-medium mb-3">{t.form.project}</label>
+                  <select className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all bg-background">
                     <option value="">{t.form.projectTypes.web}</option>
                     <option value="mobile">{t.form.projectTypes.mobile}</option>
                     <option value="api">{t.form.projectTypes.api}</option>
@@ -185,15 +185,15 @@ const ContactSection = ({ language }: ContactSectionProps) => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">{t.form.message}</label>
+                  <label className="block text-sm font-medium mb-3">{t.form.message}</label>
                   <textarea 
-                    rows={4}
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                    rows={5}
+                    className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all resize-none bg-background"
                     placeholder={t.form.message}
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary w-full">
+                <button type="submit" className="btn btn-primary w-full btn-lg shadow-lg">
                   {t.form.send}
                   <Send className="w-4 h-4" />
                 </button>
