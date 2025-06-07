@@ -1,4 +1,6 @@
-import { Mail, Calendar, MessageCircle, Send } from 'lucide-react';
+
+import { Mail, Calendar, MessageCircle } from 'lucide-react';
+import ContactForm from './ContactForm';
 
 interface ContactSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -13,20 +15,6 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       email: "Get in Touch",
       schedule: "Schedule a Call",
       discord: "Join Discord",
-      form: {
-        name: "Name",
-        email: "Email",
-        project: "Project Type",
-        message: "Tell me about your project",
-        send: "Send Message",
-        projectTypes: {
-          web: "Web Application",
-          mobile: "Mobile App",
-          api: "API Development",
-          consulting: "Technical Consulting",
-          other: "Other"
-        }
-      },
       availability: "Currently available for new projects"
     },
     fr: {
@@ -36,20 +24,6 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       email: "Contactez-moi",
       schedule: "Planifier un appel",
       discord: "Rejoindre Discord",
-      form: {
-        name: "Nom",
-        email: "Email",
-        project: "Type de projet",
-        message: "Parlez-moi de votre projet",
-        send: "Envoyer le message",
-        projectTypes: {
-          web: "Application Web",
-          mobile: "Application Mobile",
-          api: "Développement API",
-          consulting: "Conseil Technique",
-          other: "Autre"
-        }
-      },
       availability: "Actuellement disponible pour de nouveaux projets"
     },
     es: {
@@ -59,20 +33,6 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       email: "Ponte en contacto",
       schedule: "Programar una llamada",
       discord: "Únete a Discord",
-      form: {
-        name: "Nombre",
-        email: "Email",
-        project: "Tipo de proyecto",
-        message: "Cuéntame sobre tu proyecto",
-        send: "Enviar mensaje",
-        projectTypes: {
-          web: "Aplicación Web",
-          mobile: "Aplicación Móvil",
-          api: "Desarrollo de API",
-          consulting: "Consultoría Técnica",
-          other: "Otro"
-        }
-      },
       availability: "Actualmente disponible para nuevos proyectos"
     }
   };
@@ -152,51 +112,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
 
             {/* Contact Form */}
             <div className="animate-fade-in delay-800">
-              <form className="space-y-6">
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-3">{t.form.name}</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all bg-background"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-3">{t.form.email}</label>
-                    <input 
-                      type="email" 
-                      className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all bg-background"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-3">{t.form.project}</label>
-                  <select className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all bg-background">
-                    <option value="">{t.form.projectTypes.web}</option>
-                    <option value="mobile">{t.form.projectTypes.mobile}</option>
-                    <option value="api">{t.form.projectTypes.api}</option>
-                    <option value="consulting">{t.form.projectTypes.consulting}</option>
-                    <option value="other">{t.form.projectTypes.other}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-3">{t.form.message}</label>
-                  <textarea 
-                    rows={5}
-                    className="w-full px-4 py-4 border border-border rounded-xl focus:ring-2 focus:ring-magic-blue focus:border-transparent transition-all resize-none bg-background"
-                    placeholder={t.form.message}
-                  />
-                </div>
-
-                <button type="submit" className="btn btn-primary w-full btn-lg shadow-lg">
-                  {t.form.send}
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
+              <ContactForm language={language} />
             </div>
           </div>
         </div>

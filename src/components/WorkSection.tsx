@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { ExternalLink, Github, TrendingUp, Users, Zap } from 'lucide-react';
+import { ExternalLink, Github, TrendingUp, Users, Zap, Gamepad2 } from 'lucide-react';
 
 interface WorkSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -17,6 +16,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         all: "All Projects",
         webApps: "Web Apps",
         devTools: "Developer Tools",
+        games: "Games",
         openSource: "Open Source"
       },
       viewAll: "View All Projects",
@@ -31,6 +31,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         all: "Tous les projets",
         webApps: "Applications Web",
         devTools: "Outils de développement",
+        games: "Jeux",
         openSource: "Open Source"
       },
       viewAll: "Voir tous les projets",
@@ -45,6 +46,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         all: "Todos los proyectos",
         webApps: "Aplicaciones Web",
         devTools: "Herramientas de desarrollo",
+        games: "Juegos",
         openSource: "Código abierto"
       },
       viewAll: "Ver todos los proyectos",
@@ -123,6 +125,29 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         live: '#',
         github: '#'
       }
+    },
+    {
+      id: 'pixelquest',
+      category: 'games',
+      title: 'PixelQuest',
+      description: {
+        en: 'Retro-style platformer game built with HTML5 Canvas and TypeScript, featuring procedural level generation and local multiplayer.',
+        fr: 'Jeu de plateforme rétro construit avec HTML5 Canvas et TypeScript, avec génération procédurale de niveaux et multijoueur local.',
+        es: 'Juego de plataformas retro construido con HTML5 Canvas y TypeScript, con generación procedimental de niveles y multijugador local.'
+      },
+      image: '/placeholder.svg',
+      metrics: [
+        { icon: Users, number: '50K+', label: 'Players' },
+        { icon: TrendingUp, number: '4.8/5', label: 'Rating' },
+        { icon: Gamepad2, number: '100+', label: 'Levels' }
+      ],
+      tech: ['TypeScript', 'HTML5 Canvas', 'WebGL', 'Web Audio API'],
+      status: 'active',
+      featured: false,
+      links: {
+        live: '#',
+        github: '#'
+      }
     }
   ];
 
@@ -164,15 +189,19 @@ const WorkSection = ({ language }: WorkSectionProps) => {
           </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - Fixed animations */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-7xl mx-auto">
           {filteredProjects.map((project, index) => (
             <article 
-              key={project.id}
-              className={`group relative bg-background border border-border rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-fade-in ${
+              key={`${project.id}-${activeFilter}`}
+              className={`group relative bg-background border border-border rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
                 project.featured ? 'ring-2 ring-magic-blue/20' : ''
               }`}
-              style={{ animationDelay: `${300 + index * 100}ms` }}
+              style={{ 
+                animation: `fade-in 0.5s ease-out forwards`,
+                animationDelay: `${300 + index * 100}ms`,
+                opacity: 0
+              }}
             >
               {/* Featured Badge */}
               {project.featured && (
@@ -213,7 +242,8 @@ const WorkSection = ({ language }: WorkSectionProps) => {
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-3 py-1 text-xs font-medium bg-magic-blue/10 text-magic-blue rounded-lg border border-magic-blue/20">
                     {project.category === 'devTools' ? 'Developer Tool' : 
-                     project.category === 'webApps' ? 'Web App' : 'Open Source'}
+                     project.category === 'webApps' ? 'Web App' : 
+                     project.category === 'games' ? 'Game' : 'Open Source'}
                   </span>
                   <span className="flex items-center gap-2 text-xs text-magic-blue">
                     <div className="w-2 h-2 bg-magic-blue rounded-full animate-pulse"></div>

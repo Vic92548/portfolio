@@ -310,6 +310,7 @@
     51%, 100% { opacity: 0; }
   }
 
+  /* Improved animation delays to prevent flickering */
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
@@ -318,4 +319,10 @@
   .delay-600 { animation-delay: 600ms; }
   .delay-700 { animation-delay: 700ms; }
   .delay-800 { animation-delay: 800ms; }
+
+  /* Ensure cards stay visible during filter transitions */
+  .projects-grid article {
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+  }
 }
