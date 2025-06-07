@@ -1,9 +1,8 @@
 
 import { useEffect, useState } from 'react';
-import { ArrowRight, Download, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
 import TypingAnimation from '@/components/TypingAnimation';
 import CounterAnimation from '@/components/CounterAnimation';
-import InteractiveTerminal from '@/components/InteractiveTerminal';
 
 interface HeroSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -11,6 +10,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ language }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeCard, setActiveCard] = useState(0);
 
   const translations = {
     en: {
@@ -22,9 +22,14 @@ const HeroSection = ({ language }: HeroSectionProps) => {
       ctaSecondary: "Download Resume",
       stats: {
         downloads: "Downloads",
-        stars: "GitHub Stars",
+        stars: "GitHub Stars", 
         products: "Products Shipped"
-      }
+      },
+      features: [
+        { icon: Code, title: "Full-Stack Development", desc: "React, Node.js, TypeScript" },
+        { icon: Zap, title: "Performance Focused", desc: "Optimized for scale" },
+        { icon: Layers, title: "Modern Architecture", desc: "Clean, maintainable code" }
+      ]
     },
     fr: {
       badge: "Disponible pour de nouveaux projets",
@@ -37,7 +42,12 @@ const HeroSection = ({ language }: HeroSectionProps) => {
         downloads: "Téléchargements",
         stars: "Étoiles GitHub",
         products: "Produits livrés"
-      }
+      },
+      features: [
+        { icon: Code, title: "Développement Full-Stack", desc: "React, Node.js, TypeScript" },
+        { icon: Zap, title: "Axé sur les performances", desc: "Optimisé pour l'échelle" },
+        { icon: Layers, title: "Architecture moderne", desc: "Code propre et maintenable" }
+      ]
     },
     es: {
       badge: "Disponible para nuevos proyectos",
@@ -50,7 +60,12 @@ const HeroSection = ({ language }: HeroSectionProps) => {
         downloads: "Descargas",
         stars: "Estrellas GitHub",
         products: "Productos enviados"
-      }
+      },
+      features: [
+        { icon: Code, title: "Desarrollo Full-Stack", desc: "React, Node.js, TypeScript" },
+        { icon: Zap, title: "Enfocado en rendimiento", desc: "Optimizado para escala" },
+        { icon: Layers, title: "Arquitectura moderna", desc: "Código limpio y mantenible" }
+      ]
     }
   };
 
@@ -60,38 +75,40 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     setIsVisible(true);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % t.features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [t.features.length]);
+
   const scrollToWork = () => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleDownloadResume = () => {
-    // This will be handled by our ResumeGenerator component
     const event = new CustomEvent('downloadResume', { detail: { language } });
     window.dispatchEvent(event);
   };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-darker-gray via-nordic-gray to-darker-gray">
-      {/* Animated Background - Darker Linear style */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
+      {/* Enhanced Background with moving particles */}
+      <div className="absolute inset-0 opacity-40 pointer-events-none">
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(94, 106, 210, 0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(94, 106, 210, 0.05) 1px, transparent 1px)
+              radial-gradient(circle at 1px 1px, rgba(94, 106, 210, 0.15) 1px, transparent 0)
             `,
-            backgroundSize: '80px 80px',
-            animation: 'grid-move 25s linear infinite'
+            backgroundSize: '50px 50px',
+            animation: 'grid-move 30s linear infinite'
           }}
         />
-        <div 
-          className="absolute top-1/3 left-1/2 w-[600px] h-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(94, 106, 210, 0.15) 0%, transparent 70%)',
-            animation: 'glow-pulse 6s ease-in-out infinite alternate'
-          }}
-        />
+        {/* Floating orbs */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-magic-blue/20 rounded-full blur-xl animate-pulse" />
+        <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-magic-blue/10 rounded-full blur-2xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-magic-blue/30 rounded-full blur-lg animate-pulse delay-2000" />
       </div>
 
       <div className="relative container mx-auto px-6 pt-20">
@@ -174,12 +191,57 @@ const HeroSection = ({ language }: HeroSectionProps) => {
             </div>
           </div>
 
-          {/* Interactive Visual */}
+          {/* Interactive Visual - Feature Cards */}
           <div 
             className={`animate-fade-left delay-600 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
             style={{ transition: 'all 0.6s ease-out 0.6s' }}
           >
-            <InteractiveTerminal />
+            <div className="relative">
+              {/* Main showcase card */}
+              <div className="bg-gradient-to-br from-border-dark/90 to-border-dark/60 backdrop-blur-lg rounded-3xl p-8 border border-border-dark/50 shadow-2xl">
+                <div className="space-y-6">
+                  {t.features.map((feature, index) => {
+                    const Icon = feature.icon;
+                    return (
+                      <div 
+                        key={index}
+                        className={`flex items-center gap-4 p-4 rounded-2xl transition-all duration-500 ${
+                          activeCard === index 
+                            ? 'bg-magic-blue/20 border border-magic-blue/30 scale-105' 
+                            : 'bg-border-dark/30 border border-transparent hover:bg-border-dark/50'
+                        }`}
+                      >
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                          activeCard === index ? 'bg-magic-blue text-white' : 'bg-border-dark text-magic-blue'
+                        }`}>
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-dark-text">{feature.title}</div>
+                          <div className="text-sm text-light-gray">{feature.desc}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                
+                {/* Progress indicator */}
+                <div className="flex gap-2 mt-6 justify-center">
+                  {t.features.map((_, index) => (
+                    <div 
+                      key={index}
+                      className={`h-1 rounded-full transition-all duration-300 ${
+                        activeCard === index ? 'w-8 bg-magic-blue' : 'w-2 bg-border-dark'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-magic-blue/20 rounded-full blur-xl animate-pulse" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-magic-blue/30 rounded-full blur-lg animate-pulse delay-1000" />
+            </div>
           </div>
         </div>
       </div>
