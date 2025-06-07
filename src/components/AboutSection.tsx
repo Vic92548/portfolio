@@ -1,4 +1,3 @@
-
 import { Code, Database, Globe, Zap } from 'lucide-react';
 
 interface AboutSectionProps {
@@ -93,7 +92,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
   const t = translations[language];
 
   return (
-    <section id="about" className="py-28 bg-mercury-white/50 dark:bg-nordic-gray/30">
+    <section id="about" className="py-28 bg-nordic-gray/30 dark:bg-border-dark/30">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-20">

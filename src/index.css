@@ -20,7 +20,7 @@
     /* Semantic Color Tokens - Light Theme */
     --background: var(--pure-white);
     --background-subtle: var(--mercury-white);
-    --background-muted: #FAFBFC;
+    --background-muted: var(--nordic-gray);
     --foreground: var(--nordic-gray);
     --muted-foreground: var(--light-gray);
     --border: #E1E3E8;
@@ -66,12 +66,12 @@
     --popover-foreground: 216 6% 14%;
     --primary: 237 42% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 8% 96%;
-    --secondary-foreground: 216 6% 14%;
-    --muted: 220 8% 96%;
+    --secondary: 217 6% 14%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 217 6% 14%;
     --muted-foreground: 215 6% 54%;
-    --accent: 220 8% 96%;
-    --accent-foreground: 216 6% 14%;
+    --accent: 217 6% 14%;
+    --accent-foreground: 0 0% 90%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 220 13% 91%;
@@ -85,7 +85,7 @@
       /* Dark Theme */
       --background: var(--darker-gray);
       --background-subtle: var(--nordic-gray);
-      --background-muted: #191B1F;
+      --background-muted: var(--border-dark);
       --foreground: var(--dark-text);
       --muted-foreground: var(--light-gray);
       --border: var(--border-dark);

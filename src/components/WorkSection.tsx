@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ExternalLink, Github, Filter } from 'lucide-react';
 
@@ -141,7 +140,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-2 mb-16 animate-fade-in delay-200">
-          <div className="flex gap-1 p-1 bg-mercury-white/50 dark:bg-border-dark/50 rounded-2xl border border-border backdrop-blur-sm">
+          <div className="flex gap-1 p-1 bg-nordic-gray/20 dark:bg-border-dark/50 rounded-2xl border border-border backdrop-blur-sm">
             {Object.entries(t.filters).map(([key, label]) => (
               <button
                 key={key}
@@ -167,7 +166,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
               style={{ animationDelay: `${300 + index * 100}ms` }}
             >
               {/* Project Image */}
-              <div className="relative aspect-video bg-mercury-white/50 dark:bg-border-dark/50 overflow-hidden">
+              <div className="relative aspect-video bg-nordic-gray/20 dark:bg-border-dark/50 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
@@ -224,7 +223,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
                   {project.tech.map((tech, idx) => (
                     <span 
                       key={idx}
-                      className="px-3 py-1 text-xs bg-mercury-white/70 dark:bg-border-dark/50 text-muted-foreground rounded-lg"
+                      className="px-3 py-1 text-xs bg-nordic-gray/20 dark:bg-border-dark/50 text-muted-foreground rounded-lg"
                     >
                       {tech}
                     </span>

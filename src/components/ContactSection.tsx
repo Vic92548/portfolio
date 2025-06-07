@@ -1,4 +1,3 @@
-
 import { Mail, Calendar, MessageCircle, Send } from 'lucide-react';
 
 interface ContactSectionProps {
@@ -81,7 +80,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
   const t = translations[language];
 
   return (
-    <section id="contact" className="py-28 bg-mercury-white/30 dark:bg-nordic-gray/20">
+    <section id="contact" className="py-28 bg-nordic-gray/20 dark:bg-border-dark/20">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
