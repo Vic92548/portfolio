@@ -19,7 +19,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
       titleHighlight: ["developer tools", "web experiences", "digital products"],
       subtitle: "Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.",
       cta: "View My Work",
-      ctaSecondary: "Get in Touch",
+      ctaSecondary: "Download Resume",
       stats: {
         downloads: "Downloads",
         stars: "GitHub Stars",
@@ -32,7 +32,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
       titleHighlight: ["outils de développement", "expériences web", "produits numériques"],
       subtitle: "Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d'utilisateurs, en me concentrant sur l'expérience développeur et les performances.",
       cta: "Voir mes travaux",
-      ctaSecondary: "Contactez-moi",
+      ctaSecondary: "Télécharger CV",
       stats: {
         downloads: "Téléchargements",
         stars: "Étoiles GitHub",
@@ -45,7 +45,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
       titleHighlight: ["herramientas de desarrollo", "experiencias web", "productos digitales"],
       subtitle: "Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.",
       cta: "Ver mi trabajo",
-      ctaSecondary: "Contáctame",
+      ctaSecondary: "Descargar CV",
       stats: {
         downloads: "Descargas",
         stars: "Estrellas GitHub",
@@ -64,20 +64,22 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  const handleDownloadResume = () => {
+    // This will be handled by our ResumeGenerator component
+    const event = new CustomEvent('downloadResume', { detail: { language } });
+    window.dispatchEvent(event);
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-mercury-white/30 to-background">
-      {/* Animated Background - Linear style */}
-      <div className="absolute inset-0 opacity-40 pointer-events-none">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-darker-gray via-nordic-gray to-darker-gray">
+      {/* Animated Background - Darker Linear style */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(94, 106, 210, 0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(94, 106, 210, 0.03) 1px, transparent 1px)
+              linear-gradient(rgba(94, 106, 210, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(94, 106, 210, 0.05) 1px, transparent 1px)
             `,
             backgroundSize: '80px 80px',
             animation: 'grid-move 25s linear infinite'
@@ -86,7 +88,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
         <div 
           className="absolute top-1/3 left-1/2 w-[600px] h-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(94, 106, 210, 0.08) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse at center, rgba(94, 106, 210, 0.15) 0%, transparent 70%)',
             animation: 'glow-pulse 6s ease-in-out infinite alternate'
           }}
         />
@@ -98,7 +100,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
           <div className="text-center lg:text-left">
             {/* Badge */}
             <div 
-              className={`inline-flex items-center gap-3 px-4 py-2 bg-background/80 border border-border rounded-full text-sm font-medium text-muted-foreground mb-8 animate-fade-in delay-100 backdrop-blur-sm ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`inline-flex items-center gap-3 px-4 py-2 bg-border-dark/80 border border-border-dark rounded-full text-sm font-medium text-dark-text mb-8 animate-fade-in delay-100 backdrop-blur-sm ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.1s' }}
             >
               <div className="w-2 h-2 bg-magic-blue rounded-full animate-pulse" />
@@ -107,7 +109,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
 
             {/* Title */}
             <h1 
-              className={`text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 animate-fade-in delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 animate-fade-in delay-200 text-dark-text ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.2s' }}
             >
               {t.title}
@@ -122,7 +124,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
 
             {/* Subtitle */}
             <p 
-              className={`text-xl lg:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl lg:max-w-none animate-fade-in delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`text-xl lg:text-xl text-light-gray mb-10 leading-relaxed max-w-2xl lg:max-w-none animate-fade-in delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.3s' }}
             >
               {t.subtitle}
@@ -136,23 +138,23 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               <div className="text-center lg:text-left">
                 <CounterAnimation 
                   target={150000} 
-                  className="text-3xl lg:text-4xl font-bold text-foreground"
+                  className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
-                <div className="text-sm text-muted-foreground mt-1">{t.stats.downloads}</div>
+                <div className="text-sm text-light-gray mt-1">{t.stats.downloads}</div>
               </div>
               <div className="text-center lg:text-left">
                 <CounterAnimation 
                   target={2100} 
-                  className="text-3xl lg:text-4xl font-bold text-foreground"
+                  className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
-                <div className="text-sm text-muted-foreground mt-1">{t.stats.stars}</div>
+                <div className="text-sm text-light-gray mt-1">{t.stats.stars}</div>
               </div>
               <div className="text-center lg:text-left">
                 <CounterAnimation 
                   target={12} 
-                  className="text-3xl lg:text-4xl font-bold text-foreground"
+                  className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
-                <div className="text-sm text-muted-foreground mt-1">{t.stats.products}</div>
+                <div className="text-sm text-light-gray mt-1">{t.stats.products}</div>
               </div>
             </div>
 
@@ -165,7 +167,8 @@ const HeroSection = ({ language }: HeroSectionProps) => {
                 {t.cta}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
-              <button onClick={scrollToContact} className="btn btn-secondary btn-lg">
+              <button onClick={handleDownloadResume} className="btn btn-secondary btn-lg group">
+                <Download className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
                 {t.ctaSecondary}
               </button>
             </div>

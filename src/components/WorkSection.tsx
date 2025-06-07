@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { ExternalLink, Github, Filter } from 'lucide-react';
+import { ExternalLink, Github, TrendingUp, Users, Zap } from 'lucide-react';
 
 interface WorkSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -20,7 +21,8 @@ const WorkSection = ({ language }: WorkSectionProps) => {
       },
       viewAll: "View All Projects",
       viewLive: "View Live",
-      sourceCode: "Source Code"
+      sourceCode: "Source Code",
+      featured: "Featured"
     },
     fr: {
       title: "Travaux sélectionnés",
@@ -33,7 +35,8 @@ const WorkSection = ({ language }: WorkSectionProps) => {
       },
       viewAll: "Voir tous les projets",
       viewLive: "Voir en direct",
-      sourceCode: "Code source"
+      sourceCode: "Code source",
+      featured: "En vedette"
     },
     es: {
       title: "Trabajo seleccionado",
@@ -46,7 +49,8 @@ const WorkSection = ({ language }: WorkSectionProps) => {
       },
       viewAll: "Ver todos los proyectos",
       viewLive: "Ver en vivo",
-      sourceCode: "Código fuente"
+      sourceCode: "Código fuente",
+      featured: "Destacado"
     }
   };
 
@@ -62,12 +66,13 @@ const WorkSection = ({ language }: WorkSectionProps) => {
       },
       image: '/placeholder.svg',
       metrics: [
-        { number: '12K+', label: 'Daily Users' },
-        { number: '99.8%', label: 'Uptime' },
-        { number: '67%', label: 'Time Saved' }
+        { icon: Users, number: '12K+', label: 'Daily Users' },
+        { icon: TrendingUp, number: '99.8%', label: 'Uptime' },
+        { icon: Zap, number: '67%', label: 'Time Saved' }
       ],
       tech: ['TypeScript', 'Docker', 'AWS', 'PostgreSQL'],
       status: 'active',
+      featured: true,
       links: {
         live: '#',
         github: '#'
@@ -84,12 +89,13 @@ const WorkSection = ({ language }: WorkSectionProps) => {
       },
       image: '/placeholder.svg',
       metrics: [
-        { number: '8K+', label: 'APIs Created' },
-        { number: '45%', label: 'Dev Time Saved' },
-        { number: '99.9%', label: 'Reliability' }
+        { icon: Users, number: '8K+', label: 'APIs Created' },
+        { icon: TrendingUp, number: '45%', label: 'Dev Time Saved' },
+        { icon: Zap, number: '99.9%', label: 'Reliability' }
       ],
       tech: ['React', 'Node.js', 'MongoDB', 'Redis'],
       status: 'active',
+      featured: false,
       links: {
         live: '#',
         github: '#'
@@ -106,12 +112,13 @@ const WorkSection = ({ language }: WorkSectionProps) => {
       },
       image: '/placeholder.svg',
       metrics: [
-        { number: '150K+', label: 'Downloads' },
-        { number: '2.1K', label: 'GitHub Stars' },
-        { number: '300+', label: 'Contributors' }
+        { icon: Users, number: '150K+', label: 'Downloads' },
+        { icon: TrendingUp, number: '2.1K', label: 'GitHub Stars' },
+        { icon: Zap, number: '300+', label: 'Contributors' }
       ],
       tech: ['TypeScript', 'Rust', 'WebAssembly', 'VS Code API'],
       status: 'active',
+      featured: true,
       links: {
         live: '#',
         github: '#'
@@ -140,7 +147,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-2 mb-16 animate-fade-in delay-200">
-          <div className="flex gap-1 p-1 bg-nordic-gray/20 dark:bg-border-dark/50 rounded-2xl border border-border backdrop-blur-sm">
+          <div className="flex gap-1 p-1 bg-nordic-gray/10 dark:bg-border-dark/30 rounded-2xl border border-border backdrop-blur-sm">
             {Object.entries(t.filters).map(([key, label]) => (
               <button
                 key={key}
@@ -162,38 +169,49 @@ const WorkSection = ({ language }: WorkSectionProps) => {
           {filteredProjects.map((project, index) => (
             <article 
               key={project.id}
-              className={`group bg-background border border-border rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in`}
+              className={`group relative bg-background border border-border rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-fade-in ${
+                project.featured ? 'ring-2 ring-magic-blue/20' : ''
+              }`}
               style={{ animationDelay: `${300 + index * 100}ms` }}
             >
+              {/* Featured Badge */}
+              {project.featured && (
+                <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-magic-blue text-white text-xs font-medium rounded-full">
+                  {t.featured}
+                </div>
+              )}
+
               {/* Project Image */}
-              <div className="relative aspect-video bg-nordic-gray/20 dark:bg-border-dark/50 overflow-hidden">
+              <div className="relative aspect-video bg-nordic-gray/10 dark:bg-border-dark/30 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                  <a 
-                    href={project.links.live}
-                    className="btn btn-primary btn-sm shadow-lg"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    {t.viewLive}
-                  </a>
-                  <a 
-                    href={project.links.github}
-                    className="btn btn-secondary btn-sm backdrop-blur-sm"
-                  >
-                    <Github className="w-4 h-4" />
-                    {t.sourceCode}
-                  </a>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                  <div className="flex gap-3">
+                    <a 
+                      href={project.links.live}
+                      className="flex-1 bg-magic-blue hover:bg-magic-blue/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      {t.viewLive}
+                    </a>
+                    <a 
+                      href={project.links.github}
+                      className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
 
               {/* Project Content */}
-              <div className="p-8">
+              <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 text-xs font-medium bg-magic-blue/10 text-magic-blue rounded-lg">
+                  <span className="px-3 py-1 text-xs font-medium bg-magic-blue/10 text-magic-blue rounded-lg border border-magic-blue/20">
                     {project.category === 'devTools' ? 'Developer Tool' : 
                      project.category === 'webApps' ? 'Web App' : 'Open Source'}
                   </span>
@@ -203,15 +221,18 @@ const WorkSection = ({ language }: WorkSectionProps) => {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-4">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-3 group-hover:text-magic-blue transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-6 leading-relaxed line-clamp-3">
                   {project.description[language]}
                 </p>
 
                 {/* Metrics */}
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   {project.metrics.map((metric, idx) => (
-                    <div key={idx} className="text-center">
+                    <div key={idx} className="text-center p-3 bg-nordic-gray/5 dark:bg-border-dark/20 rounded-xl border border-border/50">
+                      <metric.icon className="w-4 h-4 text-magic-blue mx-auto mb-2" />
                       <div className="text-sm font-bold text-foreground">{metric.number}</div>
                       <div className="text-xs text-muted-foreground">{metric.label}</div>
                     </div>
@@ -223,7 +244,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
                   {project.tech.map((tech, idx) => (
                     <span 
                       key={idx}
-                      className="px-3 py-1 text-xs bg-nordic-gray/20 dark:bg-border-dark/50 text-muted-foreground rounded-lg"
+                      className="px-3 py-1 text-xs bg-nordic-gray/10 dark:bg-border-dark/30 text-muted-foreground rounded-lg border border-border/30 hover:border-magic-blue/30 hover:text-magic-blue transition-colors"
                     >
                       {tech}
                     </span>
@@ -236,9 +257,9 @@ const WorkSection = ({ language }: WorkSectionProps) => {
 
         {/* View All CTA */}
         <div className="text-center animate-fade-in delay-600">
-          <button className="btn btn-secondary btn-lg">
+          <button className="btn btn-secondary btn-lg group">
             {t.viewAll}
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
       </div>

@@ -1,0 +1,383 @@
+
+import { useEffect } from 'react';
+
+interface ResumeGeneratorProps {
+  language: 'en' | 'fr' | 'es';
+}
+
+const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
+  const generateResumeContent = (lang: 'en' | 'fr' | 'es') => {
+    const content = {
+      en: {
+        name: 'Victor Chanet',
+        title: 'Full-Stack Engineer & Entrepreneur',
+        contact: {
+          email: 'victor@chanet.dev',
+          website: 'https://victorchanet.dev',
+          github: 'https://github.com/victorchanet',
+          linkedin: 'https://linkedin.com/in/victorchanet'
+        },
+        summary: 'Full-stack engineer and entrepreneur with 8+ years of experience creating scalable web applications and developer tools. Passionate about crafting elegant solutions that solve real-world problems and enhance user experiences.',
+        experience: [
+          {
+            title: 'Senior Full-Stack Engineer',
+            company: 'Independent Consultant',
+            period: '2020 - Present',
+            achievements: [
+              'Built and scaled DevFlow, a CI/CD pipeline tool serving 12K+ daily users',
+              'Created APIForge, enabling 8K+ APIs with 45% development time reduction',
+              'Developed CodeFormat, an open-source formatter with 150K+ downloads'
+            ]
+          },
+          {
+            title: 'Lead Developer',
+            company: 'Tech Startup',
+            period: '2018 - 2020',
+            achievements: [
+              'Led development team of 5 engineers',
+              'Architected microservices handling 100K+ concurrent users',
+              'Reduced deployment time by 67% through automation'
+            ]
+          }
+        ],
+        skills: {
+          frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+          backend: ['Node.js', 'Python', 'PostgreSQL', 'Redis'],
+          cloud: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
+          tools: ['Git', 'VS Code', 'WebAssembly', 'REST APIs']
+        },
+        projects: [
+          {
+            name: 'DevFlow',
+            description: 'CI/CD pipeline tool with 99.8% uptime',
+            tech: 'TypeScript, Docker, AWS, PostgreSQL'
+          },
+          {
+            name: 'APIForge',
+            description: 'Visual API builder for non-technical users',
+            tech: 'React, Node.js, MongoDB, Redis'
+          },
+          {
+            name: 'CodeFormat',
+            description: 'Multi-language code formatter',
+            tech: 'TypeScript, Rust, WebAssembly'
+          }
+        ]
+      },
+      fr: {
+        name: 'Victor Chanet',
+        title: 'Ingénieur Full-Stack & Entrepreneur',
+        contact: {
+          email: 'victor@chanet.dev',
+          website: 'https://victorchanet.dev',
+          github: 'https://github.com/victorchanet',
+          linkedin: 'https://linkedin.com/in/victorchanet'
+        },
+        summary: 'Ingénieur full-stack et entrepreneur avec plus de 8 ans d\'expérience dans la création d\'applications web évolutives et d\'outils de développement. Passionné par l\'élaboration de solutions élégantes qui résolvent des problèmes du monde réel.',
+        experience: [
+          {
+            title: 'Ingénieur Full-Stack Senior',
+            company: 'Consultant Indépendant',
+            period: '2020 - Présent',
+            achievements: [
+              'Construit et mis à l\'échelle DevFlow, un outil de pipeline CI/CD servant 12K+ utilisateurs quotidiens',
+              'Créé APIForge, permettant 8K+ APIs avec 45% de réduction du temps de développement',
+              'Développé CodeFormat, un formateur open source avec 150K+ téléchargements'
+            ]
+          }
+        ],
+        skills: {
+          frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+          backend: ['Node.js', 'Python', 'PostgreSQL', 'Redis'],
+          cloud: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
+          tools: ['Git', 'VS Code', 'WebAssembly', 'REST APIs']
+        },
+        projects: [
+          {
+            name: 'DevFlow',
+            description: 'Outil de pipeline CI/CD avec 99.8% de disponibilité',
+            tech: 'TypeScript, Docker, AWS, PostgreSQL'
+          }
+        ]
+      },
+      es: {
+        name: 'Victor Chanet',
+        title: 'Ingeniero Full-Stack y Emprendedor',
+        contact: {
+          email: 'victor@chanet.dev',
+          website: 'https://victorchanet.dev',
+          github: 'https://github.com/victorchanet',
+          linkedin: 'https://linkedin.com/in/victorchanet'
+        },
+        summary: 'Ingeniero full-stack y emprendedor con más de 8 años de experiencia creando aplicaciones web escalables y herramientas de desarrollo. Apasionado por crear soluciones elegantes que resuelvan problemas del mundo real.',
+        experience: [
+          {
+            title: 'Ingeniero Full-Stack Senior',
+            company: 'Consultor Independiente',
+            period: '2020 - Presente',
+            achievements: [
+              'Construido y escalado DevFlow, una herramienta de pipeline CI/CD sirviendo 12K+ usuarios diarios',
+              'Creado APIForge, habilitando 8K+ APIs con 45% de reducción en tiempo de desarrollo',
+              'Desarrollado CodeFormat, un formateador de código abierto con 150K+ descargas'
+            ]
+          }
+        ],
+        skills: {
+          frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+          backend: ['Node.js', 'Python', 'PostgreSQL', 'Redis'],
+          cloud: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
+          tools: ['Git', 'VS Code', 'WebAssembly', 'REST APIs']
+        },
+        projects: [
+          {
+            name: 'DevFlow',
+            description: 'Herramienta de pipeline CI/CD con 99.8% de tiempo activo',
+            tech: 'TypeScript, Docker, AWS, PostgreSQL'
+          }
+        ]
+      }
+    };
+
+    return content[lang];
+  };
+
+  const generatePDF = (content: any) => {
+    // Create HTML content for the resume
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>${content.name} - Resume</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #222326;
+            background: #FFFFFF;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+          }
+          .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #5E6AD2;
+          }
+          .name {
+            font-size: 32px;
+            font-weight: 800;
+            color: #222326;
+            margin-bottom: 8px;
+          }
+          .title {
+            font-size: 18px;
+            color: #5E6AD2;
+            font-weight: 600;
+          }
+          .contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+          }
+          .contact a {
+            color: #8a8f98;
+            text-decoration: none;
+            font-size: 14px;
+          }
+          .section {
+            margin-bottom: 30px;
+          }
+          .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222326;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+          .summary {
+            font-size: 16px;
+            color: #8a8f98;
+            line-height: 1.7;
+          }
+          .experience-item {
+            margin-bottom: 25px;
+          }
+          .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #222326;
+          }
+          .company {
+            font-size: 16px;
+            color: #5E6AD2;
+            font-weight: 500;
+          }
+          .period {
+            font-size: 14px;
+            color: #8a8f98;
+            margin-bottom: 10px;
+          }
+          .achievements {
+            list-style: none;
+          }
+          .achievements li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            color: #8a8f98;
+          }
+          .achievements li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #5E6AD2;
+            font-weight: bold;
+          }
+          .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+          .skill-category {
+            margin-bottom: 15px;
+          }
+          .skill-category-title {
+            font-weight: 600;
+            color: #222326;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+          }
+          .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+          .skill-tag {
+            background: #F4F5F8;
+            color: #222326;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #E1E3E8;
+          }
+          .project-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #E1E3E8;
+            border-radius: 8px;
+            background: #F4F5F8;
+          }
+          .project-name {
+            font-weight: 600;
+            color: #5E6AD2;
+            margin-bottom: 5px;
+          }
+          .project-description {
+            color: #8a8f98;
+            font-size: 14px;
+            margin-bottom: 8px;
+          }
+          .project-tech {
+            font-size: 12px;
+            color: #222326;
+            font-weight: 500;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1 class="name">${content.name}</h1>
+          <p class="title">${content.title}</p>
+          <div class="contact">
+            <a href="mailto:${content.contact.email}">${content.contact.email}</a>
+            <a href="${content.contact.website}">${content.contact.website}</a>
+            <a href="${content.contact.github}">GitHub</a>
+            <a href="${content.contact.linkedin}">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Summary</h2>
+          <p class="summary">${content.summary}</p>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Experience</h2>
+          ${content.experience.map(exp => `
+            <div class="experience-item">
+              <div class="job-title">${exp.title}</div>
+              <div class="company">${exp.company}</div>
+              <div class="period">${exp.period}</div>
+              <ul class="achievements">
+                ${exp.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+              </ul>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Skills</h2>
+          <div class="skills-grid">
+            ${Object.entries(content.skills).map(([category, skills]) => `
+              <div class="skill-category">
+                <div class="skill-category-title">${category}</div>
+                <div class="skill-tags">
+                  ${(skills as string[]).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Featured Projects</h2>
+          ${content.projects.map(project => `
+            <div class="project-item">
+              <div class="project-name">${project.name}</div>
+              <div class="project-description">${project.description}</div>
+              <div class="project-tech">Tech Stack: ${project.tech}</div>
+            </div>
+          `).join('')}
+        </div>
+      </body>
+      </html>
+    `;
+
+    // Create a new window to generate PDF
+    const printWindow = window.open('', '_blank');
+    if (printWindow) {
+      printWindow.document.write(htmlContent);
+      printWindow.document.close();
+      
+      // Wait for content to load then trigger print
+      setTimeout(() => {
+        printWindow.print();
+      }, 500);
+    }
+  };
+
+  useEffect(() => {
+    const handleDownloadResume = (event: CustomEvent) => {
+      const { language: lang } = event.detail;
+      const content = generateResumeContent(lang);
+      generatePDF(content);
+    };
+
+    window.addEventListener('downloadResume', handleDownloadResume as EventListener);
+
+    return () => {
+      window.removeEventListener('downloadResume', handleDownloadResume as EventListener);
+    };
+  }, []);
+
+  return null; // This component doesn't render anything
+};
+
+export default ResumeGenerator;
