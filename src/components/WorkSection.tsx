@@ -67,11 +67,6 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         es: 'Herramienta de pipeline CI/CD optimizada que reduce el tiempo de despliegue de horas a minutos para equipos de desarrollo pequeños.'
       },
       image: '/placeholder.svg',
-      metrics: [
-        { icon: Users, number: '12K+', label: 'Daily Users' },
-        { icon: TrendingUp, number: '99.8%', label: 'Uptime' },
-        { icon: Zap, number: '67%', label: 'Time Saved' }
-      ],
       tech: ['TypeScript', 'Docker', 'AWS', 'PostgreSQL'],
       status: 'active',
       featured: true,
@@ -90,11 +85,6 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         es: 'Constructor visual de API que permite a usuarios no técnicos crear y gestionar APIs REST a través de una interfaz intuitiva de arrastrar y soltar.'
       },
       image: '/placeholder.svg',
-      metrics: [
-        { icon: Users, number: '8K+', label: 'APIs Created' },
-        { icon: TrendingUp, number: '45%', label: 'Dev Time Saved' },
-        { icon: Zap, number: '99.9%', label: 'Reliability' }
-      ],
       tech: ['React', 'Node.js', 'MongoDB', 'Redis'],
       status: 'active',
       featured: false,
@@ -113,11 +103,6 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         es: 'Formateador de código de código abierto compatible con más de 20 lenguajes de programación con reglas configurables e integración con VS Code.'
       },
       image: '/placeholder.svg',
-      metrics: [
-        { icon: Users, number: '150K+', label: 'Downloads' },
-        { icon: TrendingUp, number: '2.1K', label: 'GitHub Stars' },
-        { icon: Zap, number: '300+', label: 'Contributors' }
-      ],
       tech: ['TypeScript', 'Rust', 'WebAssembly', 'VS Code API'],
       status: 'active',
       featured: true,
@@ -136,11 +121,6 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         es: 'Juego de plataformas retro construido con HTML5 Canvas y TypeScript, con generación procedimental de niveles y multijugador local.'
       },
       image: '/placeholder.svg',
-      metrics: [
-        { icon: Users, number: '50K+', label: 'Players' },
-        { icon: TrendingUp, number: '4.8/5', label: 'Rating' },
-        { icon: Gamepad2, number: '100+', label: 'Levels' }
-      ],
       tech: ['TypeScript', 'HTML5 Canvas', 'WebGL', 'Web Audio API'],
       status: 'active',
       featured: false,
@@ -257,17 +237,6 @@ const WorkSection = ({ language }: WorkSectionProps) => {
                 <p className="text-muted-foreground text-sm mb-6 leading-relaxed line-clamp-3">
                   {project.description[language]}
                 </p>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {project.metrics.map((metric, idx) => (
-                    <div key={idx} className="text-center p-3 bg-nordic-gray/5 dark:bg-border-dark/20 rounded-xl border border-border/50">
-                      <metric.icon className="w-4 h-4 text-magic-blue mx-auto mb-2" />
-                      <div className="text-sm font-bold text-foreground">{metric.number}</div>
-                      <div className="text-xs text-muted-foreground">{metric.label}</div>
-                    </div>
-                  ))}
-                </div>
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
