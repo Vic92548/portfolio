@@ -158,7 +158,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
-  // Get skills data for mapping tech to URLs
+  // Get skills data for mapping tech to URLs - Fix the type issue
   const websiteData = extractWebsiteData(language);
   const allSkills = [
     ...websiteData.skills.frontend,
@@ -167,9 +167,9 @@ const WorkSection = ({ language }: WorkSectionProps) => {
     ...websiteData.skills.tools
   ];
 
-  const getSkillWithUrl = (techName: string) => {
+  const getSkillWithUrl = (techName: string): { name: string; url: string } => {
     const skill = allSkills.find(s => s.name === techName);
-    return skill ? skill : { name: techName, url: '#' };
+    return skill ? { name: skill.name, url: skill.url } : { name: techName, url: '#' };
   };
 
   return (
