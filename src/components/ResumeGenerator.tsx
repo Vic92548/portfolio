@@ -29,7 +29,7 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
         cloud: websiteData.skills.cloud,
         tools: websiteData.skills.tools
       },
-      projects: websiteData.projects.slice(0, 3).map(project => ({
+      projects: websiteData.projects.map(project => ({
         name: project.title,
         description: project.description[lang],
         tech: project.tech.join(', '),
