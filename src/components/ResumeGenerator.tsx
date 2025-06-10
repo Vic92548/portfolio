@@ -305,7 +305,7 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
         <div class="section">
           <h2 class="section-title">${t.skills}</h2>
           <div class="skills-grid">
-            ${Object.entries(content.skills).filter(([_, skills]) => skills.length > 0).map(([category, skills]) => `
+            ${Object.entries(content.skills).filter(([_, skills]) => Array.isArray(skills) && skills.length > 0).map(([category, skills]) => `
               <div class="skill-category">
                 <div class="skill-category-title">${category}</div>
                 <div class="skill-tags">
