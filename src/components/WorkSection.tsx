@@ -128,6 +128,24 @@ const WorkSection = ({ language }: WorkSectionProps) => {
         live: '#',
         github: '#'
       }
+    },
+    {
+      id: 'reactflow',
+      category: 'devTools',
+      title: 'ReactFlow Builder',
+      description: {
+        en: 'Advanced workflow automation tool with visual node editor, supporting complex business logic and integrations.',
+        fr: 'Outil d\'automatisation de workflow avancé avec éditeur de nœuds visuels, prenant en charge la logique métier complexe et les intégrations.',
+        es: 'Herramienta avanzada de automatización de flujos de trabajo con editor visual de nodos, compatible con lógica empresarial compleja e integraciones.'
+      },
+      image: '/placeholder.svg',
+      tech: ['React', 'TypeScript', 'Node.js', 'WebSockets'],
+      status: 'active',
+      featured: true,
+      links: {
+        live: '#',
+        github: '#'
+      }
     }
   ];
 

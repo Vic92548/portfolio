@@ -1,5 +1,6 @@
 
 import { useEffect } from 'react';
+import { extractWebsiteData, generateExperience } from '../utils/dataExtractor';
 
 interface ResumeGeneratorProps {
   language: 'en' | 'fr' | 'es';
@@ -7,141 +8,73 @@ interface ResumeGeneratorProps {
 
 const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
   const generateResumeContent = (lang: 'en' | 'fr' | 'es') => {
+    // Extract dynamic data from website components
+    const websiteData = extractWebsiteData(lang);
+    const experience = generateExperience(lang, websiteData.projectCount);
+
     const content = {
-      en: {
-        name: 'Victor Chanet',
-        title: 'Full-Stack Engineer & Entrepreneur',
-        contact: {
-          email: 'victor@chanet.dev',
-          website: 'https://victorchanet.dev',
-          github: 'https://github.com/victorchanet',
-          linkedin: 'https://linkedin.com/in/victorchanet'
-        },
-        summary: 'Full-stack engineer and entrepreneur with 8+ years of experience creating scalable web applications and developer tools. Passionate about crafting elegant solutions that solve real-world problems and enhance user experiences.',
-        experience: [
-          {
-            title: 'Senior Full-Stack Engineer',
-            company: 'Independent Consultant',
-            period: '2020 - Present',
-            achievements: [
-              'Built and scaled DevFlow, a CI/CD pipeline tool serving 12K+ daily users',
-              'Created APIForge, enabling 8K+ APIs with 45% development time reduction',
-              'Developed CodeFormat, an open-source formatter with 150K+ downloads'
-            ]
-          },
-          {
-            title: 'Lead Developer',
-            company: 'Tech Startup',
-            period: '2018 - 2020',
-            achievements: [
-              'Led development team of 5 engineers',
-              'Architected microservices handling 100K+ concurrent users',
-              'Reduced deployment time by 67% through automation'
-            ]
-          }
-        ],
-        skills: {
-          frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-          backend: ['Node.js', 'Python', 'PostgreSQL', 'Redis'],
-          cloud: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
-          tools: ['Git', 'VS Code', 'WebAssembly', 'REST APIs']
-        },
-        projects: [
-          {
-            name: 'DevFlow',
-            description: 'CI/CD pipeline tool with 99.8% uptime',
-            tech: 'TypeScript, Docker, AWS, PostgreSQL'
-          },
-          {
-            name: 'APIForge',
-            description: 'Visual API builder for non-technical users',
-            tech: 'React, Node.js, MongoDB, Redis'
-          },
-          {
-            name: 'CodeFormat',
-            description: 'Multi-language code formatter',
-            tech: 'TypeScript, Rust, WebAssembly'
-          }
-        ]
+      name: websiteData.heroData.name,
+      title: websiteData.heroData.title[lang],
+      contact: {
+        email: 'victor@chanet.dev',
+        website: 'https://victorchanet.dev',
+        github: 'https://github.com/victorchanet',
+        linkedin: 'https://linkedin.com/in/victorchanet'
       },
-      fr: {
-        name: 'Victor Chanet',
-        title: 'Ingénieur Full-Stack & Entrepreneur',
-        contact: {
-          email: 'victor@chanet.dev',
-          website: 'https://victorchanet.dev',
-          github: 'https://github.com/victorchanet',
-          linkedin: 'https://linkedin.com/in/victorchanet'
-        },
-        summary: 'Ingénieur full-stack et entrepreneur avec plus de 8 ans d\'expérience dans la création d\'applications web évolutives et d\'outils de développement. Passionné par l\'élaboration de solutions élégantes qui résolvent des problèmes du monde réel.',
-        experience: [
-          {
-            title: 'Ingénieur Full-Stack Senior',
-            company: 'Consultant Indépendant',
-            period: '2020 - Présent',
-            achievements: [
-              'Construit et mis à l\'échelle DevFlow, un outil de pipeline CI/CD servant 12K+ utilisateurs quotidiens',
-              'Créé APIForge, permettant 8K+ APIs avec 45% de réduction du temps de développement',
-              'Développé CodeFormat, un formateur open source avec 150K+ téléchargements'
-            ]
-          }
-        ],
-        skills: {
-          frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-          backend: ['Node.js', 'Python', 'PostgreSQL', 'Redis'],
-          cloud: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
-          tools: ['Git', 'VS Code', 'WebAssembly', 'REST APIs']
-        },
-        projects: [
-          {
-            name: 'DevFlow',
-            description: 'Outil de pipeline CI/CD avec 99.8% de disponibilité',
-            tech: 'TypeScript, Docker, AWS, PostgreSQL'
-          }
-        ]
+      summary: websiteData.heroData.description[lang],
+      experience: experience,
+      skills: {
+        frontend: websiteData.skills.frontend,
+        backend: websiteData.skills.backend,
+        cloud: websiteData.skills.cloud,
+        tools: websiteData.skills.tools
       },
-      es: {
-        name: 'Victor Chanet',
-        title: 'Ingeniero Full-Stack y Emprendedor',
-        contact: {
-          email: 'victor@chanet.dev',
-          website: 'https://victorchanet.dev',
-          github: 'https://github.com/victorchanet',
-          linkedin: 'https://linkedin.com/in/victorchanet'
-        },
-        summary: 'Ingeniero full-stack y emprendedor con más de 8 años de experiencia creando aplicaciones web escalables y herramientas de desarrollo. Apasionado por crear soluciones elegantes que resuelvan problemas del mundo real.',
-        experience: [
-          {
-            title: 'Ingeniero Full-Stack Senior',
-            company: 'Consultor Independiente',
-            period: '2020 - Presente',
-            achievements: [
-              'Construido y escalado DevFlow, una herramienta de pipeline CI/CD sirviendo 12K+ usuarios diarios',
-              'Creado APIForge, habilitando 8K+ APIs con 45% de reducción en tiempo de desarrollo',
-              'Desarrollado CodeFormat, un formateador de código abierto con 150K+ descargas'
-            ]
-          }
-        ],
-        skills: {
-          frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-          backend: ['Node.js', 'Python', 'PostgreSQL', 'Redis'],
-          cloud: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
-          tools: ['Git', 'VS Code', 'WebAssembly', 'REST APIs']
-        },
-        projects: [
-          {
-            name: 'DevFlow',
-            description: 'Herramienta de pipeline CI/CD con 99.8% de tiempo activo',
-            tech: 'TypeScript, Docker, AWS, PostgreSQL'
-          }
-        ]
+      projects: websiteData.projects.slice(0, 3).map(project => ({
+        name: project.title,
+        description: project.description[lang],
+        tech: project.tech.join(', '),
+        featured: project.featured
+      })),
+      stats: {
+        totalProjects: websiteData.projectCount,
+        downloads: websiteData.heroData.stats.downloads,
+        stars: websiteData.heroData.stats.stars
       }
     };
 
-    return content[lang];
+    return content;
   };
 
   const generatePDF = (content: any) => {
+    const translations = {
+      en: {
+        summary: 'Summary',
+        experience: 'Experience',
+        skills: 'Skills',
+        projects: 'Featured Projects',
+        techStack: 'Tech Stack',
+        stats: 'Key Metrics'
+      },
+      fr: {
+        summary: 'Résumé',
+        experience: 'Expérience',
+        skills: 'Compétences',
+        projects: 'Projets en vedette',
+        techStack: 'Stack technique',
+        stats: 'Métriques clés'
+      },
+      es: {
+        summary: 'Resumen',
+        experience: 'Experiencia',
+        skills: 'Habilidades',
+        projects: 'Proyectos destacados',
+        techStack: 'Stack tecnológico',
+        stats: 'Métricas clave'
+      }
+    };
+
+    const t = translations[language];
+
     // Create HTML content for the resume
     const htmlContent = `
       <!DOCTYPE html>
@@ -176,6 +109,7 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
             font-size: 18px;
             color: #5E6AD2;
             font-weight: 600;
+            margin-bottom: 15px;
           }
           .contact {
             display: flex;
@@ -188,6 +122,29 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
             color: #8a8f98;
             text-decoration: none;
             font-size: 14px;
+          }
+          .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #F4F5F8;
+            border-radius: 8px;
+          }
+          .stat-item {
+            text-align: center;
+          }
+          .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #5E6AD2;
+          }
+          .stat-label {
+            font-size: 12px;
+            color: #8a8f98;
+            text-transform: uppercase;
+            letter-spacing: 1px;
           }
           .section {
             margin-bottom: 30px;
@@ -289,6 +246,15 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
             color: #222326;
             font-weight: 500;
           }
+          .featured-badge {
+            display: inline-block;
+            background: #5E6AD2;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: 10px;
+          }
         </style>
       </head>
       <body>
@@ -301,15 +267,29 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
             <a href="${content.contact.github}">GitHub</a>
             <a href="${content.contact.linkedin}">LinkedIn</a>
           </div>
+          <div class="stats-section">
+            <div class="stat-item">
+              <div class="stat-number">${content.stats.totalProjects}</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">${(content.stats.downloads / 1000).toFixed(0)}K+</div>
+              <div class="stat-label">Downloads</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">${(content.stats.stars / 1000).toFixed(1)}K+</div>
+              <div class="stat-label">GitHub Stars</div>
+            </div>
+          </div>
         </div>
 
         <div class="section">
-          <h2 class="section-title">Summary</h2>
+          <h2 class="section-title">${t.summary}</h2>
           <p class="summary">${content.summary}</p>
         </div>
 
         <div class="section">
-          <h2 class="section-title">Experience</h2>
+          <h2 class="section-title">${t.experience}</h2>
           ${content.experience.map(exp => `
             <div class="experience-item">
               <div class="job-title">${exp.title}</div>
@@ -323,9 +303,9 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">Skills</h2>
+          <h2 class="section-title">${t.skills}</h2>
           <div class="skills-grid">
-            ${Object.entries(content.skills).map(([category, skills]) => `
+            ${Object.entries(content.skills).filter(([_, skills]) => skills.length > 0).map(([category, skills]) => `
               <div class="skill-category">
                 <div class="skill-category-title">${category}</div>
                 <div class="skill-tags">
@@ -337,12 +317,15 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">Featured Projects</h2>
+          <h2 class="section-title">${t.projects}</h2>
           ${content.projects.map(project => `
             <div class="project-item">
-              <div class="project-name">${project.name}</div>
+              <div class="project-name">
+                ${project.name}
+                ${project.featured ? '<span class="featured-badge">Featured</span>' : ''}
+              </div>
               <div class="project-description">${project.description}</div>
-              <div class="project-tech">Tech Stack: ${project.tech}</div>
+              <div class="project-tech">${t.techStack}: ${project.tech}</div>
             </div>
           `).join('')}
         </div>
