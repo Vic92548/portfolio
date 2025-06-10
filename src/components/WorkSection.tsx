@@ -160,7 +160,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
 
   // Get skills data for mapping tech to URLs - Fix the type issue
   const websiteData = extractWebsiteData(language);
-  const allSkills = [
+  const allSkills: Array<{ name: string; url: string }> = [
     ...websiteData.skills.frontend,
     ...websiteData.skills.backend,
     ...websiteData.skills.cloud,
@@ -168,7 +168,7 @@ const WorkSection = ({ language }: WorkSectionProps) => {
   ];
 
   const getSkillWithUrl = (techName: string): { name: string; url: string } => {
-    const skill = allSkills.find(s => s.name === techName);
+    const skill = allSkills.find((s: { name: string; url: string }) => s.name === techName);
     return skill ? { name: skill.name, url: skill.url } : { name: techName, url: '#' };
   };
 
