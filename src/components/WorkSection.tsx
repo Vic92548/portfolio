@@ -158,13 +158,62 @@ const WorkSection = ({ language }: WorkSectionProps) => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
-  // Get skills data for mapping tech to URLs - Fix the type issue
-  const websiteData = extractWebsiteData(language);
+  // Define skill mappings with URLs
+  const skillsData = {
+    frontend: [
+      { name: 'React', url: 'https://react.dev/' },
+      { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+      { name: 'Next.js', url: 'https://nextjs.org/' },
+      { name: 'Tailwind CSS', url: 'https://tailwindcss.com/' },
+      { name: 'Vue.js', url: 'https://vuejs.org/' },
+      { name: 'HTML5', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+      { name: 'CSS3', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+      { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+      { name: 'HTML5 Canvas', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API' },
+      { name: 'WebGL', url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API' }
+    ],
+    backend: [
+      { name: 'Node.js', url: 'https://nodejs.org/' },
+      { name: 'Python', url: 'https://www.python.org/' },
+      { name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
+      { name: 'MongoDB', url: 'https://www.mongodb.com/' },
+      { name: 'Redis', url: 'https://redis.io/' },
+      { name: 'Express.js', url: 'https://expressjs.com/' },
+      { name: 'FastAPI', url: 'https://fastapi.tiangolo.com/' },
+      { name: 'GraphQL', url: 'https://graphql.org/' },
+      { name: 'WebSockets', url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API' }
+    ],
+    cloud: [
+      { name: 'AWS', url: 'https://aws.amazon.com/' },
+      { name: 'Docker', url: 'https://www.docker.com/' },
+      { name: 'Kubernetes', url: 'https://kubernetes.io/' },
+      { name: 'Vercel', url: 'https://vercel.com/' },
+      { name: 'Netlify', url: 'https://www.netlify.com/' },
+      { name: 'Firebase', url: 'https://firebase.google.com/' },
+      { name: 'Supabase', url: 'https://supabase.com/' },
+      { name: 'Railway', url: 'https://railway.app/' }
+    ],
+    tools: [
+      { name: 'Git', url: 'https://git-scm.com/' },
+      { name: 'VS Code', url: 'https://code.visualstudio.com/' },
+      { name: 'Figma', url: 'https://www.figma.com/' },
+      { name: 'Linear', url: 'https://linear.app/' },
+      { name: 'Notion', url: 'https://www.notion.so/' },
+      { name: 'Postman', url: 'https://www.postman.com/' },
+      { name: 'Vite', url: 'https://vitejs.dev/' },
+      { name: 'Webpack', url: 'https://webpack.js.org/' },
+      { name: 'WebAssembly', url: 'https://webassembly.org/' },
+      { name: 'VS Code API', url: 'https://code.visualstudio.com/api' },
+      { name: 'Rust', url: 'https://www.rust-lang.org/' },
+      { name: 'Web Audio API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API' }
+    ]
+  };
+
   const allSkills: Array<{ name: string; url: string }> = [
-    ...websiteData.skills.frontend,
-    ...websiteData.skills.backend,
-    ...websiteData.skills.cloud,
-    ...websiteData.skills.tools
+    ...skillsData.frontend,
+    ...skillsData.backend,
+    ...skillsData.cloud,
+    ...skillsData.tools
   ];
 
   const getSkillWithUrl = (techName: string): { name: string; url: string } => {
