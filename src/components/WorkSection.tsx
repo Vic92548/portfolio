@@ -167,9 +167,9 @@ const WorkSection = ({ language }: WorkSectionProps) => {
     ...websiteData.skills.tools
   ];
 
-  const getSkillUrl = (techName: string) => {
+  const getSkillWithUrl = (techName: string) => {
     const skill = allSkills.find(s => s.name === techName);
-    return skill ? skill.url : '#';
+    return skill ? skill : { name: techName, url: '#' };
   };
 
   return (
@@ -275,10 +275,10 @@ const WorkSection = ({ language }: WorkSectionProps) => {
 
                 {/* Tech Stack - Now clickable */}
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, idx) => (
+                  {project.tech.map((techName, idx) => (
                     <SkillTag 
                       key={idx}
-                      skill={{ name: tech, url: getSkillUrl(tech) }}
+                      skill={getSkillWithUrl(techName)}
                     />
                   ))}
                 </div>
