@@ -1,4 +1,3 @@
-
 // Utility to extract dynamic data from website components
 export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   // Extract projects data (this matches your WorkSection projects)
@@ -176,4 +175,47 @@ export const generateExperience = (language: 'en' | 'fr' | 'es', projectCount: n
   };
 
   return experiences[language];
+};
+
+const skillsData = {
+  frontend: [
+    { name: 'React', url: 'https://react.dev/' },
+    { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+    { name: 'Next.js', url: 'https://nextjs.org/' },
+    { name: 'Tailwind CSS', url: 'https://tailwindcss.com/' },
+    { name: 'Vue.js', url: 'https://vuejs.org/' },
+    { name: 'HTML5', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+    { name: 'CSS3', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+    { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' }
+  ],
+  backend: [
+    { name: 'Node.js', url: 'https://nodejs.org/' },
+    { name: 'Python', url: 'https://www.python.org/' },
+    { name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
+    { name: 'MongoDB', url: 'https://www.mongodb.com/' },
+    { name: 'Redis', url: 'https://redis.io/' },
+    { name: 'Express.js', url: 'https://expressjs.com/' },
+    { name: 'FastAPI', url: 'https://fastapi.tiangolo.com/' },
+    { name: 'GraphQL', url: 'https://graphql.org/' }
+  ],
+  cloud: [
+    { name: 'AWS', url: 'https://aws.amazon.com/' },
+    { name: 'Docker', url: 'https://www.docker.com/' },
+    { name: 'Kubernetes', url: 'https://kubernetes.io/' },
+    { name: 'Vercel', url: 'https://vercel.com/' },
+    { name: 'Netlify', url: 'https://www.netlify.com/' },
+    { name: 'Firebase', url: 'https://firebase.google.com/' },
+    { name: 'Supabase', url: 'https://supabase.com/' },
+    { name: 'Railway', url: 'https://railway.app/' }
+  ],
+  tools: [
+    { name: 'Git', url: 'https://git-scm.com/' },
+    { name: 'VS Code', url: 'https://code.visualstudio.com/' },
+    { name: 'Figma', url: 'https://www.figma.com/' },
+    { name: 'Linear', url: 'https://linear.app/' },
+    { name: 'Notion', url: 'https://www.notion.so/' },
+    { name: 'Postman', url: 'https://www.postman.com/' },
+    { name: 'Vite', url: 'https://vitejs.dev/' },
+    { name: 'Webpack', url: 'https://webpack.js.org/' }
+  ]
 };

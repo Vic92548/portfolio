@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { extractWebsiteData, generateExperience } from '../utils/dataExtractor';
 
@@ -23,12 +22,7 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
       },
       summary: websiteData.heroData.description[lang],
       experience: experience,
-      skills: {
-        frontend: websiteData.skills.frontend,
-        backend: websiteData.skills.backend,
-        cloud: websiteData.skills.cloud,
-        tools: websiteData.skills.tools
-      },
+      skills: websiteData.skills,
       projects: websiteData.projects.map(project => ({
         name: project.title,
         description: project.description[lang],
@@ -217,12 +211,18 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
           }
           .skill-tag {
             background: #F4F5F8;
-            color: #222326;
+            color: #5E6AD2;
             padding: 4px 12px;
             border-radius: 6px;
             font-size: 12px;
             font-weight: 500;
             border: 1px solid #E1E3E8;
+            text-decoration: none;
+            cursor: pointer;
+          }
+          .skill-tag:hover {
+            background: #5E6AD2;
+            color: white;
           }
           .project-item {
             margin-bottom: 15px;
@@ -309,7 +309,7 @@ const ResumeGenerator = ({ language }: ResumeGeneratorProps) => {
               <div class="skill-category">
                 <div class="skill-category-title">${category}</div>
                 <div class="skill-tags">
-                  ${(skills as string[]).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                  ${(skills as any[]).map(skill => `<a href="${skill.url}" class="skill-tag" target="_blank">${skill.name}</a>`).join('')}
                 </div>
               </div>
             `).join('')}

@@ -1,5 +1,8 @@
+
 import { useState } from 'react';
 import { ExternalLink, Github, TrendingUp, Users, Zap, Gamepad2 } from 'lucide-react';
+import SkillTag from './SkillTag';
+import { extractWebsiteData } from '../utils/dataExtractor';
 
 interface WorkSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -155,6 +158,20 @@ const WorkSection = ({ language }: WorkSectionProps) => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  // Get skills data for mapping tech to URLs
+  const websiteData = extractWebsiteData(language);
+  const allSkills = [
+    ...websiteData.skills.frontend,
+    ...websiteData.skills.backend,
+    ...websiteData.skills.cloud,
+    ...websiteData.skills.tools
+  ];
+
+  const getSkillUrl = (techName: string) => {
+    const skill = allSkills.find(s => s.name === techName);
+    return skill ? skill.url : '#';
+  };
+
   return (
     <section id="work" className="py-28 bg-background">
       <div className="container mx-auto px-6">
@@ -256,15 +273,13 @@ const WorkSection = ({ language }: WorkSectionProps) => {
                   {project.description[language]}
                 </p>
 
-                {/* Tech Stack */}
+                {/* Tech Stack - Now clickable */}
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, idx) => (
-                    <span 
+                    <SkillTag 
                       key={idx}
-                      className="px-3 py-1 text-xs bg-nordic-gray/10 dark:bg-border-dark/30 text-muted-foreground rounded-lg border border-border/30 hover:border-magic-blue/30 hover:text-magic-blue transition-colors"
-                    >
-                      {tech}
-                    </span>
+                      skill={{ name: tech, url: getSkillUrl(tech) }}
+                    />
                   ))}
                 </div>
               </div>
