@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -56,7 +55,7 @@ const Index = () => {
       <AboutSection language={language} />
       <WorkSection language={language} />
       <ContactSection language={language} />
-      <ResumeGenerator language={language} />
+      <ResumeGenerator />
     </div>
   );
 };
