@@ -14,7 +14,9 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       tech: ['TypeScript', 'Docker', 'AWS', 'PostgreSQL'],
       category: 'devTools',
       featured: true,
-      status: 'active'
+      status: 'active',
+      image: '/placeholder.svg',
+      links: { live: '#', github: '#' }
     },
     {
       id: 'apiforge',
@@ -27,7 +29,9 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       tech: ['React', 'Node.js', 'MongoDB', 'Redis'],
       category: 'webApps',
       featured: false,
-      status: 'active'
+      status: 'active',
+      image: '/placeholder.svg',
+      links: { live: '#', github: '#' }
     },
     {
       id: 'codeformat',
@@ -40,7 +44,9 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       tech: ['TypeScript', 'Rust', 'WebAssembly', 'VS Code API'],
       category: 'openSource',
       featured: true,
-      status: 'active'
+      status: 'active',
+      image: '/placeholder.svg',
+      links: { live: '#', github: '#' }
     },
     {
       id: 'pixelquest',
@@ -53,7 +59,9 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       tech: ['TypeScript', 'HTML5 Canvas', 'WebGL', 'Web Audio API'],
       category: 'games',
       featured: false,
-      status: 'active'
+      status: 'active',
+      image: '/placeholder.svg',
+      links: { live: '#', github: '#' }
     },
     {
       id: 'reactflow',
@@ -66,7 +74,9 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       tech: ['React', 'TypeScript', 'Node.js', 'WebSockets'],
       category: 'devTools',
       featured: true,
-      status: 'active'
+      status: 'active',
+      image: '/placeholder.svg',
+      links: { live: '#', github: '#' }
     }
   ];
 
