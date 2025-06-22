@@ -4,6 +4,24 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   // Extract projects data (this matches your WorkSection projects)
   const projects = [
     {
+      id: 'broll',
+      title: 'Broll',
+      description: {
+        en: '3D ragdoll-based platformer where physics laws don\'t apply! Explore open levels, create custom content, and challenge friends in local multiplayer. Released on Steam with mostly positive reviews.',
+        fr: 'Plateforme 3D basée sur des poupées de chiffon où les lois de la physique ne s\'appliquent pas ! Explorez des niveaux ouverts, créez du contenu personnalisé et défiez vos amis en multijoueur local. Publié sur Steam avec des critiques majoritairement positives.',
+        es: 'Plataforma 3D basada en muñecos de trapo donde las leyes de la física no se aplican! Explora niveles abiertos, crea contenido personalizado y desafía a amigos en multijugador local. Lanzado en Steam con reseñas mayormente positivas.'
+      },
+      tech: ['Unreal Engine 4', 'C++', 'Blueprint', 'Game Analytics', 'JetBrains Rider'],
+      category: 'games',
+      featured: true,
+      status: 'active',
+      image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1265300/header.jpg?t=1726438492',
+      links: { 
+        live: 'https://store.steampowered.com/app/1265300/Broll/', 
+        github: '#' 
+      }
+    },
+    {
       id: 'devflow',
       title: 'DevFlow',
       description: {
@@ -87,14 +105,14 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   const heroData = {
     name: 'Victor Chanet',
     title: {
-      en: 'Full-Stack Engineer & Entrepreneur',
-      fr: 'Ingénieur Full-Stack & Entrepreneur',
-      es: 'Ingeniero Full-Stack y Emprendedor'
+      en: 'Full-Stack Engineer & Game Developer',
+      fr: 'Ingénieur Full-Stack & Développeur de Jeux',
+      es: 'Ingeniero Full-Stack y Desarrollador de Juegos'
     },
     description: {
-      en: 'Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.',
-      fr: 'Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d\'utilisateurs, en me concentrant sur l\'expérience développeur et les performances.',
-      es: 'Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.'
+      en: 'Full-stack engineer and game developer. I create digital products and games that scale to hundreds of thousands of users, with a focus on developer experience and performance.',
+      fr: 'Ingénieur full-stack et développeur de jeux. Je crée des produits numériques et des jeux qui évoluent vers des centaines de milliers d\'utilisateurs, en me concentrant sur l\'expérience développeur et les performances.',
+      es: 'Ingeniero full-stack y desarrollador de juegos. Creo productos digitales y juegos que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.'
     },
     stats: {
       downloads: 150000,
@@ -126,7 +144,8 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       { name: 'Express.js', url: 'https://expressjs.com/' },
       { name: 'FastAPI', url: 'https://fastapi.tiangolo.com/' },
       { name: 'GraphQL', url: 'https://graphql.org/' },
-      { name: 'WebSockets', url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API' }
+      { name: 'WebSockets', url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API' },
+      { name: 'C++', url: 'https://cplusplus.com/' }
     ],
     cloud: [
       { name: 'AWS', url: 'https://aws.amazon.com/' },
@@ -150,7 +169,11 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       { name: 'WebAssembly', url: 'https://webassembly.org/' },
       { name: 'VS Code API', url: 'https://code.visualstudio.com/api' },
       { name: 'Rust', url: 'https://www.rust-lang.org/' },
-      { name: 'Web Audio API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API' }
+      { name: 'Web Audio API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API' },
+      { name: 'Unreal Engine 4', url: 'https://www.unrealengine.com/' },
+      { name: 'Blueprint', url: 'https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Blueprints/' },
+      { name: 'Game Analytics', url: 'https://gameanalytics.com/' },
+      { name: 'JetBrains Rider', url: 'https://www.jetbrains.com/rider/' }
     ]
   };
 
