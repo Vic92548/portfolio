@@ -1,10 +1,15 @@
+
 import { Code, Database, Globe, Zap } from 'lucide-react';
+import { extractWebsiteData } from '@/utils/dataExtractor';
 
 interface AboutSectionProps {
   language: 'en' | 'fr' | 'es';
 }
 
 const AboutSection = ({ language }: AboutSectionProps) => {
+  // Extract data to get actual project count
+  const { projectCount } = extractWebsiteData(language);
+
   const translations = {
     en: {
       title: "About Me",
@@ -117,7 +122,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center p-6 bg-background border border-border rounded-2xl shadow-sm">
-                <div className="text-3xl font-bold text-magic-blue mb-2">50+</div>
+                <div className="text-3xl font-bold text-magic-blue mb-2">{projectCount}+</div>
                 <div className="text-sm text-muted-foreground">Projects Delivered</div>
               </div>
             </div>
