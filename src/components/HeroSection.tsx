@@ -1,8 +1,8 @@
-
 import { useEffect, useState } from 'react';
 import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
 import TypingAnimation from '@/components/TypingAnimation';
 import CounterAnimation from '@/components/CounterAnimation';
+import { extractWebsiteData } from '@/utils/dataExtractor';
 
 interface HeroSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -11,6 +11,9 @@ interface HeroSectionProps {
 const HeroSection = ({ language }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(0);
+
+  // Extract data to get actual project count
+  const { projectCount } = extractWebsiteData(language);
 
   const translations = {
     en: {
@@ -168,7 +171,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               </div>
               <div className="text-center lg:text-left">
                 <CounterAnimation 
-                  target={12} 
+                  target={projectCount} 
                   className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
                 <div className="text-sm text-light-gray mt-1">{t.stats.products}</div>
