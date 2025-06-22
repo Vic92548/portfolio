@@ -3,6 +3,44 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   // Extract projects data (this matches your WorkSection projects)
   const projects = [
     {
+      id: 'only-wish',
+      title: 'Only Wish',
+      description: {
+        en: 'A next-generation advancement of the "Only Up" genre. Explore breathtaking landscapes, uncover hidden realms, and experience revolutionary vehicular exploration. Features engaging NPC dialogues and authentic driving dynamics. Released on Steam with positive reviews.',
+        fr: 'Une avancée de nouvelle génération du genre "Only Up". Explorez des paysages à couper le souffle, découvrez des royaumes cachés et vivez une exploration véhiculaire révolutionnaire. Comprend des dialogues PNJ captivants et une dynamique de conduite authentique. Sorti sur Steam avec des critiques positives.',
+        es: 'Un avance de próxima generación del género "Only Up". Explora paisajes impresionantes, descubre reinos ocultos y experimenta una exploración vehicular revolucionaria. Incluye diálogos con PNJ atractivos y dinámica de conducción auténtica. Publicado en Steam con críticas positivas.'
+      },
+      tech: ['Unreal Engine 5', 'C++', 'Blueprint', 'Game Analytics', 'JetBrains Rider'],
+      category: 'games',
+      featured: true,
+      status: 'active',
+      image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2542010/header.jpg?t=1726438639',
+      video: 'https://video.fastly.steamstatic.com/store_trailers/256984464/movie480_vp9.webm?t=1700780677',
+      links: { 
+        live: 'https://store.steampowered.com/app/2542010/Only_Wish/', 
+        github: '#' 
+      }
+    },
+    {
+      id: 'poly-plaza',
+      title: 'Poly Plaza',
+      description: {
+        en: 'An open-world entrepreneurial sandbox game where you can buy properties, collect rent, and become the richest in town. Features daily updates, property management, and resource trading with dynamic NPC pricing.',
+        fr: 'Un bac à sable entrepreneurial en monde ouvert où vous pouvez acheter des propriétés, percevoir des loyers et devenir le plus riche de la ville. Comprend des mises à jour quotidiennes, une gestion immobilière et un commerce de ressources avec des prix dynamiques selon les PNJ.',
+        es: 'Un sandbox de emprendimiento en mundo abierto donde puedes comprar propiedades, cobrar alquileres y convertirte en el más rico de la ciudad. Incluye actualizaciones diarias, gestión de propiedades y comercio de recursos con precios dinámicos según los PNJ.'
+      },
+      tech: ['Unity', 'C#', 'Procedural Generation', 'AI Integration', 'Multiplayer'],
+      category: 'games',
+      featured: true,
+      status: 'active',
+      image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2716030/header.jpg?t=1746793041',
+      video: 'https://video.fastly.steamstatic.com/store_trailers/257033315/movie480_vp9.webm?t=1735947222',
+      links: { 
+        live: 'https://store.steampowered.com/app/2716030/Poly_Plaza/', 
+        github: '#' 
+      }
+    },
+    {
       id: 'broll',
       title: 'Broll',
       description: {
