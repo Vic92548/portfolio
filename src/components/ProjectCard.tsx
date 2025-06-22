@@ -55,6 +55,8 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
     }
   };
 
+  const hasValidGithubLink = project.links.github && project.links.github !== '#';
+
   return (
     <article 
       className={`group relative bg-background border border-border rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
@@ -101,17 +103,19 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
           <div className="flex gap-3">
             <a 
               href={project.links.live}
-              className="flex-1 bg-magic-blue hover:bg-magic-blue/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+              className={`${hasValidGithubLink ? 'flex-1' : 'w-full'} bg-magic-blue hover:bg-magic-blue/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2`}
             >
               <ExternalLink className="w-4 h-4" />
               {translations.viewLive}
             </a>
-            <a 
-              href={project.links.github}
-              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
-            >
-              <Github className="w-4 h-4" />
-            </a>
+            {hasValidGithubLink && (
+              <a 
+                href={project.links.github}
+                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </div>
       </div>
