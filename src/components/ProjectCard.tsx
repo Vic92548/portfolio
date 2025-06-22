@@ -1,5 +1,6 @@
 
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Star } from 'lucide-react';
+import GitHubStars from './GitHubStars';
 import { useRef, useState } from 'react';
 import SkillTag from './SkillTag';
 
@@ -56,6 +57,7 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
   };
 
   const hasValidGithubLink = project.links.github && project.links.github !== '#';
+  const githubRepo = hasValidGithubLink ? project.links.github.replace('https://github.com/', '') : '';
 
   return (
     <article 
@@ -103,6 +105,8 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
           <div className="flex gap-3">
             <a 
               href={project.links.live}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`${hasValidGithubLink ? 'flex-1' : 'w-full'} bg-magic-blue hover:bg-magic-blue/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2`}
             >
               <ExternalLink className="w-4 h-4" />
@@ -111,9 +115,12 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
             {hasValidGithubLink && (
               <a 
                 href={project.links.github}
-                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1"
               >
                 <Github className="w-4 h-4" />
+                <GitHubStars repo={githubRepo} />
               </a>
             )}
           </div>
@@ -123,9 +130,10 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
           <span className="px-3 py-1 text-xs font-medium bg-magic-blue/10 text-magic-blue rounded-lg border border-magic-blue/20">
-            {project.category === 'devTools' ? 'Developer Tool' : 
-             project.category === 'webApps' ? 'Web App' : 
-             project.category === 'games' ? 'Game' : 'Open Source'}
+            {
+              project.category === 'webApps' ? 'Web App' : 
+              project.category === 'games' ? 'Game' : 'Open Source'
+            }
           </span>
           <span className="flex items-center gap-2 text-xs text-magic-blue">
             <div className="w-2 h-2 bg-magic-blue rounded-full animate-pulse"></div>

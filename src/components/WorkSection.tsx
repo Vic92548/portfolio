@@ -20,7 +20,6 @@ const WorkSection = ({ language }: WorkSectionProps) => {
       filters: {
         all: "All Projects",
         webApps: "Web Apps",
-        devTools: "Developer Tools",
         games: "Games",
         openSource: "Open Source"
       },
@@ -116,14 +115,6 @@ const WorkSection = ({ language }: WorkSectionProps) => {
               animationDelay={`${300 + index * 100}ms`}
             />
           ))}
-        </div>
-
-        {/* View All CTA */}
-        <div className="text-center animate-fade-in delay-600">
-          <button className="btn btn-secondary btn-lg group">
-            {t.viewAll}
-            <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </button>
         </div>
       </div>
     </section>

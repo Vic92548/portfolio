@@ -22,6 +22,42 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       }
     },
     {
+      id: 'next-saas',
+      title: 'Next SaaS',
+      description: {
+        en: 'Full-stack development agency specializing in rapid SaaS development. We build institutional-grade products that scale from MVP to enterprise, handling everything from architecture to infrastructure.',
+        fr: 'Agence de développement full-stack spécialisée dans le développement rapide de SaaS. Nous créons des produits de qualité institutionnelle qui évoluent du MVP à l\'entreprise, en gérant tout de l\'architecture à l\'infrastructure.',
+        es: 'Agencia de desarrollo full-stack especializada en desarrollo rápido de SaaS. Construimos productos de grado institucional que escalan desde MVP hasta empresa, manejando todo desde la arquitectura hasta la infraestructura.'
+      },
+      tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+      category: 'webApps',
+      featured: true,
+      status: 'active',
+      image: 'https://polyplaza-wiki.b-cdn.net/Screenshot%202025-06-22%20145627.jpg',
+      links: { 
+        live: 'https://nextsaas.co/', 
+        github: '#' 
+      }
+    },
+    {
+      id: 'uptime-robot-nodejs',
+      title: 'Uptime Robot Node.js',
+      description: {
+        en: 'A simple and easy-to-use Node.js library for interacting with the UptimeRobot API v2. Provides promise-based methods for all UptimeRobot API endpoints, making it easy to monitor your websites and services programmatically.',
+        fr: 'Une bibliothèque Node.js simple et facile à utiliser pour interagir avec l\'API UptimeRobot v2. Fournit des méthodes basées sur les promesses pour tous les points de terminaison de l\'API UptimeRobot, facilitant la surveillance programmatique de vos sites Web et services.',
+        es: 'Una biblioteca Node.js simple y fácil de usar para interactuar con la API de UptimeRobot v2. Proporciona métodos basados en promesas para todos los puntos finales de la API de UptimeRobot, lo que facilita el monitoreo programático de sus sitios web y servicios.'
+      },
+      tech: ['Node.js', 'JavaScript', 'REST API', 'NPM Package'],
+      category: 'openSource',
+      featured: false,
+      status: 'active',
+      image: 'https://user-images.githubusercontent.com/22132982/163850103-6ae48ad4-edcb-4f1d-8664-8711ad15b4ba.png',
+      links: { 
+        live: 'https://github.com/LazyDB-community/uptime-robot-nodejs', 
+        github: 'https://github.com/LazyDB-community/uptime-robot-nodejs' 
+      }
+    },
+    {
       id: 'poly-plaza',
       title: 'Poly Plaza',
       description: {
@@ -58,81 +94,6 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
         live: 'https://store.steampowered.com/app/1265300/Broll/', 
         github: '#' 
       }
-    },
-    {
-      id: 'devflow',
-      title: 'DevFlow',
-      description: {
-        en: 'Streamlined CI/CD pipeline tool that reduces deployment time from hours to minutes for small development teams.',
-        fr: 'Outil de pipeline CI/CD rationalisé qui réduit le temps de déploiement d\'heures à minutes pour les petites équipes de développement.',
-        es: 'Herramienta de pipeline CI/CD optimizada que reduce el tiempo de despliegue de horas a minutos para equipos de desarrollo pequeños.'
-      },
-      tech: ['TypeScript', 'Docker', 'AWS', 'PostgreSQL'],
-      category: 'devTools',
-      featured: true,
-      status: 'active',
-      image: '/placeholder.svg',
-      links: { live: '#', github: '#' }
-    },
-    {
-      id: 'apiforge',
-      title: 'APIForge',
-      description: {
-        en: 'Visual API builder that enables non-technical users to create and manage REST APIs through an intuitive drag-and-drop interface.',
-        fr: 'Constructeur d\'API visuel qui permet aux utilisateurs non techniques de créer et gérer des API REST via une interface glisser-déposer intuitive.',
-        es: 'Constructor visual de API que permite a usuarios no técnicos crear y gestionar APIs REST a través de una interfaz intuitiva de arrastrar y soltar.'
-      },
-      tech: ['React', 'Node.js', 'MongoDB', 'Redis'],
-      category: 'webApps',
-      featured: false,
-      status: 'active',
-      image: '/placeholder.svg',
-      links: { live: '#', github: '#' }
-    },
-    {
-      id: 'codeformat',
-      title: 'CodeFormat',
-      description: {
-        en: 'Open-source code formatter supporting 20+ programming languages with configurable rules and VS Code integration.',
-        fr: 'Formateur de code open source prenant en charge plus de 20 langages de programmation avec des règles configurables et une intégration VS Code.',
-        es: 'Formateador de código de código abierto compatible con más de 20 lenguajes de programación con reglas configurables e integración con VS Code.'
-      },
-      tech: ['TypeScript', 'Rust', 'WebAssembly', 'VS Code API'],
-      category: 'openSource',
-      featured: true,
-      status: 'active',
-      image: '/placeholder.svg',
-      links: { live: '#', github: '#' }
-    },
-    {
-      id: 'pixelquest',
-      title: 'PixelQuest',
-      description: {
-        en: 'Retro-style platformer game built with HTML5 Canvas and TypeScript, featuring procedural level generation and local multiplayer.',
-        fr: 'Jeu de plateforme rétro construit avec HTML5 Canvas et TypeScript, avec génération procédurale de niveaux et multijoueur local.',
-        es: 'Juego de plataformas retro construido con HTML5 Canvas y TypeScript, con generación procedimental de niveles y multijugador local.'
-      },
-      tech: ['TypeScript', 'HTML5 Canvas', 'WebGL', 'Web Audio API'],
-      category: 'games',
-      featured: false,
-      status: 'active',
-      image: '/placeholder.svg',
-      links: { live: '#', github: '#' }
-    },
-    {
-      id: 'reactflow',
-      title: 'ReactFlow Builder',
-      description: {
-        en: 'Advanced workflow automation tool with visual node editor, supporting complex business logic and integrations.',
-        fr: 'Outil d\'automatisation de workflow avancé avec éditeur de nœuds visuels, prenant en charge la logique métier complexe et les intégrations.',
-        es: 'Herramienta avanzada de automatización de flujos de trabajo con editor visual de nodos, compatible con lógica empresarial compleja e integraciones.'
-      },
-      tech: ['React', 'TypeScript', 'Node.js', 'WebSockets'],
-      category: 'devTools',
-      featured: true,
-      status: 'active',
-      image: '/placeholder.svg',
-      links: { live: '#', github: '#' }
     }
   ];
 

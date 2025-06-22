@@ -1,5 +1,5 @@
 
-import { Mail, Calendar, MessageCircle } from 'lucide-react';
+import { Mail, Calendar, Linkedin } from 'lucide-react';
 import ContactForm from './ContactForm';
 
 interface ContactSectionProps {
@@ -14,7 +14,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       description: "Whether you're looking to build a new product, scale an existing platform, or need technical consulting, I'm here to help turn your vision into reality.",
       email: "Get in Touch",
       schedule: "Schedule a Call",
-      discord: "Join Discord",
+      linkedin: "Connect on LinkedIn",
       availability: "Currently available for new projects"
     },
     fr: {
@@ -23,7 +23,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       description: "Que vous cherchiez à créer un nouveau produit, faire évoluer une plateforme existante ou ayez besoin de conseil technique, je suis là pour aider à transformer votre vision en réalité.",
       email: "Contactez-moi",
       schedule: "Planifier un appel",
-      discord: "Rejoindre Discord",
+      linkedin: "Me contacter sur LinkedIn",
       availability: "Actuellement disponible pour de nouveaux projets"
     },
     es: {
@@ -32,7 +32,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
       description: "Ya sea que busques construir un nuevo producto, escalar una plataforma existente o necesites consultoría técnica, estoy aquí para ayudar a convertir tu visión en realidad.",
       email: "Ponte en contacto",
       schedule: "Programar una llamada",
-      discord: "Únete a Discord",
+      linkedin: "Conectar en LinkedIn",
       availability: "Actualmente disponible para nuevos proyectos"
     }
   };
@@ -96,15 +96,17 @@ const ContactSection = ({ language }: ContactSectionProps) => {
                 </a>
 
                 <a 
-                  href="#"
+                  href="https://www.linkedin.com/in/victor-chanet/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-700"
                 >
                   <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-magic-blue/20 transition-colors">
-                    <MessageCircle className="w-7 h-7 text-magic-blue" />
+                    <Linkedin className="w-7 h-7 text-magic-blue" />
                   </div>
                   <div>
-                    <div className="font-medium text-lg">{t.discord}</div>
-                    <div className="text-sm text-muted-foreground">Quick questions & community</div>
+                    <div className="font-medium text-lg">{t.linkedin}</div>
+                    <div className="text-sm text-muted-foreground">Connect with me</div>
                   </div>
                 </a>
               </div>
