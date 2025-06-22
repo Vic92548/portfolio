@@ -1,5 +1,6 @@
 
 import { ExternalLink, Github } from 'lucide-react';
+import { useRef, useState } from 'react';
 import SkillTag from './SkillTag';
 
 interface Project {
@@ -8,6 +9,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  video?: string;
   tech: string[];
   status: string;
   featured: boolean;
@@ -35,6 +37,24 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }: ProjectCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (videoRef.current && project.video) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
   return (
     <article 
       className={`group relative bg-background border border-border rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
@@ -45,6 +65,8 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
         animationDelay,
         opacity: 0
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {project.featured && (
         <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-magic-blue text-white text-xs font-medium rounded-full">
@@ -56,8 +78,24 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
         <img 
           src={project.image} 
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className={`w-full h-full object-cover transition-all duration-700 ${
+            isHovered && project.video ? 'opacity-0' : 'opacity-100 group-hover:scale-110'
+          }`}
         />
+        
+        {project.video && (
+          <video
+            ref={videoRef}
+            src={project.video}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+              isHovered ? 'opacity-100' : 'opacity-0'
+            }`}
+            muted
+            loop
+            playsInline
+          />
+        )}
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
           <div className="flex gap-3">

@@ -1,4 +1,3 @@
-
 // Utility to extract dynamic data from website components
 export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   // Extract projects data (this matches your WorkSection projects)
@@ -7,7 +6,7 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       id: 'broll',
       title: 'Broll',
       description: {
-        en: '3D ragdoll-based platformer where physics laws don\'t apply! Explore open levels, create custom content, and challenge friends in local multiplayer. Released on Steam with mostly positive reviews.',
+        en: '3D ragdoll-based platformender where physics laws don\'t apply! Explore open levels, create custom content, and challenge friends in local multiplayer. Released on Steam with mostly positive reviews.',
         fr: 'Plateforme 3D basée sur des poupées de chiffon où les lois de la physique ne s\'appliquent pas ! Explorez des niveaux ouverts, créez du contenu personnalisé et défiez vos amis en multijoueur local. Publié sur Steam avec des critiques majoritairement positives.',
         es: 'Plataforma 3D basada en muñecos de trapo donde las leyes de la física no se aplican! Explora niveles abiertos, crea contenido personalizado y desafía a amigos en multijugador local. Lanzado en Steam con reseñas mayormente positivas.'
       },
@@ -16,6 +15,7 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       featured: true,
       status: 'active',
       image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1265300/header.jpg?t=1726438492',
+      video: 'https://video.fastly.steamstatic.com/store_trailers/256841789/movie480_vp9.webm?t=1625575060',
       links: { 
         live: 'https://store.steampowered.com/app/1265300/Broll/', 
         github: '#' 
