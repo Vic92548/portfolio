@@ -103,24 +103,30 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
           <div className="flex gap-3">
-            <a 
-              href={project.links.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${hasValidGithubLink ? 'flex-1' : 'w-full'} bg-magic-blue hover:bg-magic-blue/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2`}
-            >
-              <ExternalLink className="w-4 h-4" />
-              {translations.viewLive}
-            </a>
+            <div className={`relative ${hasValidGithubLink ? 'flex-1' : 'w-full'}`}>
+              <a 
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-magic-blue hover:bg-magic-blue/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 group/button"
+              >
+                <span className="inline-flex items-center justify-center w-full transition-transform duration-300 group-hover/button:-translate-x-1">
+                  {translations.viewLive}
+                </span>
+                <ExternalLink className="absolute right-3 w-4 h-4 opacity-0 group-hover/button:opacity-100 group-hover/button:translate-x-0 translate-x-2 transition-all duration-300" />
+              </a>
+            </div>
             {hasValidGithubLink && (
               <a 
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1"
+                className="relative bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors overflow-hidden group/github"
               >
-                <Github className="w-4 h-4" />
-                <GitHubStars repo={githubRepo} />
+                <span className="inline-flex items-center justify-center w-full transition-transform duration-300 group-hover/github:-translate-x-1">
+                  <Github className="w-4 h-4 mr-1" />
+                  <GitHubStars repo={githubRepo} />
+                </span>
               </a>
             )}
           </div>
