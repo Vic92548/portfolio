@@ -3,6 +3,7 @@ import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
 import TypingAnimation from '@/components/TypingAnimation';
 import CounterAnimation from '@/components/CounterAnimation';
 import { extractWebsiteData } from '@/utils/dataExtractor';
+import { fetchAllProjectStars } from '@/utils/github';
 
 interface HeroSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -11,9 +12,10 @@ interface HeroSectionProps {
 const HeroSection = ({ language }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(0);
+  const [gitHubStars, setGitHubStars] = useState<number | null>(null);
 
-  // Extract data to get actual project count
-  const { projectCount } = extractWebsiteData(language);
+  // Extract data to get projects
+  const { projects, projectCount } = extractWebsiteData(language);
 
   const translations = {
     en: {
@@ -76,14 +78,22 @@ const HeroSection = ({ language }: HeroSectionProps) => {
 
   useEffect(() => {
     setIsVisible(true);
-  }, []);
-
-  useEffect(() => {
+    
+    // Auto-rotate feature cards
     const interval = setInterval(() => {
-      setActiveCard((prev) => (prev + 1) % t.features.length);
-    }, 3000);
+      setActiveCard(prev => (prev + 1) % (t.features?.length || 1));
+    }, 5000);
+
+    // Fetch GitHub stars for all projects
+    const fetchStars = async () => {
+      const stars = await fetchAllProjectStars(projects);
+      setGitHubStars(stars);
+    };
+    
+    fetchStars();
+    
     return () => clearInterval(interval);
-  }, [t.features.length]);
+  }, [t.features?.length]);
 
   const scrollToWork = () => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
@@ -164,7 +174,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               </div>
               <div className="text-center lg:text-left">
                 <CounterAnimation 
-                  target={2100} 
+                  target={gitHubStars || 2100} 
                   className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
                 <div className="text-sm text-light-gray mt-1">{t.stats.stars}</div>
