@@ -3,21 +3,16 @@ import { ExternalLink, Github, Star } from 'lucide-react';
 import GitHubStars from './GitHubStars';
 import { useRef, useState } from 'react';
 import SkillTag from './SkillTag';
+import type { Project as CVProject } from '@/types/cv';
 
-interface Project {
-  id: string;
-  category: string;
-  title: string;
-  description: string | { [key: string]: string }; // Can be string or localized object
-  image: string;
-  video?: string;
-  tech: string[];
+type Project = Omit<CVProject, 'featured' | 'responsibilities' | 'status' | 'description'> & {
   status: string;
   links: {
     live: string;
     github: string;
   };
-}
+  description: string; // Always a string
+};
 
 interface Translations {
   viewLive: string;
@@ -143,9 +138,7 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
           {project.title}
         </h3>
         <p className="text-muted-foreground text-sm mb-6 leading-relaxed line-clamp-3">
-          {typeof project.description === 'string' 
-            ? project.description 
-            : project.description.en}
+          {project.description}
         </p>
 
         <div className="flex flex-wrap gap-2">

@@ -1,107 +1,217 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
 import CounterAnimation from '@/components/CounterAnimation';
-import { extractWebsiteData } from '@/utils/dataExtractor';
-import { fetchAllProjectStars } from '@/utils/github';
+import { useCV } from '@/hooks/useCV';
+import type { CVData, LocalizedString } from '@/types/cv';
+import { fetchGitHubStars } from '@/services/githubService';
+
+// Define types for translations
+interface Translation {
+  badge: string;
+  title: string;
+  titleHighlight: string;
+  subtitle: string;
+  cta: string;
+  ctaSecondary: string;
+  stats: {
+    downloads: string;
+    stars: string;
+    products: string;
+  };
+  features: Array<{
+    icon: React.ComponentType<{ className?: string }>;
+    title: string;
+    desc: string;
+  }>;
+}
 
 interface HeroSectionProps {
   language: 'en' | 'fr' | 'es';
 }
 
-const HeroSection = ({ language }: HeroSectionProps) => {
+// Move translations outside the component
+const baseTranslations = {
+  en: {
+    badge: "Available for new projects",
+    title: "Building the future with ",
+    titleHighlight: "you",
+    subtitle: "Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.",
+    cta: "View My Work",
+    ctaSecondary: "Download Resume",
+    stats: {
+      downloads: "Downloads",
+      stars: "GitHub Stars", 
+      products: "Projects Completed"
+    },
+    features: [
+      { icon: Code, title: "Full-Stack Development", desc: "React, Node.js, TypeScript" },
+      { icon: Zap, title: "Performance Focused", desc: "Optimized for scale" },
+      { icon: Layers, title: "Modern Architecture", desc: "Clean, maintainable code" }
+    ]
+  },
+  fr: {
+    badge: "Disponible pour de nouveaux projets",
+    title: "Construire l'avenir avec ",
+    titleHighlight: "vous",
+    subtitle: "Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d'utilisateurs, en me concentrant sur l'expérience développeur et les performances.",
+    cta: "Voir mes travaux",
+    ctaSecondary: "Télécharger CV",
+    stats: {
+      downloads: "Téléchargements",
+      stars: "Étoiles GitHub",
+      products: "Produits livrés"
+    },
+    features: [
+      { icon: Code, title: "Développement Full-Stack", desc: "React, Node.js, TypeScript" },
+      { icon: Zap, title: "Axé sur les performances", desc: "Optimisé pour l'échelle" },
+      { icon: Layers, title: "Architecture moderne", desc: "Code propre et maintenable" }
+    ]
+  },
+  es: {
+    badge: "Disponible para nuevos proyectos",
+    title: "Construyendo el futuro contigo ",
+    titleHighlight: "",
+    subtitle: "Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.",
+    cta: "Ver mi trabajo",
+    ctaSecondary: "Descargar CV",
+    stats: {
+      downloads: "Descargas",
+      stars: "Estrellas GitHub",
+      products: "Productos enviados"
+    },
+    features: [
+      { icon: Code, title: "Desarrollo Full-Stack", desc: "React, Node.js, TypeScript" },
+      { icon: Zap, title: "Enfocado en rendimiento", desc: "Optimizado para escala" },
+      { icon: Layers, title: "Arquitectura moderna", desc: "Código limpio y mantenible" }
+    ]
+  }
+};
+
+// Helper function to safely get localized string
+const getLocalizedString = (strings: LocalizedString | undefined, lang: 'en' | 'fr' | 'es' = 'en'): string => {
+  if (!strings) return '';
+  return strings[lang] || strings.en || '';
+};
+
+// Extract hook logic into a custom hook
+const useHeroSection = (language: 'en' | 'fr' | 'es') => {
+  // All hooks must be called unconditionally at the top level
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(0);
-  const [gitHubStars, setGitHubStars] = useState<number | null>(null);
-
-  // Extract data to get projects
-  const { projects, projectCount } = extractWebsiteData(language);
-
-  const translations = {
-    en: {
-      badge: "Available for new projects",
-      title: "Building the future with ",
-      titleHighlight: "you",
-      subtitle: "Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.",
-      cta: "View My Work",
-      ctaSecondary: "Download Resume",
-      stats: {
-        downloads: "Downloads",
-        stars: "GitHub Stars", 
-        products: "Products Shipped"
-      },
-      features: [
-        { icon: Code, title: "Full-Stack Development", desc: "React, Node.js, TypeScript" },
-        { icon: Zap, title: "Performance Focused", desc: "Optimized for scale" },
-        { icon: Layers, title: "Modern Architecture", desc: "Clean, maintainable code" }
-      ]
+  const [gitHubStars, setGitHubStars] = useState<number>(0);
+  
+  // Fetch CV data
+  const { data: cvData, loading, error } = useCV(language);
+  
+  // Get base translations
+  const baseT = useMemo(() => baseTranslations[language] || baseTranslations.en, [language]);
+  
+  // Extract data with null checks - these are just derived values, not hooks
+  const { personalInfo, projects = [] } = cvData || {};
+  const projectCount = projects?.length || 0;
+  
+  // Debug logging
+  console.log('CV Data:', cvData);
+  console.log('Projects:', projects);
+  console.log('Project Count:', projectCount);
+  const features = baseT?.features || [];
+  const featuresCount = features?.length || 0;
+  const summary = personalInfo?.summary || { en: '', fr: '', es: '' };
+  
+  // Memoize translations with all dependencies
+  const t = useMemo(() => ({
+    ...baseT,
+    features,
+    subtitle: getLocalizedString(summary, language) || baseT.subtitle || ''
+  }), [baseT, summary, language, features]);
+  
+  // Memoize scroll and download handlers
+  const { scrollToWork, handleDownloadResume } = useMemo(() => ({
+    scrollToWork: () => {
+      document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
     },
-    fr: {
-      badge: "Disponible pour de nouveaux projets",
-      title: "Construire l'avenir avec ",
-      titleHighlight: "vous",
-      subtitle: "Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d'utilisateurs, en me concentrant sur l'expérience développeur et les performances.",
-      cta: "Voir mes travaux",
-      ctaSecondary: "Télécharger CV",
-      stats: {
-        downloads: "Téléchargements",
-        stars: "Étoiles GitHub",
-        products: "Produits livrés"
-      },
-      features: [
-        { icon: Code, title: "Développement Full-Stack", desc: "React, Node.js, TypeScript" },
-        { icon: Zap, title: "Axé sur les performances", desc: "Optimisé pour l'échelle" },
-        { icon: Layers, title: "Architecture moderne", desc: "Code propre et maintenable" }
-      ]
-    },
-    es: {
-      badge: "Disponible para nuevos proyectos",
-      title: "Construyendo el futuro contigo ",
-      titleHighlight: "",
-      subtitle: "Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.",
-      cta: "Ver mi trabajo",
-      ctaSecondary: "Descargar CV",
-      stats: {
-        downloads: "Descargas",
-        stars: "Estrellas GitHub",
-        products: "Productos enviados"
-      },
-      features: [
-        { icon: Code, title: "Desarrollo Full-Stack", desc: "React, Node.js, TypeScript" },
-        { icon: Zap, title: "Enfocado en rendimiento", desc: "Optimizado para escala" },
-        { icon: Layers, title: "Arquitectura moderna", desc: "Código limpio y mantenible" }
-      ]
+    handleDownloadResume: () => {
+      const event = new CustomEvent('downloadResume', { detail: { language } });
+      window.dispatchEvent(event);
     }
-  };
+  }), [language]);
 
-  const t = translations[language];
-
+  // All effects must be called unconditionally at the top level
   useEffect(() => {
     setIsVisible(true);
     
-    // Auto-rotate feature cards
-    const interval = setInterval(() => {
-      setActiveCard(prev => (prev + 1) % (t.features?.length || 1));
-    }, 5000);
+    // Only set up the interval if we have features to rotate
+    let interval: NodeJS.Timeout | undefined;
+    if (featuresCount > 1) {
+      interval = setInterval(() => {
+        setActiveCard(prev => (prev + 1) % featuresCount);
+      }, 5000);
+    }
 
     // Fetch GitHub stars for all projects
     const fetchStars = async () => {
-      const stars = await fetchAllProjectStars(projects);
-      setGitHubStars(stars);
+      if (cvData?.projects?.length) {
+        try {
+          const stars = await fetchGitHubStars(cvData.projects);
+          setGitHubStars(stars);
+        } catch (err) {
+          console.error('Failed to fetch GitHub stars:', err);
+        }
+      }
     };
     
     fetchStars();
     
-    return () => clearInterval(interval);
-  }, [t.features?.length]);
-
-  const scrollToWork = () => {
-    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [featuresCount, cvData?.projects]);
+  
+  return {
+    isVisible,
+    activeCard,
+    gitHubStars,
+    loading,
+    error,
+    cvData,
+    projectCount,
+    features,
+    featuresCount,
+    summary,
+    t,
+    scrollToWork,
+    handleDownloadResume,
+    personalInfo
   };
+};
 
-  const handleDownloadResume = () => {
-    const event = new CustomEvent('downloadResume', { detail: { language } });
-    window.dispatchEvent(event);
-  };
+const HeroSection = ({ language }: HeroSectionProps) => {
+  // Use the custom hook to manage all state and effects
+  const {
+    isVisible,
+    activeCard,
+    gitHubStars,
+    loading,
+    error,
+    cvData,
+    projectCount,
+    features,
+    featuresCount,
+    summary,
+    t,
+    scrollToWork,
+    handleDownloadResume,
+    personalInfo
+  } = useHeroSection(language);
+  
+  // Handle loading and error states after hooks
+  if (loading) return <div className="flex items-center justify-center min-h-[60vh]">Loading...</div>;
+  if (error) return <div className="text-red-500 text-center py-10">Error loading CV data</div>;
+  if (!cvData) return null;
+  
+
+
+
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-darker-gray via-nordic-gray to-darker-gray">
@@ -153,7 +263,11 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               className={`text-xl lg:text-xl text-light-gray mb-10 leading-relaxed max-w-2xl lg:max-w-none animate-fade-in delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.3s' }}
             >
-              {t.subtitle}
+              {getLocalizedString(personalInfo?.summary || {
+                en: 'Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.',
+                fr: 'Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d\'utilisateurs, en me concentrant sur l\'expérience développeur et les performances.',
+                es: 'Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.'
+              }, language)}
             </p>
 
             {/* Stats */}
@@ -166,14 +280,22 @@ const HeroSection = ({ language }: HeroSectionProps) => {
                   target={150000} 
                   className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
-                <div className="text-sm text-light-gray mt-1">{t.stats.downloads}</div>
+                <div className="text-sm text-light-gray mt-1">{getLocalizedString({ 
+                  en: "Downloads",
+                  fr: "Téléchargements",
+                  es: "Descargas"
+                }, language)}</div>
               </div>
               <div className="text-center lg:text-left">
                 <CounterAnimation 
                   target={gitHubStars || 2100} 
                   className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
-                <div className="text-sm text-light-gray mt-1">{t.stats.stars}</div>
+                <div className="text-sm text-light-gray mt-1">{getLocalizedString({ 
+                  en: "GitHub Stars",
+                  fr: "Étoiles GitHub",
+                  es: "Estrellas GitHub"
+                }, language)}</div>
               </div>
               <div className="text-center lg:text-left">
                 <CounterAnimation 

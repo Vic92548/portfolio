@@ -1,8 +1,33 @@
-import { useState } from 'react';
-import { ExternalLink } from 'lucide-react';
-import { extractWebsiteData } from '../utils/dataExtractor';
-import WorkFilters from './WorkFilters';
+import { useState, useEffect, useMemo } from 'react';
+import { useCV } from '@/hooks/useCV';
+import type { Project } from '@/types/cv';
+import { motion, Variants } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+
+type Skill = {
+  name: string;
+  url: string;
+};
+
+// Simple fadeIn animation with proper typing
+const fadeIn = (direction: 'up' | 'down' | 'left' | 'right', delay: number): Variants => ({
+  hidden: {
+    x: direction === 'left' ? 100 : direction === 'right' ? -100 : 0,
+    y: direction === 'up' ? 100 : direction === 'down' ? -100 : 0,
+    opacity: 0,
+  },
+  show: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      delay,
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+});
 
 interface ProjectsSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -10,8 +35,41 @@ interface ProjectsSectionProps {
 
 const ProjectsSection = ({ language }: ProjectsSectionProps) => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+  
+  const { data: cvData, loading, error, getLocalizedString } = useCV(language);
 
-  const { projects, skills } = extractWebsiteData(language);
+  // Helper function to get skill with URL
+  const getSkillWithUrl = (techName: string): Skill => {
+    return {
+      name: techName,
+      url: `#${techName.toLowerCase().replace(/\s+/g, '-')}`
+    };
+  };
+
+  const cardTranslations = useMemo(() => ({
+    en: { viewLive: 'View Live' },
+    fr: { viewLive: 'Voir en direct' },
+    es: { viewLive: 'Ver en vivo' }
+  }), []);
+  
+  useEffect(() => {
+    if (cvData?.projects) {
+      if (activeFilter === 'all') {
+        setFilteredProjects(cvData.projects);
+      } else {
+        setFilteredProjects(
+          cvData.projects.filter(project => 
+            project.category?.toLowerCase() === activeFilter.toLowerCase()
+          )
+        );
+      }
+    }
+  }, [activeFilter, cvData]);
+
+  if (loading) return <div className="py-20 text-center">Loading projects...</div>;
+  if (error) return <div className="py-20 text-center text-red-500">Error loading projects</div>;
+  if (!cvData?.projects?.length) return null;
 
   const translations = {
     en: {
@@ -58,59 +116,110 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
     }
   } as const;
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
-
-  const getSkillWithUrl = (skillName: string) => {
-    // Search through all skill categories to find the skill
-    const allSkills = Object.values(skills).flat();
-    return allSkills.find(skill => skill.name === skillName) || { name: skillName, url: '#' };
-  };
-
-  // Get translations for ProjectCard
-  const cardTranslations = {
-    viewLive: language === 'fr' ? 'Voir en direct' : language === 'es' ? 'Ver en vivo' : 'View Live'
-  };
-
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-3">
-          {translations[language].title}
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {translations[language].subtitle}
-        </p>
-      </div>
-
-      <WorkFilters 
-        activeFilter={activeFilter}
-        setActiveFilter={setActiveFilter}
-        filters={{
-          all: translations[language].filters.all,
-          webApps: translations[language].filters.webApps,
-          games: translations[language].filters.games,
-          openSource: translations[language].filters.openSource
-        }}
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {filteredProjects.map((project: any, index) => ( // Using any type here to avoid complex type definitions
-          // The project object structure should be properly typed in a real implementation
-          <ProjectCard
-            key={project.id}
-            project={{
-              ...project,
-              description: typeof project.description === 'object' 
-                ? project.description[language] || project.description.en 
-                : project.description
-            }}
-            translations={cardTranslations}
-            getSkillWithUrl={getSkillWithUrl}
-            animationDelay={`${index * 100}ms`}
-          />
-        ))}
+    <section id="projects" className="py-20 bg-darker-gray">
+      <div className="container mx-auto px-4">
+        <motion.div 
+          className="text-center mb-12"
+          variants={fadeIn('up', 0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <h2 className="text-4xl font-bold text-dark-text mb-4">
+            {getLocalizedString({
+              en: 'Projects',
+              fr: 'Projets',
+              es: 'Proyectos'
+            })}
+          </h2>
+          <p className="text-light-gray text-xl max-w-2xl mx-auto">
+            {getLocalizedString({
+              en: 'A collection of my personal and open-source projects',
+              fr: 'Une collection de mes projets personnels et open-source',
+              es: 'Una colección de mis proyectos personales y de código abierto'
+            })}
+          </p>
+        </motion.div>
+        
+        {/* Filters */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {['all', 'openSource', 'games', 'webApps'].map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeFilter === filter
+                  ? 'bg-magic-blue text-white'
+                  : 'bg-border-dark text-light-gray hover:bg-border-dark/80'
+              }`}
+            >
+              {getLocalizedString({
+                en: {
+                  all: 'All Projects',
+                  openSource: 'Open Source',
+                  games: 'Games',
+                  webApps: 'Web Apps'
+                }[filter],
+                fr: {
+                  all: 'Tous les projets',
+                  openSource: 'Open Source',
+                  games: 'Jeux',
+                  webApps: 'Applications Web'
+                }[filter],
+                es: {
+                  all: 'Todos los proyectos',
+                  openSource: 'Código Abierto',
+                  games: 'Juegos',
+                  webApps: 'Aplicaciones Web'
+                }[filter]
+              })}
+            </button>
+          ))}
+        </div>
+        
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => {
+            // Format project data for ProjectCard
+            const description = typeof project.description === 'string' 
+              ? project.description 
+              : project.description?.[language] || project.description?.en || 'No description available';
+              
+            const projectForCard = {
+              id: project.id,
+              title: project.title,
+              category: project.category,
+              description: description, // Convert to string
+              image: project.image,
+              video: project.video,
+              tech: project.tech || [],
+              status: 'active',
+              links: {
+                live: project.links?.live || project.links?.demo || '#',
+                github: project.links?.github || '#'
+              }
+            };
+            
+            return (
+              <motion.div
+                key={project.id}
+                variants={fadeIn('up', index * 0.1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-100px' }}
+                className="w-full"
+              >
+                <ProjectCard
+                  project={projectForCard}
+                  translations={cardTranslations[language]}
+                  getSkillWithUrl={getSkillWithUrl}
+                  animationDelay={`${index * 100}ms`}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

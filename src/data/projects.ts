@@ -1,24 +1,6 @@
-export interface Project {
-  id: string;
-  title: string;
-  description: {
-    en: string;
-    fr: string;
-    es: string;
-  };
-  tech: string[];
-  category: string;
-  featured: boolean;
-  status: 'active' | 'inactive' | 'archived';
-  image: string;
-  video?: string;
-  links: {
-    live: string;
-    github: string;
-  };
-}
+import { ProjectBase } from '@/types/cv';
 
-export const projects: Project[] = [
+export const projects: ProjectBase[] = [
   {
     id: 'buckshot-plus-plus',
     title: 'BuckshotPlusPlus',
@@ -34,7 +16,26 @@ export const projects: Project[] = [
     image: 'https://repository-images.githubusercontent.com/409968355/5e9c3a9b-1e4d-4b3d-8c1e-5e9c3a9b1e4d',
     links: { 
       live: 'https://bpplang.com', 
-      github: 'https://github.com/BuckshotPlusPlus/BuckshotPlusPlus' 
+      github: 'https://github.com/BuckshotPlusPlus/BuckshotPlusPlus',
+      demo: 'https://bpplang.com/demo'
+    },
+    role: 'Creator & Lead Developer',
+    responsibilities: {
+      en: [
+        'Designed and implemented the core language features',
+        'Created the compiler and runtime environment',
+        'Built the standard library and documentation'
+      ],
+      fr: [
+        'Conçu et implémenté les fonctionnalités principales du langage',
+        'Créé le compilateur et l\'environnement d\'exécution',
+        'Développé la bibliothèque standard et la documentation'
+      ],
+      es: [
+        'Diseñé e implementé las características principales del lenguaje',
+        'Creé el compilador y el entorno de ejecución',
+        'Desarrollé la biblioteca estándar y la documentación'
+      ]
     }
   },
   {
