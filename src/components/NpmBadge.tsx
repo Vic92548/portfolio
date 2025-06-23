@@ -73,19 +73,13 @@ export function NpmBadge({ npmUrl, className = '' }: NpmBadgeProps) {
       href={npmUrl}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={handleClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`inline-flex items-center backdrop-blur-sm bg-white/70 dark:bg-black/50 px-3 py-1.5 rounded-full text-xs text-gray-700 dark:text-gray-200 border border-white/30 dark:border-gray-700/50 shadow-lg transition-all duration-200 hover:bg-white/90 dark:hover:bg-black/70 hover:shadow-md hover:-translate-y-0.5 ${className}`}
-      aria-label={`View ${packageName} on NPM`}
+      className={`inline-flex items-center px-3 py-1.5 rounded-full bg-white/70 dark:bg-black/50 text-xs text-gray-700 dark:text-gray-200 border border-white/30 dark:border-gray-700/50 shadow-lg backdrop-blur-sm hover:bg-white/90 dark:hover:bg-black/70 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 ${className}`}
+      onClick={(e) => e.stopPropagation()}
     >
       <span className="text-npm-red font-bold mr-1.5">npm</span>
       <span className="w-px h-4 bg-gray-300 dark:bg-gray-600 mx-1"></span>
-      <span className="font-medium text-xs">{formatNumber(downloads)}<span className="text-gray-500 dark:text-gray-400 text-xxs ml-1">downloads</span></span>
-      <ExternalLink 
-        className={`w-3 h-3 ml-1.5 text-gray-500 dark:text-gray-400 transition-all duration-200 ${isHovered ? 'opacity-100' : 'opacity-0 -ml-2'}`} 
-        size={12} 
-      />
+      <span className="font-medium text-xs">{formatNumber(downloads)}</span>
+      <span className="text-gray-500 dark:text-gray-400 text-xxs ml-1">downloads</span>
     </a>
   );
 }
