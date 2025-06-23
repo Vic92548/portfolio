@@ -251,22 +251,6 @@ const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
                 <p className="text-muted-foreground mb-6 flex-1">
                   {client.description[language]}
                 </p>
-                
-                <div className="space-y-2 mb-6">
-                  <div className="flex items-center text-sm">
-                    <span className="font-medium w-20 text-muted-foreground">{translations.duration[language]}:</span>
-                    <span>
-                      {formatDate(client.startDate, language)}
-                      {' - '}
-                      {formatDate(client.endDate, language)}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {client.technologies.map((tech, i) => (
-                      <SkillTag key={i} skill={getSkillWithUrl(tech)} />
-                    ))}
-                  </div>
-                </div>
 
                 <div className="flex space-x-3 mt-auto pt-4 border-t border-border/20">
                   <Button 
