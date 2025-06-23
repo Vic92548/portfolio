@@ -3,6 +3,24 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   // Extract projects data (this matches your WorkSection projects)
   const projects = [
     {
+      id: 'buckshot-plus-plus',
+      title: 'BuckshotPlusPlus',
+      description: {
+        en: 'A modern, simple, and efficient web development language. BPP is a fullstack solution that combines component-based architecture with a clean syntax, making web development faster and more intuitive.',
+        fr: 'Un langage de développement web moderne, simple et efficace. BPP est une solution fullstack qui combine une architecture basée sur les composants avec une syntaxe propre, rendant le développement web plus rapide et plus intuitif.',
+        es: 'Un lenguaje de desarrollo web moderno, simple y eficiente. BPP es una solución fullstack que combina una arquitectura basada en componentes con una sintaxis limpia, lo que hace que el desarrollo web sea más rápido e intuitivo.'
+      },
+      tech: ['C#', 'JavaScript', 'Web Development', 'Fullstack', 'Open Source'],
+      category: 'openSource',
+      featured: true,
+      status: 'active',
+      image: 'https://repository-images.githubusercontent.com/409968355/5e9c3a9b-1e4d-4b3d-8c1e-5e9c3a9b1e4d',
+      links: { 
+        live: 'https://bpplang.com', 
+        github: 'https://github.com/BuckshotPlusPlus/BuckshotPlusPlus' 
+      }
+    },
+    {
       id: 'only-wish',
       title: 'Only Wish',
       description: {
