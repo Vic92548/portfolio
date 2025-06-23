@@ -158,10 +158,7 @@ export const generateExperience = (language: 'en' | 'fr' | 'es', projectCount: n
       job.description : 
       job.description[language];
     
-    const achievements = [
-      description,
-      ...job.technologies.map(tech => `Technologies: ${tech}`)
-    ];
+    const achievements = [description];
 
     return {
       title: job.role,

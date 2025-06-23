@@ -8,6 +8,14 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
     const websiteData = extractWebsiteData(lang);
     const experience = generateExperience(lang, websiteData.projectCount);
 
+    // Format skills data for the resume
+    const skillsByCategory: Record<string, string[]> = {};
+    
+    // Convert the skills object to the format expected by the resume template
+    Object.entries(websiteData.skills).forEach(([category, skills]) => {
+      skillsByCategory[category] = skills.map((skill: { name: string }) => skill.name);
+    });
+
     const content: ResumeContent = {
       name: websiteData.heroData.name,
       title: websiteData.heroData.title[lang],
@@ -19,7 +27,7 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
       },
       summary: websiteData.heroData.description[lang],
       experience: experience,
-      skills: websiteData.skills,
+      skills: skillsByCategory,
       projects: websiteData.projects.map(project => ({
         name: project.title,
         description: project.description[lang],

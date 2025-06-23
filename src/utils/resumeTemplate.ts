@@ -16,10 +16,7 @@ export interface ResumeContent {
     achievements: string[];
   }[];
   skills: {
-    [category: string]: {
-      name: string;
-      url: string;
-    }[];
+    [category: string]: string[];
   };
   projects: {
     name: string;
@@ -39,7 +36,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
       en: {
         summary: 'Summary',
         experience: 'Experience',
-        skills: 'Skills',
+        skills: 'Skills & Technologies',
         projects: 'Featured Projects',
         techStack: 'Tech Stack',
         stats: 'Key Metrics'
@@ -47,7 +44,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
       fr: {
         summary: 'Résumé',
         experience: 'Expérience',
-        skills: 'Compétences',
+        skills: 'Compétences & Technologies',
         projects: 'Projets en vedette',
         techStack: 'Stack technique',
         stats: 'Métriques clés'
@@ -55,7 +52,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
       es: {
         summary: 'Resumen',
         experience: 'Experiencia',
-        skills: 'Habilidades',
+        skills: 'Habilidades y Tecnologías',
         projects: 'Proyectos destacados',
         techStack: 'Stack tecnológico',
         stats: 'Métricas clave'
@@ -236,18 +233,19 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
             margin-bottom: 8px;
           }
           .project-tech {
-            font-size: 12px;
-            color: #222326;
-            font-weight: 500;
+            color: #666;
+            font-size: 14px;
+            margin-top: 8px;
           }
           .featured-badge {
             display: inline-block;
-            background: #5E6AD2;
+            background-color: #4a6bff;
             color: white;
-            padding: 2px 8px;
+            font-size: 12px;
+            padding: 2px 6px;
             border-radius: 4px;
-            font-size: 10px;
-            margin-left: 10px;
+            margin-left: 8px;
+            font-weight: 500;
           }
         </style>
       </head>
@@ -299,11 +297,11 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
         <div class="section">
           <h2 class="section-title">${t.skills}</h2>
           <div class="skills-grid">
-            ${Object.entries(content.skills).filter(([_, skills]) => Array.isArray(skills) && skills.length > 0).map(([category, skills]) => `
+            ${Object.entries(content.skills).map(([category, skills]) => `
               <div class="skill-category">
                 <div class="skill-category-title">${category}</div>
                 <div class="skill-tags">
-                  ${(skills as any[]).map(skill => `<a href="${skill.url}" class="skill-tag" target="_blank">${skill.name}</a>`).join('')}
+                  ${skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
                 </div>
               </div>
             `).join('')}
