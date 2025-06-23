@@ -19,7 +19,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     en: {
       badge: "Available for new projects",
       title: "Building the future of",
-      titleHighlight: ["developer tools", "web experiences", "digital products"],
+      titleHighlight: ["games", "web", "tools"],
       subtitle: "Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.",
       cta: "View My Work",
       ctaSecondary: "Download Resume",
@@ -37,7 +37,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     fr: {
       badge: "Disponible pour de nouveaux projets",
       title: "Construire l'avenir des",
-      titleHighlight: ["outils de développement", "expériences web", "produits numériques"],
+      titleHighlight: ["jeux", "logiciels", "sites web", "outils"],
       subtitle: "Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d'utilisateurs, en me concentrant sur l'expérience développeur et les performances.",
       cta: "Voir mes travaux",
       ctaSecondary: "Télécharger CV",
@@ -55,7 +55,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     es: {
       badge: "Disponible para nuevos proyectos",
       title: "Construyendo el futuro de las",
-      titleHighlight: ["herramientas de desarrollo", "experiencias web", "productos digitales"],
+      titleHighlight: ["juegos", "experiencias web", "herramientas"],
       subtitle: "Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.",
       cta: "Ver mi trabajo",
       ctaSecondary: "Descargar CV",

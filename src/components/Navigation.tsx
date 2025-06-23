@@ -73,8 +73,12 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
       <div className="nav-container">
         {/* Logo */}
         <div className="nav-logo">
-          <div className="w-9 h-9 bg-gradient-to-br from-magic-blue to-magic-blue/80 rounded-xl flex items-center justify-center shadow-sm">
-            <span className="text-white font-bold text-sm">VC</span>
+          <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border-2 border-magic-blue/30 shadow-sm">
+            <img 
+              src="https://polyplaza-wiki.b-cdn.net/1747869678011-5ns80w1j6la.jpeg" 
+              alt="Victor Chanet"
+              className="w-full h-full object-cover"
+            />
           </div>
           <span className="font-semibold text-lg">Victor Chanet</span>
         </div>

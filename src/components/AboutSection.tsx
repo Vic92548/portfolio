@@ -14,7 +14,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
     en: {
       title: "About Me",
       subtitle: "Building digital experiences with purpose and precision",
-      description: "I'm a full-stack engineer with over 8 years of experience creating scalable web applications and developer tools. My passion lies in crafting elegant solutions that solve real-world problems and enhance user experiences.",
+      description: "I'm a full-stack engineer with over 11 years of experience creating scalable web applications and developer tools. My passion lies in crafting elegant solutions that solve real-world problems and enhance user experiences.",
       skills: [
         {
           icon: Code,
@@ -41,7 +41,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
     fr: {
       title: "À propos de moi",
       subtitle: "Créer des expériences numériques avec purpose et précision",
-      description: "Je suis un ingénieur full-stack avec plus de 8 ans d'expérience dans la création d'applications web évolutives et d'outils de développement. Ma passion réside dans l'élaboration de solutions élégantes qui résolvent des problèmes du monde réel et améliorent les expériences utilisateur.",
+      description: "Je suis un ingénieur full-stack avec plus de 11 ans d'expérience dans la création d'applications web évolutives et d'outils de développement. Ma passion réside dans l'élaboration de solutions élégantes qui résolvent des problèmes du monde réel et améliorent les expériences utilisateur.",
       skills: [
         {
           icon: Code,
@@ -68,7 +68,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
     es: {
       title: "Acerca de mí",
       subtitle: "Construyendo experiencias digitales con propósito y precisión",
-      description: "Soy un ingeniero full-stack con más de 8 años de experiencia creando aplicaciones web escalables y herramientas de desarrollo. Mi pasión radica en crear soluciones elegantes que resuelvan problemas del mundo real y mejoren las experiencias de usuario.",
+      description: "Soy un ingeniero full-stack con más de 11 años de experiencia creando aplicaciones web escalables y herramientas para desarrolladores. Mi pasión radica en crear soluciones elegantes que resuelvan problemas del mundo real y mejoren las experiencias de los usuarios.",
       skills: [
         {
           icon: Code,
@@ -118,7 +118,7 @@ const AboutSection = ({ language }: AboutSectionProps) => {
             
             <div className="grid grid-cols-2 gap-8">
               <div className="text-center p-6 bg-background border border-border rounded-2xl shadow-sm">
-                <div className="text-3xl font-bold text-magic-blue mb-2">8+</div>
+                <div className="text-3xl font-bold text-magic-blue mb-2">11+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center p-6 bg-background border border-border rounded-2xl shadow-sm">
