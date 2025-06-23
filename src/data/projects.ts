@@ -17,7 +17,8 @@ export const projects: ProjectBase[] = [
     links: { 
       live: 'https://bpplang.com', 
       github: 'https://github.com/BuckshotPlusPlus/BuckshotPlusPlus',
-      demo: 'https://bpplang.com/demo'
+      demo: 'https://bpplang.com/demo',
+      npm: 'https://www.npmjs.com/package/buckshotplusplus'
     },
     role: 'Creator & Lead Developer',
     responsibilities: {
@@ -90,7 +91,8 @@ export const projects: ProjectBase[] = [
     image: 'https://user-images.githubusercontent.com/22132982/163850103-6ae48ad4-edcb-4f1d-8664-8711ad15b4ba.png',
     links: { 
       live: 'https://github.com/LazyDB-community/uptime-robot-nodejs', 
-      github: 'https://github.com/LazyDB-community/uptime-robot-nodejs' 
+      github: 'https://github.com/LazyDB-community/uptime-robot-nodejs',
+      npm: 'https://www.npmjs.com/package/@lazydb_community/uptimerobot'
     }
   },
   {

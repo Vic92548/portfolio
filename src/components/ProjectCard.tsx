@@ -1,15 +1,17 @@
 
-import { ExternalLink, Github, Star } from 'lucide-react';
+import { ExternalLink, Github, Star, Download } from 'lucide-react';
 import GitHubStars from './GitHubStars';
 import { useRef, useState } from 'react';
 import SkillTag from './SkillTag';
 import type { Project as CVProject } from '@/types/cv';
+import { NpmBadge } from './NpmBadge';
 
 type Project = Omit<CVProject, 'featured' | 'responsibilities' | 'status' | 'description'> & {
   status: string;
   links: {
     live: string;
     github: string;
+    npm?: string;
   };
   description: string; // Always a string
 };
@@ -66,6 +68,13 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
 
 
       <div className="relative aspect-video bg-nordic-gray/10 dark:bg-border-dark/30 overflow-hidden">
+        {/* NPM Badge - Top Right Corner */}
+        {project.links.npm && (
+          <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <NpmBadge npmUrl={project.links.npm} />
+          </div>
+        )}
+        
         <img 
           src={project.image} 
           alt={project.title}
@@ -141,7 +150,7 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
           {project.description}
         </p>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {project.tech.map((techName, idx) => (
             <SkillTag 
               key={idx}

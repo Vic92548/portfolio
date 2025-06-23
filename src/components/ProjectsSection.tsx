@@ -197,7 +197,8 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
               status: 'active',
               links: {
                 live: project.links?.live || project.links?.demo || '#',
-                github: project.links?.github || '#'
+                github: project.links?.github || '#',
+                npm: project.links?.npm
               }
             };
             
