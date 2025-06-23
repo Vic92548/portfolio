@@ -54,8 +54,8 @@ const Index = () => {
       <Navigation language={language} setLanguage={setLanguage} />
       <HeroSection language={language} />
       <AboutSection language={language} />
-      <WorkSection language={language} />
       <ClientsSection language={language} />
+      <WorkSection language={language} />
       <ContactSection language={language} />
       <ResumeGenerator />
     </div>

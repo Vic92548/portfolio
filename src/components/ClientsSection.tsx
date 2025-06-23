@@ -35,6 +35,24 @@ const ClientsSection: React.FC<ClientsSectionProps> = ({ language }) => {
 
   const clients: Client[] = [
     {
+      name: 'Kakiyo',
+      description: {
+        en: 'AI-powered LinkedIn automation platform that autonomously handles personalized conversations, qualifies prospects, and books meetings at scale.',
+        fr: 'Plateforme d\'automatisation LinkedIn alimentée par l\'IA qui gère de manière autonome les conversations personnalisées, qualifie les prospects et planifie des réunions à grande échelle.',
+        es: 'Plataforma de automatización de LinkedIn impulsada por IA que maneja conversaciones personalizadas, califica prospectos y programa reuniones de forma autónoma a gran escala.'
+      },
+      logo: 'https://kakiyo.ai/favicon.ico',
+      url: 'https://kakiyo.ai',
+      contribution: {
+        en: 'Set up automation and processes to help build their product faster and in a more scalable way. Implemented efficient workflows and systems to enhance their development pipeline and operational efficiency.',
+        fr: 'Mise en place de l\'automatisation et des processus pour accélérer le développement de leur produit de manière plus évolutive. Implémentation de flux de travail et de systèmes efficaces pour améliorer leur pipeline de développement et leur efficacité opérationnelle.',
+        es: 'Configuración de automatización y procesos para ayudar a construir su producto de manera más rápida y escalable. Implementación de flujos de trabajo y sistemas eficientes para mejorar su canalización de desarrollo y eficiencia operativa.'
+      },
+      role: 'Automation & Process Consultant',
+      duration: '2024 - Present',
+      technologies: ['Process Automation', 'Workflow Optimization', 'Scalable Architecture', 'AI Integration']
+    },
+    {
       name: 'JUNIA',
       description: {
         en: 'Engineering school bringing together HEI, ISA and ISEN programs on its campuses in Lille, Bordeaux and Châteauroux.',
