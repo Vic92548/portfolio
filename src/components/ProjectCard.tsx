@@ -13,7 +13,6 @@ interface Project {
   video?: string;
   tech: string[];
   status: string;
-  featured: boolean;
   links: {
     live: string;
     github: string;
@@ -21,7 +20,6 @@ interface Project {
 }
 
 interface Translations {
-  featured: string;
   viewLive: string;
 }
 
@@ -61,9 +59,7 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
 
   return (
     <article 
-      className={`group relative bg-background border border-border rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
-        project.featured ? 'ring-2 ring-magic-blue/20' : ''
-      }`}
+      className="group relative bg-background border border-border rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
       style={{ 
         animation: `fade-in 0.5s ease-out forwards`,
         animationDelay,
@@ -72,11 +68,7 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {project.featured && (
-        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-magic-blue text-white text-xs font-medium rounded-full">
-          {translations.featured}
-        </div>
-      )}
+
 
       <div className="relative aspect-video bg-nordic-gray/10 dark:bg-border-dark/30 overflow-hidden">
         <img 

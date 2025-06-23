@@ -26,7 +26,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
       viewAll: "View All Projects",
       viewLive: "View Live",
       sourceCode: "Source Code",
-      featured: "Featured"
+
     },
     fr: {
       title: "Projets",
@@ -40,7 +40,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
       viewAll: "Voir tous les projets",
       viewLive: "Voir en direct",
       sourceCode: "Code source",
-      featured: "En vedette"
+
     },
     es: {
       title: "Proyectos",
@@ -54,7 +54,7 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
       viewAll: "Ver todos los proyectos",
       viewLive: "Ver en vivo",
       sourceCode: "Código fuente",
-      featured: "Destacado"
+
     }
   } as const;
 
@@ -70,7 +70,6 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
 
   // Get translations for ProjectCard
   const cardTranslations = {
-    featured: language === 'fr' ? 'En vedette' : language === 'es' ? 'Destacado' : 'Featured',
     viewLive: language === 'fr' ? 'Voir en direct' : language === 'es' ? 'Ver en vivo' : 'View Live'
   };
 
