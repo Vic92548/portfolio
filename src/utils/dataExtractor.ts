@@ -215,6 +215,18 @@ interface WorkExperience {
 // Import the clients data from WorkSection
 const workExperience: WorkExperience[] = [
   {
+    name: 'TEKGI',
+    role: 'AI & Automation Consultant',
+    startDate: new Date('2024-06-01'),
+    endDate: 'Present',
+    description: {
+      en: 'Developing a sales automation platform integrated with AI to optimize supply chain management and tech talent solutions. Working on innovative services that help businesses streamline their operations and access top tech talent.',
+      fr: 'Développement d\'une plateforme d\'automatisation des ventes intégrée à l\'IA pour optimiser la gestion de la chaîne d\'approvisionnement et les solutions de talents technologiques. Travail sur des services innovants qui aident les entreprises à rationaliser leurs opérations et à accéder aux meilleurs talents technologiques.',
+      es: 'Desarrollo de una plataforma de automatización de ventas integrada con IA para optimizar la gestión de la cadena de suministro y las soluciones de talento tecnológico. Trabajando en servicios innovadores que ayudan a las empresas a optimizar sus operaciones y acceder al mejor talento tecnológico.'
+    },
+    technologies: ['AI Integration', 'Sales Automation', 'Supply Chain Management', 'Tech Talent Solutions', 'Process Optimization']
+  },
+  {
     name: 'Kakiyo',
     role: 'Automation & Process Consultant',
     startDate: new Date('2024-05-01'),

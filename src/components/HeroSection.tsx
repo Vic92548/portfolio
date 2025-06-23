@@ -20,8 +20,8 @@ const HeroSection = ({ language }: HeroSectionProps) => {
   const translations = {
     en: {
       badge: "Available for new projects",
-      title: "Building the future of",
-      titleHighlight: ["games", "web", "tools"],
+      title: "Building the future with ",
+      titleHighlight: "you",
       subtitle: "Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.",
       cta: "View My Work",
       ctaSecondary: "Download Resume",
@@ -38,8 +38,8 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     },
     fr: {
       badge: "Disponible pour de nouveaux projets",
-      title: "Construire l'avenir des",
-      titleHighlight: ["jeux", "logiciels", "sites web", "outils"],
+      title: "Construire l'avenir avec ",
+      titleHighlight: "vous",
       subtitle: "Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d'utilisateurs, en me concentrant sur l'expérience développeur et les performances.",
       cta: "Voir mes travaux",
       ctaSecondary: "Télécharger CV",
@@ -56,8 +56,8 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     },
     es: {
       badge: "Disponible para nuevos proyectos",
-      title: "Construyendo el futuro de las",
-      titleHighlight: ["juegos", "experiencias web", "herramientas"],
+      title: "Construyendo el futuro contigo ",
+      titleHighlight: "",
       subtitle: "Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.",
       cta: "Ver mi trabajo",
       ctaSecondary: "Descargar CV",
@@ -145,10 +145,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               {t.title}
               <br />
               <span className="bg-gradient-to-r from-magic-blue to-magic-blue/80 bg-clip-text text-transparent">
-                <TypingAnimation 
-                  words={t.titleHighlight}
-                  className="inline-block"
-                />
+                {t.titleHighlight}
               </span>
             </h1>
 
