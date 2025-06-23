@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
-import TypingAnimation from '@/components/TypingAnimation';
 import CounterAnimation from '@/components/CounterAnimation';
 import { extractWebsiteData } from '@/utils/dataExtractor';
 import { fetchAllProjectStars } from '@/utils/github';
