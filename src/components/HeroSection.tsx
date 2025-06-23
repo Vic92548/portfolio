@@ -2,8 +2,9 @@ import { useEffect, useState, useMemo } from 'react';
 import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
 import CounterAnimation from '@/components/CounterAnimation';
 import { useCV } from '@/hooks/useCV';
-import type { CVData, LocalizedString } from '@/types/cv';
+import type { CVData, LocalizedString, Project } from '@/types/cv';
 import { fetchGitHubStars } from '@/services/githubService';
+import { calculateTotalDownloads } from '@/utils/calculateTotalDownloads';
 
 // Define types for translations
 interface Translation {
@@ -100,19 +101,29 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
   const [activeCard, setActiveCard] = useState(0);
   const [gitHubStars, setGitHubStars] = useState<number>(0);
   
-  // Fetch CV data
+  // Get CV data
   const { data: cvData, loading, error } = useCV(language);
+  
+  // Calculate project count and total downloads
+  const { projectCount, totalDownloads } = useMemo(() => {
+    if (!cvData?.projects) return { projectCount: 0, totalDownloads: 0 };
+    
+    const featuredProjects = cvData.projects.filter(p => p.featured);
+    return {
+      projectCount: featuredProjects.length,
+      totalDownloads: calculateTotalDownloads(featuredProjects)
+    };
+  }, [cvData]);
   
   // Get base translations
   const baseT = useMemo(() => baseTranslations[language] || baseTranslations.en, [language]);
   
-  // Extract data with null checks - these are just derived values, not hooks
-  const { personalInfo, projects = [] } = cvData || {};
-  const projectCount = projects?.length || 0;
+  // Extract data from CV
+  const { personalInfo } = cvData || {};
   
   // Debug logging
   console.log('CV Data:', cvData);
-  console.log('Projects:', projects);
+  console.log('GitHub Stars:', gitHubStars);
   console.log('Project Count:', projectCount);
   const features = baseT?.features || [];
   const featuresCount = features?.length || 0;
@@ -128,11 +139,12 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
   // Memoize scroll and download handlers
   const { scrollToWork, handleDownloadResume } = useMemo(() => ({
     scrollToWork: () => {
-      document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+      const workSection = document.getElementById('work');
+      workSection?.scrollIntoView({ behavior: 'smooth' });
     },
     handleDownloadResume: () => {
-      const event = new CustomEvent('downloadResume', { detail: { language } });
-      window.dispatchEvent(event);
+      // Implement download resume logic here
+      console.log('Download resume');
     }
   }), [language]);
 
@@ -175,10 +187,11 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
     error,
     cvData,
     projectCount,
-    features,
-    featuresCount,
-    summary,
-    t,
+    totalDownloads,
+    features: baseT.features,
+    featuresCount: baseT.features.length,
+    summary: personalInfo?.summary,
+    t: baseT,
     scrollToWork,
     handleDownloadResume,
     personalInfo
@@ -195,6 +208,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     error,
     cvData,
     projectCount,
+    totalDownloads,
     features,
     featuresCount,
     summary,
@@ -277,13 +291,13 @@ const HeroSection = ({ language }: HeroSectionProps) => {
             >
               <div className="text-center lg:text-left">
                 <CounterAnimation 
-                  target={150000} 
+                  target={totalDownloads} 
                   className="text-3xl lg:text-4xl font-bold text-dark-text"
                 />
                 <div className="text-sm text-light-gray mt-1">{getLocalizedString({ 
-                  en: "Downloads",
-                  fr: "Téléchargements",
-                  es: "Descargas"
+                  en: "Total Downloads",
+                  fr: "Téléchargements totaux",
+                  es: "Descargas totales"
                 }, language)}</div>
               </div>
               <div className="text-center lg:text-left">
