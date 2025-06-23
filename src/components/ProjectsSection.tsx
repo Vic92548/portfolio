@@ -195,10 +195,12 @@ const ProjectsSection = ({ language }: ProjectsSectionProps) => {
               video: project.video,
               tech: project.tech || [],
               status: 'active',
+              downloads: project.downloads, // Include downloads count
               links: {
                 live: project.links?.live || project.links?.demo || '#',
                 github: project.links?.github || '#',
-                npm: project.links?.npm
+                npm: project.links?.npm,
+                steam: project.links?.steam // Include steam link
               }
             };
             

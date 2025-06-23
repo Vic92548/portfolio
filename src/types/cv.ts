@@ -51,6 +51,7 @@ export interface ProjectBase {
     [key: string]: string | undefined; // Allow additional string properties
   };
   role?: string;
+  downloads?: number; // Manual download count for games
   npmDownloads?: number; // Will be populated at runtime
   responsibilities?: {
     en: string[];

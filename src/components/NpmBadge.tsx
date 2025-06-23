@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getNpmDownloads, extractNpmPackageName } from '@/utils/npmStats';
 import { ExternalLink } from 'lucide-react';
+import { formatNumber } from '@/utils/formatNumber';
 
 interface NpmBadgeProps {
   npmUrl: string;
@@ -80,7 +81,7 @@ export function NpmBadge({ npmUrl, className = '' }: NpmBadgeProps) {
     >
       <span className="text-npm-red font-bold mr-1.5">npm</span>
       <span className="w-px h-4 bg-gray-300 dark:bg-gray-600 mx-1"></span>
-      <span className="font-medium text-xs">{downloads.toLocaleString()}</span>
+      <span className="font-medium text-xs">{formatNumber(downloads)}<span className="text-gray-500 dark:text-gray-400 text-xxs ml-1">downloads</span></span>
       <ExternalLink 
         className={`w-3 h-3 ml-1.5 text-gray-500 dark:text-gray-400 transition-all duration-200 ${isHovered ? 'opacity-100' : 'opacity-0 -ml-2'}`} 
         size={12} 

@@ -103,6 +103,7 @@ export const projects: ProjectBase[] = [
       fr: 'Un bac à sable entrepreneurial en monde ouvert où vous pouvez acheter des propriétés, percevoir des loyers et devenir le plus riche de la ville. Comprend des mises à jour quotidiennes, une gestion immobilière et un commerce de ressources avec des prix dynamiques selon les PNJ.',
       es: 'Un sandbox de emprendimiento en mundo abierto donde puedes comprar propiedades, cobrar alquileres y convertirte en el más rico de la ciudad. Incluye actualizaciones diarias, gestión de propiedades y comercio de recursos con precios dinámicos según los PNJ.'
     },
+    downloads: 37384,
     tech: ['Unity', 'C#', 'Procedural Generation', 'AI Integration', 'Multiplayer'],
     category: 'games',
     featured: true,
@@ -111,6 +112,7 @@ export const projects: ProjectBase[] = [
     video: 'https://video.fastly.steamstatic.com/store_trailers/257033315/movie480_vp9.webm?t=1735947222',
     links: { 
       live: 'https://store.steampowered.com/app/2716030/Poly_Plaza/', 
+      steam: 'https://store.steampowered.com/app/2716030/Poly_Plaza/',
       github: '#' 
     }
   },

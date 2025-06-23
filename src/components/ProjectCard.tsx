@@ -1,7 +1,8 @@
 
 import { ExternalLink, Github, Star, Download } from 'lucide-react';
 import GitHubStars from './GitHubStars';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { formatNumber } from '@/utils/formatNumber';
 import SkillTag from './SkillTag';
 import type { Project as CVProject } from '@/types/cv';
 import { NpmBadge } from './NpmBadge';
@@ -13,6 +14,7 @@ type Project = Omit<CVProject, 'featured' | 'responsibilities' | 'status' | 'des
     github: string;
     npm?: string;
   };
+  downloads?: number; // Manual download count for games
   description: string; // Always a string
 };
 
@@ -35,6 +37,19 @@ interface ProjectCardProps {
 const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  
+  // Debug: Log project data
+  useEffect(() => {
+    if (project.title === 'Poly Plaza') {
+      console.log('Debug - Project Data:', {
+        title: project.title,
+        downloads: project.downloads,
+        hasSteamLink: !!project.links.steam,
+        links: project.links,
+        category: project.category
+      });
+    }
+  }, [project]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -68,12 +83,24 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
 
 
       <div className="relative aspect-video bg-nordic-gray/10 dark:bg-border-dark/30 overflow-hidden">
-        {/* NPM Badge - Top Right Corner */}
-        {project.links.npm && (
-          <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <NpmBadge npmUrl={project.links.npm} />
-          </div>
-        )}
+        {/* Badges - Top Right Corner */}
+        <div className="absolute top-3 right-3 z-10 flex flex-col gap-2 items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {project.links.npm && <NpmBadge npmUrl={project.links.npm} />}
+          {project.downloads !== undefined && (
+            <a
+              href={project.links.steam || project.links.live || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/70 dark:bg-black/50 text-xs text-gray-700 dark:text-gray-200 border border-white/30 dark:border-gray-700/50 shadow-lg backdrop-blur-sm hover:bg-white/90 dark:hover:bg-black/70 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="font-bold text-steam-blue">STEAM</span>
+              <span className="w-px h-4 bg-gray-300 dark:bg-gray-600 mx-1.5"></span>
+              <span className="font-medium">{formatNumber(project.downloads)}</span>
+              <span className="text-gray-500 dark:text-gray-400 text-xxs ml-1">players</span>
+            </a>
+          )}
+        </div>
         
         <img 
           src={project.image} 
