@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { ClientModal } from '@/components/ui/client-modal';
+import SkillTag from './SkillTag';
 
 interface Client {
   name: string;
@@ -44,6 +45,14 @@ const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const getSkillWithUrl = (techName: string) => {
+    // This is a simplified version - you might want to map your technologies to actual URLs
+    return {
+      name: techName,
+      url: `https://www.google.com/search?q=${encodeURIComponent(techName)}`
+    };
+  };
+
   const clients: Client[] = [
     {
       name: 'Kakiyo',
@@ -53,7 +62,7 @@ const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
         es: 'Plataforma de automatización de LinkedIn impulsada por IA que maneja conversaciones personalizadas, califica prospectos y programa reuniones de forma autónoma a gran escala.'
       },
       logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQHkTxHwA_Hdnw/company-logo_100_100/B4EZeQerRgG4AQ-/0/1750475650674/kakiyo_logo?e=1756339200&v=beta&t=8TCebC0rQeo7in8XQJynHmStxSqNeDNvqeEv4y3oj5Y',
-      url: 'https://kakiyo.ai',
+      url: 'https://kakiyo.com',
       contribution: {
         en: 'Set up automation and processes to help build their product faster and in a more scalable way. Implemented efficient workflows and systems to enhance their development pipeline and operational efficiency.',
         fr: 'Mise en place de l\'automatisation et des processus pour accélérer le développement de leur produit de manière plus évolutive. Implémentation de flux de travail et de systèmes efficaces pour améliorer leur pipeline de développement et leur efficacité opérationnelle.',
@@ -163,28 +172,22 @@ const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
             >
               <div className="p-6 flex-1 flex flex-col">
                 <div className="flex items-center mb-4">
-                  <div className="h-16 w-16 rounded-lg bg-white border border-border/20 overflow-hidden mr-4">
-                    <img 
-                      src={client.logo} 
-                      alt={client.name} 
-                      className="h-full w-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground">{client.name}</h3>
-                    <div className="flex items-center gap-2">
-                      <p className="text-sm text-muted-foreground">{client.role}</p>
-                      <span className="text-muted-foreground">•</span>
-                      <p className="text-sm text-muted-foreground">
-                        {formatDate(client.startDate, language)}
-                        {' - '}
-                        {formatDate(client.endDate, language)}
-                      </p>
+                  <div className="h-16 w-16 flex-shrink-0 rounded-lg bg-white border border-border/20 overflow-hidden mr-4">
+                    <div className="relative w-full h-full">
+                      <img 
+                        src={client.logo} 
+                        alt={client.name} 
+                        className="absolute inset-0 w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                        }}
+                      />
                     </div>
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-xl font-semibold text-foreground truncate">{client.name}</h3>
+                    <p className="text-sm text-muted-foreground truncate">{client.role}</p>
                   </div>
                 </div>
                 
@@ -203,9 +206,7 @@ const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
                   </div>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {client.technologies.map((tech, i) => (
-                      <span key={i} className="text-xs px-2 py-1 bg-muted rounded-full">
-                        {tech}
-                      </span>
+                      <SkillTag key={i} skill={getSkillWithUrl(tech)} />
                     ))}
                   </div>
                 </div>

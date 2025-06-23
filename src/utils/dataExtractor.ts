@@ -185,59 +185,72 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   };
 };
 
-export const generateExperience = (language: 'en' | 'fr' | 'es', projectCount: number) => {
-  const experiences = {
-    en: [
-      {
-        title: 'Senior Full-Stack Engineer',
-        company: 'Independent Consultant',
-        period: '2020 - Present',
-        achievements: [
-          `Built and scaled ${projectCount} production applications serving 150K+ users`,
-          'Developed DevFlow CI/CD pipeline tool with 99.8% uptime',
-          'Created open-source tools with 150K+ total downloads',
-          'Specialized in developer experience and performance optimization'
-        ]
-      },
-      {
-        title: 'Lead Developer',
-        company: 'Tech Startup',
-        period: '2018 - 2020',
-        achievements: [
-          'Led development team of 5 engineers',
-          'Architected microservices handling 100K+ concurrent users',
-          'Reduced deployment time by 67% through automation',
-          'Implemented modern CI/CD practices and code quality standards'
-        ]
-      }
-    ],
-    fr: [
-      {
-        title: 'Ingénieur Full-Stack Senior',
-        company: 'Consultant Indépendant',
-        period: '2020 - Présent',
-        achievements: [
-          `Construit et mis à l'échelle ${projectCount} applications de production servant 150K+ utilisateurs`,
-          'Développé l\'outil de pipeline CI/CD DevFlow avec 99.8% de disponibilité',
-          'Créé des outils open source avec 150K+ téléchargements totaux',
-          'Spécialisé dans l\'expérience développeur et l\'optimisation des performances'
-        ]
-      }
-    ],
-    es: [
-      {
-        title: 'Ingeniero Full-Stack Senior',
-        company: 'Consultor Independiente',
-        period: '2020 - Presente',
-        achievements: [
-          `Construido y escalado ${projectCount} aplicaciones de producción sirviendo 150K+ usuarios`,
-          'Desarrollado herramienta de pipeline CI/CD DevFlow con 99.8% de tiempo activo',
-          'Creado herramientas de código abierto con 150K+ descargas totales',
-          'Especializado en experiencia del desarrollador y optimización del rendimiento'
-        ]
-      }
-    ]
-  };
+interface WorkExperience {
+  name: string;
+  role: string;
+  startDate: Date;
+  endDate: Date | 'Present';
+  description: string | { en: string; fr: string; es: string };
+  technologies: string[];
+}
 
-  return experiences[language];
+// Import the clients data from WorkSection
+const workExperience: WorkExperience[] = [
+  {
+    name: 'Kakiyo',
+    role: 'Automation & Process Consultant',
+    startDate: new Date('2024-05-01'),
+    endDate: new Date(),
+    description: {
+      en: 'Set up automation and processes to help build their product faster and in a more scalable way. Implemented efficient workflows and systems to enhance their development pipeline and operational efficiency.',
+      fr: 'Mise en place de l\'automatisation et des processus pour accélérer le développement de leur produit de manière plus évolutive. Implémentation de flux de travail et de systèmes efficaces pour améliorer leur pipeline de développement et leur efficacité opérationnelle.',
+      es: 'Configuración de automatización y procesos para ayudar a construir su producto de manera más rápida y escalable. Implementación de flujos de trabajo y sistemas eficientes para mejorar su canalización de desarrollo y eficiencia operativa.'
+    },
+    technologies: ['Process Automation', 'Workflow Optimization', 'Scalable Architecture', 'AI Integration']
+  },
+  {
+    name: 'JUNIA',
+    role: 'Computer Science Teacher',
+    startDate: new Date('2023-09-01'),
+    endDate: 'Present',
+    description: {
+      en: 'Computer Science Teacher for first-year students, specializing in C programming. Delivered comprehensive lectures and practical sessions to help students master fundamental programming concepts and develop strong problem-solving skills.',
+      fr: 'Enseignant en informatique pour les étudiants de première année, spécialisé en programmation C. J\'ai dispensé des cours magistraux et des travaux pratiques pour aider les étudiants à maîtriser les concepts fondamentaux de la programmation et à développer de solides compétences en résolution de problèmes.',
+      es: 'Profesor de Informática para estudiantes de primer año, especializado en programación en C. Impartí clases teóricas y prácticas para ayudar a los estudiantes a dominar los conceptos fundamentales de programación y desarrollar fuertes habilidades de resolución de problemas.'
+    },
+    technologies: ['C Programming', 'Algorithms', 'Data Structures', 'Problem Solving']
+  }
+];
+
+export const generateExperience = (language: 'en' | 'fr' | 'es', projectCount: number) => {
+  return workExperience.map(job => {
+    const formatDate = (date: Date) => {
+      return date.toLocaleDateString(
+        language === 'fr' ? 'fr-FR' : language === 'es' ? 'es-ES' : 'en-US',
+        { year: 'numeric', month: 'short' }
+      );
+    };
+
+    const isPresent = job.endDate === 'Present';
+    const period = `${formatDate(job.startDate)} - ${isPresent ? 
+      (language === 'fr' ? 'Présent' : language === 'es' ? 'Presente' : 'Present') : 
+      formatDate(job.endDate as Date)}`;
+
+    // Convert description to achievements array
+    const description = typeof job.description === 'string' ? 
+      job.description : 
+      job.description[language];
+    
+    const achievements = [
+      description,
+      ...job.technologies.map(tech => `Technologies: ${tech}`)
+    ];
+
+    return {
+      title: job.role,
+      company: job.name,
+      period: period,
+      achievements: achievements
+    };
+  });
 };
