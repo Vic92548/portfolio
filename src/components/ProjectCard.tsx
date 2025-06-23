@@ -8,7 +8,7 @@ interface Project {
   id: string;
   category: string;
   title: string;
-  description: string;
+  description: string | { [key: string]: string }; // Can be string or localized object
   image: string;
   video?: string;
   tech: string[];
@@ -151,7 +151,9 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
           {project.title}
         </h3>
         <p className="text-muted-foreground text-sm mb-6 leading-relaxed line-clamp-3">
-          {project.description}
+          {typeof project.description === 'string' 
+            ? project.description 
+            : project.description.en}
         </p>
 
         <div className="flex flex-wrap gap-2">

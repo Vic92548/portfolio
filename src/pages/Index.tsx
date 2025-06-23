@@ -5,7 +5,7 @@ import WorkSection from "@/components/WorkSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import ResumeGenerator from "@/components/ResumeGenerator";
-import ClientsSection from "@/components/ClientsSection";
+import ProjectsSection from "@/components/ProjectsSection";
 
 const Index = () => {
   const [language, setLanguage] = useState<'en' | 'fr' | 'es'>('en');
@@ -54,8 +54,8 @@ const Index = () => {
       <Navigation language={language} setLanguage={setLanguage} />
       <HeroSection language={language} />
       <AboutSection language={language} />
-      <ClientsSection language={language} />
       <WorkSection language={language} />
+      <ProjectsSection language={language} />
       <ContactSection language={language} />
       <ResumeGenerator />
     </div>

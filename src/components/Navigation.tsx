@@ -16,6 +16,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
     en: {
       about: 'About',
       work: 'Work',
+      projects: 'Projects',
       writing: 'Writing',
       contact: 'Contact',
       languages: { en: 'English', fr: 'Français', es: 'Español' }
@@ -23,6 +24,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
     fr: {
       about: 'À propos',
       work: 'Travaux',
+      projects: 'Projets',
       writing: 'Écriture',
       contact: 'Contact',
       languages: { en: 'English', fr: 'Français', es: 'Español' }
@@ -30,6 +32,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
     es: {
       about: 'Acerca',
       work: 'Trabajo',
+      projects: 'Proyectos',
       writing: 'Escritura',
       contact: 'Contacto',
       languages: { en: 'English', fr: 'Français', es: 'Español' }
@@ -43,7 +46,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
       setIsScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'work', 'contact'];
+      const sections = ['hero', 'about', 'work', 'projects', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -96,6 +99,12 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
             className={`nav-link ${activeSection === 'work' ? 'active' : ''}`}
           >
             {t.work}
+          </button>
+          <button
+            onClick={() => scrollToSection('projects')}
+            className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
+          >
+            {t.projects}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
@@ -153,6 +162,12 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
               className="block w-full text-left py-3 text-muted-foreground hover:text-foreground transition-colors"
             >
               {t.work}
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="block w-full text-left py-3 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t.projects}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
