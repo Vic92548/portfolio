@@ -13,82 +13,82 @@ const AboutSection = ({ language }: AboutSectionProps) => {
   const translations = {
     en: {
       title: "About Me",
-      subtitle: "Building digital experiences with purpose and precision",
-      description: "I'm a full-stack engineer with over 11 years of experience creating scalable web applications and developer tools. My passion lies in crafting elegant solutions that solve real-world problems and enhance user experiences.",
+      subtitle: "Crafting exceptional digital experiences through code",
+      description: "I'm a versatile full-stack engineer and game developer with a passion for building scalable applications and immersive gaming experiences. With a strong foundation in both web technologies and game development, I specialize in creating high-performance solutions that push technical boundaries while delivering exceptional user experiences.",
       skills: [
         {
           icon: Code,
-          title: "Frontend Development",
-          description: "React, TypeScript, Next.js, and modern CSS frameworks"
+          title: "Full-Stack Development",
+          description: "Next.js, TypeScript, Node.js, and modern web technologies"
         },
         {
           icon: Database,
-          title: "Backend Development", 
-          description: "Node.js, Python, PostgreSQL, and cloud architecture"
+          title: "Game Development", 
+          description: "Unreal Engine, C++, Lua, and game system architecture"
         },
         {
           icon: Globe,
-          title: "Full-Stack Solutions",
-          description: "End-to-end development from concept to deployment"
+          title: "Technical Leadership",
+          description: "Mentoring teams and establishing development best practices"
         },
         {
           icon: Zap,
-          title: "Performance Optimization",
-          description: "Scalable systems handling hundreds of thousands of users"
+          title: "Performance & Scale",
+          description: "Optimizing applications for thousands of concurrent users"
         }
       ]
     },
     fr: {
       title: "À propos de moi",
-      subtitle: "Créer des expériences numériques avec purpose et précision",
-      description: "Je suis un ingénieur full-stack avec plus de 11 ans d'expérience dans la création d'applications web évolutives et d'outils de développement. Ma passion réside dans l'élaboration de solutions élégantes qui résolvent des problèmes du monde réel et améliorent les expériences utilisateur.",
+      subtitle: "Création d'expériences numériques exceptionnelles à travers le code",
+      description: "Je suis un ingénieur full-stack et développeur de jeux polyvalent, passionné par la création d'applications évolutives et d'expériences de jeu immersives. Fort d'une solide expérience dans les technologies web et le développement de jeux, je me spécialise dans la création de solutions hautes performances qui repoussent les limites techniques tout en offrant des expériences utilisateur exceptionnelles.",
       skills: [
         {
           icon: Code,
-          title: "Développement Frontend",
-          description: "React, TypeScript, Next.js et frameworks CSS modernes"
+          title: "Développement Full-Stack",
+          description: "Next.js, TypeScript, Node.js et technologies web modernes"
         },
         {
           icon: Database,
-          title: "Développement Backend",
-          description: "Node.js, Python, PostgreSQL et architecture cloud"
+          title: "Développement de Jeux",
+          description: "Unreal Engine, C++, Lua et architecture de systèmes de jeu"
         },
         {
           icon: Globe,
-          title: "Solutions Full-Stack",
-          description: "Développement de bout en bout du concept au déploiement"
+          title: "Leadership Technique",
+          description: "Encadrement d'équipes et établissement de bonnes pratiques"
         },
         {
           icon: Zap,
-          title: "Optimisation des performances",
-          description: "Systèmes évolutifs gérant des centaines de milliers d'utilisateurs"
+          title: "Performance et Évolutivité",
+          description: "Optimisation d'applications pour des milliers d'utilisateurs"
         }
       ]
     },
     es: {
       title: "Acerca de mí",
-      subtitle: "Construyendo experiencias digitales con propósito y precisión",
-      description: "Soy un ingeniero full-stack con más de 11 años de experiencia creando aplicaciones web escalables y herramientas para desarrolladores. Mi pasión radica en crear soluciones elegantes que resuelvan problemas del mundo real y mejoren las experiencias de los usuarios.",
+      subtitle: "Creando experiencias digitales excepcionales a través del código",
+      description: "Soy un ingeniero full-stack y desarrollador de videojuegos versátil, apasionado por crear aplicaciones escalables y experiencias de juego inmersivas. Con una sólida base en tecnologías web y desarrollo de juegos, me especializo en crear soluciones de alto rendimiento que superan los límites técnicos mientras ofrecen experiencias de usuario excepcionales.",
       skills: [
         {
           icon: Code,
-          title: "Desarrollo Frontend",
-          description: "React, TypeScript, Next.js y frameworks CSS modernos"
+          title: "Desarrollo Full-Stack",
+          description: "Next.js, TypeScript, Node.js y tecnologías web modernas"
         },
         {
           icon: Database,
-          title: "Desarrollo Backend",
-          description: "Node.js, Python, PostgreSQL y arquitectura en la nube"
+          title: "Desarrollo de Videojuegos",
+          description: "Unreal Engine, C++, Lua y arquitectura de sistemas de juego"
         },
         {
           icon: Globe,
-          title: "Soluciones Full-Stack",
-          description: "Desarrollo integral desde el concepto hasta el despliegue"
+          title: "Liderazgo Técnico",
+          description: "Mentoría de equipos y establecimiento de mejores prácticas"
         },
         {
           icon: Zap,
-          title: "Optimización de rendimiento",
-          description: "Sistemas escalables que manejan cientos de miles de usuarios"
+          title: "Rendimiento y Escalabilidad",
+          description: "Optimización de aplicaciones para miles de usuarios"
         }
       ]
     }
