@@ -99,45 +99,18 @@ interface WorkExperience {
   technologies: string[];
 }
 
-// Import the clients data from WorkSection
-const workExperience: WorkExperience[] = [
-  {
-    name: 'TEKGI',
-    role: 'AI & Automation Consultant',
-    startDate: new Date('2024-06-01'),
-    endDate: 'Present',
-    description: {
-      en: 'Developing a sales automation platform integrated with AI to optimize supply chain management and tech talent solutions. Working on innovative services that help businesses streamline their operations and access top tech talent.',
-      fr: 'Développement d\'une plateforme d\'automatisation des ventes intégrée à l\'IA pour optimiser la gestion de la chaîne d\'approvisionnement et les solutions de talents technologiques. Travail sur des services innovants qui aident les entreprises à rationaliser leurs opérations et à accéder aux meilleurs talents technologiques.',
-      es: 'Desarrollo de una plataforma de automatización de ventas integrada con IA para optimizar la gestión de la cadena de suministro y las soluciones de talento tecnológico. Trabajando en servicios innovadores que ayudan a las empresas a optimizar sus operaciones y acceder al mejor talento tecnológico.'
-    },
-    technologies: ['AI Integration', 'Sales Automation', 'Supply Chain Management', 'Tech Talent Solutions', 'Process Optimization']
-  },
-  {
-    name: 'Kakiyo',
-    role: 'Automation & Process Consultant',
-    startDate: new Date('2024-05-01'),
-    endDate: new Date(),
-    description: {
-      en: 'Set up automation and processes to help build their product faster and in a more scalable way. Implemented efficient workflows and systems to enhance their development pipeline and operational efficiency.',
-      fr: 'Mise en place de l\'automatisation et des processus pour accélérer le développement de leur produit de manière plus évolutive. Implémentation de flux de travail et de systèmes efficaces pour améliorer leur pipeline de développement et leur efficacité opérationnelle.',
-      es: 'Configuración de automatización y procesos para ayudar a construir su producto de manera más rápida y escalable. Implementación de flujos de trabajo y sistemas eficientes para mejorar su canalización de desarrollo y eficiencia operativa.'
-    },
-    technologies: ['Process Automation', 'Workflow Optimization', 'Scalable Architecture', 'AI Integration']
-  },
-  {
-    name: 'JUNIA',
-    role: 'Computer Science Teacher',
-    startDate: new Date('2023-09-01'),
-    endDate: 'Present',
-    description: {
-      en: 'Computer Science Teacher for first-year students, specializing in C programming. Delivered comprehensive lectures and practical sessions to help students master fundamental programming concepts and develop strong problem-solving skills.',
-      fr: 'Enseignant en informatique pour les étudiants de première année, spécialisé en programmation C. J\'ai dispensé des cours magistraux et des travaux pratiques pour aider les étudiants à maîtriser les concepts fondamentaux de la programmation et à développer de solides compétences en résolution de problèmes.',
-      es: 'Profesor de Informática para estudiantes de primer año, especializado en programación en C. Impartí clases teóricas y prácticas para ayudar a los estudiantes a dominar los conceptos fundamentales de programación y desarrollar fuertes habilidades de resolución de problemas.'
-    },
-    technologies: ['C Programming', 'Algorithms', 'Data Structures', 'Problem Solving']
-  }
-];
+// Import the work experience data from workExperience.ts
+import { workExperience as workExperienceData } from '@/data/workExperience';
+
+// Map the work experience data to the expected format
+const workExperience = workExperienceData.map(job => ({
+  name: job.name,
+  role: job.role,
+  startDate: job.startDate,
+  endDate: job.endDate,
+  description: job.contribution, // Using contribution instead of description as it's more detailed
+  technologies: job.technologies
+}));
 
 export const generateExperience = (language: 'en' | 'fr' | 'es', projectCount: number) => {
   return workExperience.map(job => {
@@ -153,18 +126,24 @@ export const generateExperience = (language: 'en' | 'fr' | 'es', projectCount: n
       (language === 'fr' ? 'Présent' : language === 'es' ? 'Presente' : 'Present') : 
       formatDate(job.endDate as Date)}`;
 
-    // Convert description to achievements array
+    // Get the description in the correct language
     const description = typeof job.description === 'string' ? 
       job.description : 
       job.description[language];
     
-    const achievements = [description];
+    // Split the description into bullet points based on periods
+    const achievements = description
+      .split(/(?<!\.)\.\s+/)
+      .filter(point => point.trim().length > 0)
+      .map(point => point.endsWith('.') ? point : point + '.')
+      .map(point => point.trim());
 
     return {
       title: job.role,
       company: job.name,
       period: period,
-      achievements: achievements
+      achievements: achievements,
+      technologies: job.technologies
     };
   });
 };

@@ -14,6 +14,7 @@ export interface ResumeContent {
     company: string;
     period: string;
     achievements: string[];
+    technologies?: string[];
   }[];
   skills: {
     [category: string]: string[];
@@ -148,12 +149,26 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
             line-height: 1.7;
           }
           .experience-item {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+          }
+          .experience-item:last-child {
+            border-bottom: none;
+          }
+          .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 5px;
           }
           .job-title {
             font-size: 18px;
             font-weight: 600;
             color: #222326;
+            margin: 0;
           }
           .company {
             font-size: 16px;
@@ -163,7 +178,22 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
           .period {
             font-size: 14px;
             color: #8a8f98;
-            margin-bottom: 10px;
+            font-style: italic;
+          }
+          .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0 8px 0;
+          }
+          .tech-tag {
+            background: #f0f4ff;
+            color: #5E6AD2;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            border: 1px solid #e0e5ff;
           }
           .achievements {
             list-style: none;
@@ -284,9 +314,18 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
           <h2 class="section-title">${t.experience}</h2>
           ${content.experience.map(exp => `
             <div class="experience-item">
-              <div class="job-title">${exp.title}</div>
-              <div class="company">${exp.company}</div>
-              <div class="period">${exp.period}</div>
+              <div class="job-header">
+                <div>
+                  <div class="job-title">${exp.title}</div>
+                  <div class="company">${exp.company}</div>
+                </div>
+                <div class="period">${exp.period}</div>
+              </div>
+              ${exp.technologies && exp.technologies.length > 0 ? `
+                <div class="technologies">
+                  ${exp.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+              ` : ''}
               <ul class="achievements">
                 ${exp.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
               </ul>
