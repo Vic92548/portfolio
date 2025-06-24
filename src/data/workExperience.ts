@@ -67,14 +67,14 @@ export const workExperience: WorkExperience[] = [
     logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQHkTxHwA_Hdnw/company-logo_100_100/B4EZeQerRgG4AQ-/0/1750475650674/kakiyo_logo?e=1756339200&v=beta&t=8TCebC0rQeo7in8XQJynHmStxSqNeDNvqeEv4y3oj5Y',
     url: 'https://kakiyo.com',
     contribution: {
-      en: 'Set up automation and processes to help build their product faster and in a more scalable way. Implemented efficient workflows and systems to enhance their development pipeline and operational efficiency.',
-      fr: 'Mise en place de l\'automatisation et des processus pour accélérer le développement de leur produit de manière plus évolutive. Implémentation de flux de travail et de systèmes efficaces pour améliorer leur pipeline de développement et leur efficacité opérationnelle.',
-      es: 'Configuración de automatización y procesos para ayudar a construir su producto de manera más rápida y escalable. Implementación de flujos de trabajo y sistemas eficientes para mejorar su canalización de desarrollo y eficiencia operativa.'
+      en: 'Architected and implemented a robust API foundation and LinkedIn automation system. Provided technical leadership in refactoring their V1 API, established coding standards, and guided the team in implementing scalable architecture patterns. Advised on feature implementation strategies and best practices to ensure maintainable, high-performance code.',
+      fr: 'Conception et mise en œuvre d\'une base API robuste et d\'un système d\'automatisation LinkedIn. Leadership technique dans la refonte de leur API V1, établissement de normes de codage et accompagnement de l\'équipe dans la mise en œuvre de modèles d\'architecture évolutifs. Conseils sur les stratégies d\'implémentation des fonctionnalités et les meilleures pratiques pour assurer un code maintenable et performant.',
+      es: 'Diseño e implementación de una base de API robusta y un sistema de automatización de LinkedIn. Liderazgo técnico en la refactorización de su API V1, establecimiento de estándares de codificación y guía al equipo en la implementación de patrones de arquitectura escalables. Asesoramiento sobre estrategias de implementación de características y mejores prácticas para garantizar un código mantenible y de alto rendimiento.'
     },
     role: 'Automation & Process Consultant',
     startDate: new Date('2024-05-01'),
     endDate: new Date(),
-    technologies: ['Process Automation', 'Workflow Optimization', 'Scalable Architecture', 'AI Integration']
+    technologies: ['API Development', 'System Architecture', 'Code Refactoring', 'LinkedIn Automation', 'Technical Leadership', 'Best Practices', 'Scalable Systems']
   },
   {
     name: 'TEKGI',
@@ -86,14 +86,14 @@ export const workExperience: WorkExperience[] = [
     logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQHoZXI9FOkvcw/company-logo_100_100/company-logo_100_100/0/1729592579184/tekgi_logo?e=1756339200&v=beta&t=wnVQrMkWju7XqGuuduZMkpIvxTXfCObqvmMRC3k_Cgw',
     url: 'https://tekgi.com',
     contribution: {
-      en: 'Developing a sales automation platform integrated with AI to optimize supply chain management and tech talent solutions. Working on innovative services that help businesses streamline their operations and access top tech talent.',
-      fr: 'Développement d\'une plateforme d\'automatisation des ventes intégrée à l\'IA pour optimiser la gestion de la chaîne d\'approvisionnement et les solutions de talents technologiques. Travail sur des services innovants qui aident les entreprises à rationaliser leurs opérations et à accéder aux meilleurs talents technologiques.',
-      es: 'Desarrollo de una plataforma de automatización de ventas integrada con IA para optimizar la gestión de la cadena de suministro y las soluciones de talento tecnológico. Trabajando en servicios innovadores que ayudan a las empresas a optimizar sus operaciones y acceder al mejor talento tecnológico.'
+      en: 'Architected and developed a comprehensive sales automation SaaS platform using Next.js, featuring advanced data enrichment capabilities through Clay integration. Built end-to-end solutions for lead management, automated outreach, and sales pipeline optimization, significantly improving team productivity and conversion rates.',
+      fr: 'Conception et développement d\'une plateforme SaaS complète d\'automatisation des ventes avec Next.js, intégrant des capacités avancées d\'enrichissement de données via Clay. Développement de solutions complètes pour la gestion des prospects, la prospection automatisée et l\'optimisation du pipeline de vente, améliorant considérablement la productivité de l\'équipe et les taux de conversion.',
+      es: 'Diseño y desarrollo de una plataforma SaaS integral de automatización de ventas utilizando Next.js, con capacidades avanzadas de enriquecimiento de datos a través de la integración con Clay. Desarrollo de soluciones integrales para la gestión de leads, prospección automatizada y optimización del embudo de ventas, mejorando significativamente la productividad del equipo y las tasas de conversión.'
     },
     role: 'AI & Automation Consultant',
     startDate: new Date('2024-06-01'),
     endDate: 'Present',
-    technologies: ['AI Integration', 'Sales Automation', 'Supply Chain Management', 'Tech Talent Solutions', 'Process Optimization']
+    technologies: ['Next.js', 'SaaS Development', 'Sales Automation', 'Clay Integration', 'Data Enrichment', 'Lead Management', 'Sales Pipeline']
   },
   {
     name: 'French-Roleplay',
@@ -105,13 +105,13 @@ export const workExperience: WorkExperience[] = [
     logo: 'https://www.french-roleplay.com/public/img/logopetit.png',
     url: 'https://www.french-roleplay.com',
     contribution: {
-      en: 'Contributed to the development and maintenance of game servers, particularly focusing on DarkRP. Worked on creating exclusive addons and ensuring a high-quality role-playing experience for the community. Helped in building a welcoming environment that encourages role-play and community engagement.',
-      fr: 'Contribué au développement et à la maintenance des serveurs de jeux, en particulier sur DarkRP. Travaillé sur la création d\'addons exclusifs et assuré une expérience de jeu de rôle de haute qualité pour la communauté. A aidé à construire un environnement accueillant qui encourage le jeu de rôle et l\'engagement communautaire.',
-      es: 'Contribuí al desarrollo y mantenimiento de servidores de juegos, particularmente en DarkRP. Trabajé en la creación de complementos exclusivos y asegurando una experiencia de juego de rol de alta calidad para la comunidad. Ayudé a construir un entorno acogedor que fomenta el juego de rol y la participación comunitaria.'
+      en: 'Developed engaging mini-games and exclusive addons for the Garry\'s Mod DarkRP server using Lua. Created unique gameplay experiences that enhanced role-playing interactions and community engagement. Contributed to server maintenance and optimization to ensure smooth gameplay for all players.',
+      fr: 'Développement de mini-jeux captivants et d\'addons exclusifs pour le serveur Garry\'s Mod DarkRP en utilisant Lua. Création d\'expériences de jeu uniques qui ont amélioré les interactions de jeu de rôle et l\'engagement communautaire. Contribution à la maintenance et à l\'optimisation du serveur pour assurer une expérience de jeu fluide à tous les joueurs.',
+      es: 'Desarrollo de minijuegos atractivos y complementos exclusivos para el servidor de Garry\'s Mod DarkRP utilizando Lua. Creación de experiencias de juego únicas que mejoraron las interacciones de rol y la participación comunitaria. Contribución al mantenimiento y optimización del servidor para garantizar una experiencia de juego fluida para todos los jugadores.'
     },
     role: 'Game Server Developer',
     startDate: new Date('2023-01-01'),
     endDate: 'Present',
-    technologies: ['Garry\'s Mod', 'Lua', 'Server Administration', 'Game Modding', 'Community Management', 'Linux Server']
+    technologies: ['Garry\'s Mod', 'Lua', 'Game Development', 'Mini-Game Design', 'DarkRP', 'Server Optimization', 'Multiplayer Systems']
   }
 ];
