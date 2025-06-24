@@ -37,7 +37,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
         summary: 'Summary',
         experience: 'Experience',
         skills: 'Skills & Technologies',
-        projects: 'Featured Projects',
+        projects: 'Projects',
         techStack: 'Tech Stack',
         stats: 'Key Metrics'
       },
@@ -45,7 +45,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
         summary: 'Résumé',
         experience: 'Expérience',
         skills: 'Compétences & Technologies',
-        projects: 'Projets en vedette',
+        projects: 'Projets',
         techStack: 'Stack technique',
         stats: 'Métriques clés'
       },
@@ -53,7 +53,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
         summary: 'Resumen',
         experience: 'Experiencia',
         skills: 'Habilidades y Tecnologías',
-        projects: 'Proyectos destacados',
+        projects: 'Proyectos',
         techStack: 'Stack tecnológico',
         stats: 'Métricas clave'
       }
