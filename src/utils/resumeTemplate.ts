@@ -269,7 +269,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
               <div class="stat-label">Downloads</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">${(content.stats.stars / 1000).toFixed(1)}K+</div>
+              <div class="stat-number">${content.stats.stars}</div>
               <div class="stat-label">GitHub Stars</div>
             </div>
           </div>

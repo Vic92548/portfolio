@@ -47,10 +47,36 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
 export const useResumeGenerator = () => {
   useEffect(() => {
     const handleDownloadResume = (event: CustomEvent) => {
-      const { language: lang } = event.detail;
-      if (!lang || !['en', 'fr', 'es'].includes(lang)) return;
+      console.log('Received download event:', event.detail);
+      
+      const { language: lang, stats } = event.detail || {};
+      if (!lang || !['en', 'fr', 'es'].includes(lang)) {
+        console.error('Invalid language:', lang);
+        return;
+      }
 
+      console.log('Generating resume with stats:', { stats });
+      
       const content = generateResumeContent(lang);
+      
+      // Always use the stats passed from the HeroSection if available
+      if (stats) {
+        console.log('Using stats from HeroSection:', {
+          projects: stats.projectCount,
+          downloads: stats.totalDownloads,
+          stars: stats.gitHubStars
+        });
+        
+        content.stats = {
+          ...content.stats,
+          totalProjects: stats.projectCount || 0,
+          downloads: stats.totalDownloads || 0,
+          stars: stats.gitHubStars || 0
+        };
+      } else {
+        console.warn('No stats provided from HeroSection, using defaults');
+      }
+      
       const html = generateResumeHTML(content, lang);
       printResume(html);
     };

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
 import CounterAnimation from '@/components/CounterAnimation';
 import { useCV } from '@/hooks/useCV';
@@ -100,6 +100,7 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(0);
   const [gitHubStars, setGitHubStars] = useState<number>(0);
+  const [isDownloading, setIsDownloading] = useState(false);
   
   // Get CV data
   const { data: cvData, loading, error } = useCV(language);
@@ -136,19 +137,7 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
     subtitle: getLocalizedString(summary, language) || baseT.subtitle || ''
   }), [baseT, summary, language, features]);
   
-  // Memoize scroll and download handlers
-  const { scrollToWork, handleDownloadResume } = useMemo(() => ({
-    scrollToWork: () => {
-      const workSection = document.getElementById('work');
-      workSection?.scrollIntoView({ behavior: 'smooth' });
-    },
-    handleDownloadResume: () => {
-      // Dispatch custom event to trigger resume download
-      window.dispatchEvent(new CustomEvent('downloadResume', { 
-        detail: { language } 
-      }));
-    }
-  }), [language]);
+  // Project count and total downloads are now calculated on demand
 
   // All effects must be called unconditionally at the top level
   useEffect(() => {
@@ -181,6 +170,72 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
     };
   }, [featuresCount, cvData?.projects]);
   
+  // Memoize the handleDownloadResume function to prevent unnecessary re-renders
+  const handleDownloadResume = useCallback(async () => {
+    if (isDownloading) return;
+    
+    setIsDownloading(true);
+    
+    try {
+      // If data is still loading, wait for it
+      if (loading) {
+        console.log('Waiting for CV data to load...');
+        await new Promise<void>((resolve) => {
+          const checkData = () => {
+            if (!loading) {
+              resolve();
+            } else {
+              setTimeout(checkData, 100);
+            }
+          };
+          checkData();
+        });
+      }
+      
+      if (error) {
+        console.error('Cannot download resume due to error:', error);
+        return;
+      }
+      
+      if (!cvData?.projects) {
+        console.error('Projects data not available');
+        return;
+      }
+      
+      // Get the latest values right before dispatching the event
+      const projectCount = cvData.projects.length;
+      const totalDownloads = calculateTotalDownloads(cvData.projects);
+      const currentStars = gitHubStars; // Use the current gitHubStars value
+      
+      console.log('Dispatching download with stats:', { 
+        projectCount, 
+        totalDownloads, 
+        gitHubStars: currentStars 
+      });
+      
+      // Dispatch custom event to trigger resume download with real stats
+      window.dispatchEvent(new CustomEvent('downloadResume', { 
+        detail: { 
+          language,
+          stats: {
+            projectCount,
+            totalDownloads,
+            gitHubStars: currentStars
+          }
+        } 
+      }));
+    } catch (err) {
+      console.error('Error during resume download:', err);
+    } finally {
+      setIsDownloading(false);
+    }
+  }, [language, loading, error, cvData, gitHubStars, isDownloading]);
+
+  const scrollToWork = useCallback(() => {
+    const workSection = document.getElementById('work');
+    workSection?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
   return {
     isVisible,
     activeCard,
@@ -188,15 +243,16 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
     loading,
     error,
     cvData,
-    projectCount,
-    totalDownloads,
+    projectCount: cvData?.projects?.length || 0,
+    totalDownloads: cvData?.projects ? calculateTotalDownloads(cvData.projects) : 0,
     features: baseT.features,
     featuresCount: baseT.features.length,
     summary: personalInfo?.summary,
     t: baseT,
     scrollToWork,
     handleDownloadResume,
-    personalInfo
+    personalInfo,
+    isDownloading
   };
 };
 
@@ -217,7 +273,8 @@ const HeroSection = ({ language }: HeroSectionProps) => {
     t,
     scrollToWork,
     handleDownloadResume,
-    personalInfo
+    personalInfo,
+    isDownloading
   } = useHeroSection(language);
   
   // Handle loading and error states after hooks
@@ -331,9 +388,24 @@ const HeroSection = ({ language }: HeroSectionProps) => {
                 {t.cta}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
-              <button onClick={handleDownloadResume} className="btn btn-secondary btn-lg group">
-                <Download className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
-                {t.ctaSecondary}
+              <button 
+                onClick={handleDownloadResume} 
+                className={`btn btn-secondary btn-lg group relative ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
+                disabled={isDownloading}
+              >
+                {isDownloading ? (
+                  <>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    </div>
+                    <span className="invisible">{t.ctaSecondary}</span>
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+                    {t.ctaSecondary}
+                  </>
+                )}
               </button>
             </div>
           </div>
