@@ -13,7 +13,7 @@ export const projects: ProjectBase[] = [
     category: 'openSource',
     featured: true,
     status: 'active',
-    image: 'https://repository-images.githubusercontent.com/409968355/5e9c3a9b-1e4d-4b3d-8c1e-5e9c3a9b1e4d',
+    image: 'https://polyplaza-wiki.b-cdn.net/Screenshot%202025-06-24%20220527.jpg',
     links: { 
       live: 'https://bpplang.com', 
       github: 'https://github.com/BuckshotPlusPlus/BuckshotPlusPlus',
