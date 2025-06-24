@@ -70,7 +70,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
               
               <div className="space-y-6">
                 <a 
-                  href="mailto:victor@example.com"
+                  href="mailto:vchanet@pm.me"
                   className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-500"
                 >
                   <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-magic-blue/20 transition-colors">
@@ -78,7 +78,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
                   </div>
                   <div>
                     <div className="font-medium text-lg">{t.email}</div>
-                    <div className="text-sm text-muted-foreground">victor@example.com</div>
+                    <div className="text-sm text-muted-foreground">vchanet@pm.me</div>
                   </div>
                 </a>
 

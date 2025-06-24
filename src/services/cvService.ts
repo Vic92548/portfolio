@@ -107,7 +107,7 @@ class CVService {
           fr: 'Ingénieur Full-Stack & Développeur de Jeux',
           es: 'Ingeniero Full-Stack y Desarrollador de Juegos'
         },
-        email: 'contact@victorchanet.dev',
+        email: 'vchanet@pm.me',
         phone: '+33 6 12 34 56 78',
         location: {
           en: 'Paris, France',
