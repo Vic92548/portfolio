@@ -105,7 +105,7 @@ export const projects: ProjectBase[] = [
       es: 'Un sandbox de emprendimiento en mundo abierto donde puedes comprar propiedades, cobrar alquileres y convertirte en el más rico de la ciudad. Incluye actualizaciones diarias, gestión de propiedades y comercio de recursos con precios dinámicos según los PNJ.'
     },
     downloads: 37384,
-    tech: ['Unity', 'C#', 'Procedural Generation', 'AI Integration', 'Multiplayer'],
+    tech: ['Unreal Engine 5', 'C++', 'Blueprint', 'Game Analytics', 'JetBrains Rider'],
     category: 'games',
     featured: true,
     status: 'active',

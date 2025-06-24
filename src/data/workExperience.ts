@@ -131,6 +131,6 @@ export const workExperience: WorkExperience[] = [
     role: 'Infrastructure & Deployment Consultant',
     startDate: new Date('2019-11-01'),
     endDate: new Date('2020-03-01'),
-    technologies: ['Web Game Development', 'Multiplayer Networking', 'WebSockets', 'Real-time Systems', 'Game Engine Architecture']
+    technologies: ['Deno', 'HTML', 'CSS', 'JavaScript', 'WebSockets']
   }
 ];
