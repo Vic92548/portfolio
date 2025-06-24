@@ -29,14 +29,14 @@ export const workExperience: WorkExperience[] = [
     logo: 'https://media.licdn.com/dms/image/v2/C560BAQGF0_aZPxfw2w/company-logo_200_200/company-logo_200_200/0/1633091729805/guracorp_logo?e=1756339200&v=beta&t=NPCuW_dv6GBXRiq_hVi0TeZsA4qv8rtOYRH_0ptRsCM',
     url: 'https://twitter.com/GuraUniverse',
     contribution: {
-      en: 'Contributing to the development of a cutting-edge FPS game set in an off-world environment. Working on innovative gameplay mechanics and immersive experiences that push the boundaries of interactive entertainment.',
-      fr: 'Contribution au développement d\'un jeu FPS de pointe se déroulant dans un environnement hors du monde. Travail sur des mécaniques de jeu innovantes et des expériences immersives qui repoussent les limites du divertissement interactif.',
-      es: 'Contribuyendo al desarrollo de un juego FPS de vanguardia ambientado en un entorno fuera de este mundo. Trabajando en mecánicas de juego innovadoras y experiencias inmersivas que llevan los límites del entretenimiento interactivo más allá.'
+      en: 'Provided expert advisory services on Steam integration and networking solutions. Offered guidance on Steamworks API implementation, store page optimization, and multiplayer networking strategies. Advised on both technical aspects and best practices for game publishing, community building, and platform-specific requirements.',
+      fr: 'Services de conseil expert en intégration Steam et solutions de mise en réseau. Conseils sur la mise en œuvre de l\'API Steamworks, l\'optimisation des pages de vente et les stratégies de réseau multijoueur. Avis sur les aspects techniques et les meilleures pratiques pour la publication de jeux, la construction d\'une communauté et les exigences spécifiques à la plateforme.',
+      es: 'Servicios de asesoramiento experto en integración de Steam y soluciones de red. Asesoramiento sobre la implementación de la API de Steamworks, optimización de páginas de la tienda y estrategias de red multijugador. Asesoramiento sobre aspectos técnicos y mejores prácticas para la publicación de juegos, creación de comunidades y requisitos específicos de la plataforma.'
     },
     role: 'Game Developer',
     startDate: new Date('2024-01-01'),
     endDate: 'Present',
-    technologies: ['Game Development', 'Unreal Engine', 'C++', '3D Graphics', 'Game Design', 'Multiplayer Networking']
+    technologies: ['Steamworks', 'Game Publishing', 'Multiplayer Networking', 'API Integration', 'Technical Advisory', 'Community Management', 'Platform Requirements']
   },
   {
     name: 'JUNIA',
