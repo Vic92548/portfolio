@@ -34,56 +34,56 @@ interface HeroSectionProps {
 const baseTranslations = {
   en: {
     badge: "Available for new projects",
-    title: "Building the future with ",
-    titleHighlight: "you",
-    subtitle: "Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.",
-    cta: "View My Work",
-    ctaSecondary: "Download Resume",
+    title: "Crafting digital experiences that ",
+    titleHighlight: "inspire",
+    subtitle: "As a full-stack engineer and game developer, I build scalable web applications and engaging games. My passion lies in creating seamless user experiences through clean, efficient code and innovative solutions.",
+    cta: "Explore My Work",
+    ctaSecondary: "View Resume",
     stats: {
-      downloads: "Downloads",
+      downloads: "Libraries",
       stars: "GitHub Stars", 
-      products: "Projects Completed"
+      products: "Projects Shipped"
     },
     features: [
-      { icon: Code, title: "Full-Stack Development", desc: "React, Node.js, TypeScript" },
-      { icon: Zap, title: "Performance Focused", desc: "Optimized for scale" },
-      { icon: Layers, title: "Modern Architecture", desc: "Clean, maintainable code" }
+      { icon: Code, title: "Full-Stack Engineering", desc: "Next.js, TypeScript, Node.js" },
+      { icon: Zap, title: "Game Development", desc: "Unreal Engine, C++, Game Design" },
+      { icon: Layers, title: "Technical Leadership", desc: "Mentoring & Architecture" }
     ]
   },
   fr: {
     badge: "Disponible pour de nouveaux projets",
-    title: "Construire l'avenir avec ",
-    titleHighlight: "vous",
-    subtitle: "Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d'utilisateurs, en me concentrant sur l'expérience développeur et les performances.",
-    cta: "Voir mes travaux",
-    ctaSecondary: "Télécharger CV",
+    title: "Création d'expériences numériques qui ",
+    titleHighlight: "inspirent",
+    subtitle: "En tant qu'ingénieur full-stack et développeur de jeux, je crée des applications web évolutives et des jeux captivants. Ma passion réside dans la création d'expériences utilisateur fluides grâce à un code propre, efficace et des solutions innovantes.",
+    cta: "Découvrir mon travail",
+    ctaSecondary: "Voir le CV",
     stats: {
-      downloads: "Téléchargements",
+      downloads: "Bibliothèques",
       stars: "Étoiles GitHub",
-      products: "Produits livrés"
+      products: "Projets livrés"
     },
     features: [
-      { icon: Code, title: "Développement Full-Stack", desc: "React, Node.js, TypeScript" },
-      { icon: Zap, title: "Axé sur les performances", desc: "Optimisé pour l'échelle" },
-      { icon: Layers, title: "Architecture moderne", desc: "Code propre et maintenable" }
+      { icon: Code, title: "Ingénierie Full-Stack", desc: "Next.js, TypeScript, Node.js" },
+      { icon: Zap, title: "Développement de Jeux", desc: "Unreal Engine, C++, Conception" },
+      { icon: Layers, title: "Leadership Technique", desc: "Mentorat & Architecture" }
     ]
   },
   es: {
     badge: "Disponible para nuevos proyectos",
-    title: "Construyendo el futuro contigo ",
-    titleHighlight: "",
-    subtitle: "Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.",
-    cta: "Ver mi trabajo",
-    ctaSecondary: "Descargar CV",
+    title: "Creando experiencias digitales que ",
+    titleHighlight: "inspiran",
+    subtitle: "Como ingeniero full-stack y desarrollador de videojuegos, construyo aplicaciones web escalables y juegos cautivadores. Mi pasión es crear experiencias de usuario fluidas a través de código limpio, eficiente y soluciones innovadoras.",
+    cta: "Ver mis proyectos",
+    ctaSecondary: "Ver currículum",
     stats: {
-      downloads: "Descargas",
+      downloads: "Librerías",
       stars: "Estrellas GitHub",
-      products: "Productos enviados"
+      products: "Proyectos finalizados"
     },
     features: [
-      { icon: Code, title: "Desarrollo Full-Stack", desc: "React, Node.js, TypeScript" },
-      { icon: Zap, title: "Enfocado en rendimiento", desc: "Optimizado para escala" },
-      { icon: Layers, title: "Arquitectura moderna", desc: "Código limpio y mantenible" }
+      { icon: Code, title: "Ingeniería Full-Stack", desc: "Next.js, TypeScript, Node.js" },
+      { icon: Zap, title: "Desarrollo de Videojuegos", desc: "Unreal Engine, C++, Diseño" },
+      { icon: Layers, title: "Liderazgo Técnico", desc: "Mentoría & Arquitectura" }
     ]
   }
 };
@@ -336,11 +336,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               className={`text-xl lg:text-xl text-light-gray mb-10 leading-relaxed max-w-2xl lg:max-w-none animate-fade-in delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.3s' }}
             >
-              {getLocalizedString(personalInfo?.summary || {
-                en: 'Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.',
-                fr: 'Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d\'utilisateurs, en me concentrant sur l\'expérience développeur et les performances.',
-                es: 'Ingeniero full-stack y emprendedor. Creo productos digitales que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.'
-              }, language)}
+              {t.subtitle}
             </p>
 
             {/* Stats */}
