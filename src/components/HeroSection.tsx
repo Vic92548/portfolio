@@ -108,10 +108,10 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
   const { projectCount, totalDownloads } = useMemo(() => {
     if (!cvData?.projects) return { projectCount: 0, totalDownloads: 0 };
     
-    const featuredProjects = cvData.projects.filter(p => p.featured);
+    // Count all projects, not just featured ones
     return {
-      projectCount: featuredProjects.length,
-      totalDownloads: calculateTotalDownloads(featuredProjects)
+      projectCount: cvData.projects.length,
+      totalDownloads: calculateTotalDownloads(cvData.projects)
     };
   }, [cvData]);
   
