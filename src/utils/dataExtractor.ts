@@ -14,9 +14,9 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
       es: 'Ingeniero Full-Stack y Desarrollador de Juegos'
     },
     description: {
-      en: 'Full-stack engineer and game developer. I create digital products and games that scale to hundreds of thousands of users, with a focus on developer experience and performance.',
-      fr: 'Ingénieur full-stack et développeur de jeux. Je crée des produits numériques et des jeux qui évoluent vers des centaines de milliers d\'utilisateurs, en me concentrant sur l\'expérience développeur et les performances.',
-      es: 'Ingeniero full-stack y desarrollador de juegos. Creo productos digitales y juegos que escalan a cientos de miles de usuarios, enfocándome en la experiencia del desarrollador y el rendimiento.'
+      en: 'As a full-stack engineer and game developer, I build scalable web applications and engaging games. My passion lies in creating seamless user experiences through clean, efficient code and innovative solutions.',
+      fr: 'En tant qu\'ingénieur full-stack et développeur de jeux, je crée des applications web évolutives et des jeux captivants. Ma passion réside dans la création d\'expériences utilisateur fluides grâce à un code propre, efficace et des solutions innovantes.',
+      es: 'Como ingeniero full-stack y desarrollador de videojuegos, construyo aplicaciones web escalables y juegos cautivadores. Mi pasión es crear experiencias de usuario fluidas a través de código limpio, eficiente y soluciones innovadoras.'
     },
     stats: {
       downloads: 150000,
