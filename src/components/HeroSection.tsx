@@ -143,8 +143,10 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
       workSection?.scrollIntoView({ behavior: 'smooth' });
     },
     handleDownloadResume: () => {
-      // Implement download resume logic here
-      console.log('Download resume');
+      // Dispatch custom event to trigger resume download
+      window.dispatchEvent(new CustomEvent('downloadResume', { 
+        detail: { language } 
+      }));
     }
   }), [language]);
 
