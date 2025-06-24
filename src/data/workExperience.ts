@@ -113,5 +113,24 @@ export const workExperience: WorkExperience[] = [
     startDate: new Date('2023-01-01'),
     endDate: 'Present',
     technologies: ['Garry\'s Mod', 'Lua', 'Game Development', 'Mini-Game Design', 'DarkRP', 'Server Optimization', 'Multiplayer Systems']
+  },
+  {
+    name: 'Pixel Creator',
+    description: {
+      en: 'Web-based game engine designed specifically for creating .io games with built-in multiplayer support, enabling developers to easily build and deploy browser-based multiplayer experiences.',
+      fr: 'Moteur de jeu basé sur le web conçu spécifiquement pour créer des jeux .io avec un support multijoueur intégré, permettant aux développeurs de créer et de déployer facilement des expériences multijoueur dans le navigateur.',
+      es: 'Motor de juegos basado en la web diseñado específicamente para crear juegos .io con soporte multijugador integrado, lo que permite a los desarrolladores crear e implementar fácilmente experiencias multijugador en el navegador.'
+    },
+    logo: 'https://media.discordapp.net/attachments/640686645850669068/1241265995495112756/pixelcreator.png?ex=685b8d8a&is=685a3c0a&hm=787f2b1955a4233996b2943142a99cfed2f27186df8a672ebb3e3eb065c2c6b2&=&format=webp&quality=lossless&width=1582&height=1434',
+    url: '#', // No website provided, using placeholder
+    contribution: {
+      en: 'Assisted in setting up and optimizing the networking infrastructure, provided deployment guidance, and offered technical advice to improve system performance and reliability. Contributed to the overall technical strategy and implementation.',
+      fr: 'Aide à la mise en place et à l\'optimisation de l\'infrastructure réseau, fourniture de conseils en déploiement et assistance technique pour améliorer les performances et la fiabilité du système. Contribution à la stratégie technique globale et à sa mise en œuvre.',
+      es: 'Ayudé a configurar y optimizar la infraestructura de red, proporcioné orientación sobre implementación y asesoramiento técnico para mejorar el rendimiento y la confiabilidad del sistema. Contribuí a la estrategia técnica general y su implementación.'
+    },
+    role: 'Infrastructure & Deployment Consultant',
+    startDate: new Date('2019-11-01'),
+    endDate: new Date('2020-03-01'),
+    technologies: ['Web Game Development', 'Multiplayer Networking', 'WebSockets', 'Real-time Systems', 'Game Engine Architecture']
   }
 ];
