@@ -1,6 +1,5 @@
 
 import { Mail, Calendar, Linkedin } from 'lucide-react';
-import ContactForm from './ContactForm';
 
 interface ContactSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -61,10 +60,9 @@ const ContactSection = ({ language }: ContactSectionProps) => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Options */}
+          <div className="max-w-2xl mx-auto">
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold mb-8 animate-fade-in delay-400">
+              <h3 className="text-2xl font-semibold mb-8 text-center animate-fade-in delay-400">
                 Get in Touch
               </h3>
               
@@ -110,11 +108,6 @@ const ContactSection = ({ language }: ContactSectionProps) => {
                   </div>
                 </a>
               </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="animate-fade-in delay-800">
-              <ContactForm language={language} />
             </div>
           </div>
         </div>
