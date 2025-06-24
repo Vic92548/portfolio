@@ -17,19 +17,18 @@
     --border-dark: #333338;
     --light-gray: #8a8f98;
 
-    /* Semantic Color Tokens - Light Theme */
-    --background: var(--pure-white);
-    --background-subtle: var(--mercury-white);
-    --background-muted: var(--nordic-gray);
-    --foreground: var(--nordic-gray);
+    /* Dark Theme */
+    --background: var(--darker-gray);
+    --background-subtle: var(--nordic-gray);
+    --background-muted: var(--border-dark);
+    --foreground: var(--dark-text);
     --muted-foreground: var(--light-gray);
-    --border: #E1E3E8;
-    --border-hover: #D0D3D9;
+    --border: var(--border-dark);
+    --border-hover: #404047;
     --primary: var(--magic-blue);
     --primary-foreground: var(--pure-white);
-    --accent: var(--magic-blue);
-    --card: var(--pure-white);
-    --card-foreground: var(--nordic-gray);
+    --card: var(--nordic-gray);
+    --card-foreground: var(--dark-text);
 
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -57,61 +56,25 @@
     --shadow-lg: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 16px 32px 0 rgba(0, 0, 0, 0.12);
 
-    /* Radix UI color tokens */
-    --background: 0 0% 100%;
-    --foreground: 216 6% 14%;
-    --card: 0 0% 100%;
-    --card-foreground: 216 6% 14%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 216 6% 14%;
+    /* Radix UI dark tokens */
+    --background: 216 10% 10%;
+    --foreground: 0 0% 90%;
+    --card: 216 10% 13%;
+    --card-foreground: 0 0% 90%;
+    --popover: 216 10% 13%;
+    --popover-foreground: 0 0% 90%;
     --primary: 237 42% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 217 6% 14%;
+    --secondary: 216 8% 20%;
     --secondary-foreground: 0 0% 90%;
-    --muted: 217 6% 14%;
-    --muted-foreground: 215 6% 54%;
-    --accent: 217 6% 14%;
+    --muted: 216 8% 20%;
+    --muted-foreground: 215 10% 55%;
+    --accent: 216 8% 20%;
     --accent-foreground: 0 0% 90%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --border: 216 8% 20%;
+    --input: 216 8% 20%;
     --ring: 237 42% 60%;
     --radius: 0.5rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      /* Dark Theme */
-      --background: var(--darker-gray);
-      --background-subtle: var(--nordic-gray);
-      --background-muted: var(--border-dark);
-      --foreground: var(--dark-text);
-      --muted-foreground: var(--light-gray);
-      --border: var(--border-dark);
-      --border-hover: #404047;
-      --card: var(--nordic-gray);
-      --card-foreground: var(--dark-text);
-
-      /* Radix UI dark tokens */
-      --background: 216 10% 10%;
-      --foreground: 0 0% 90%;
-      --card: 216 10% 13%;
-      --card-foreground: 0 0% 90%;
-      --popover: 216 10% 13%;
-      --popover-foreground: 0 0% 90%;
-      --primary: 237 42% 60%;
-      --primary-foreground: 0 0% 100%;
-      --secondary: 216 8% 20%;
-      --secondary-foreground: 0 0% 90%;
-      --muted: 216 8% 20%;
-      --muted-foreground: 215 10% 55%;
-      --accent: 216 8% 20%;
-      --accent-foreground: 0 0% 90%;
-      --border: 216 8% 20%;
-      --input: 216 8% 20%;
-      --ring: 237 42% 60%;
-    }
   }
 
   * {
@@ -122,7 +85,6 @@
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.5;
-    color-scheme: light dark;
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
