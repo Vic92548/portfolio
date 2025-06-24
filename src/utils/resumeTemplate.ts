@@ -314,7 +314,6 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
             <div class="project-item">
               <div class="project-name">
                 ${project.name}
-                ${project.featured ? '<span class="featured-badge">Featured</span>' : ''}
               </div>
               <div class="project-description">${project.description}</div>
               <div class="project-tech">${t.techStack}: ${project.tech}</div>
