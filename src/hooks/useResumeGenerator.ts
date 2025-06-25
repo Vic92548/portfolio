@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { extractWebsiteData, generateExperience } from '../utils/dataExtractor';
 import { generateResumeHTML, type ResumeContent } from '../utils/resumeTemplate';
 import { printResume } from '../utils/pdfGenerator';
+import { cvService } from '@/services/cvService';
 
 const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
     const websiteData = extractWebsiteData(lang);
@@ -16,6 +17,9 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
       skillsByCategory[category] = skills.map((skill: { name: string }) => skill.name);
     });
 
+    // Get the personal info from CV service to access the updated summary
+    const personalInfo = cvService.getPersonalInfo();
+    
     const content: ResumeContent = {
       name: websiteData.heroData.name,
       title: websiteData.heroData.title[lang],
@@ -25,7 +29,7 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
         github: 'https://github.com/Vic92548',
         linkedin: 'https://www.linkedin.com/in/victor-chanet/'
       },
-      summary: websiteData.heroData.description[lang],
+      summary: personalInfo?.summary?.[lang] || websiteData.heroData.description[lang],
       experience: experience,
       education: [
         {
