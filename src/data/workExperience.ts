@@ -20,25 +20,6 @@ export interface WorkExperience {
 
 export const workExperience: WorkExperience[] = [
   {
-    name: 'La Horde',
-    description: {
-      en: 'Higher education institution specializing in video game development, offering innovative training programs to prepare students for careers in the gaming industry.',
-      fr: 'Établissement d\'enseignement supérieur spécialisé dans le développement de jeux vidéo, proposant des formations innovantes pour préparer les étudiants aux métiers du jeu vidéo.',
-      es: 'Institución de educación superior especializada en desarrollo de videojuegos, que ofrece programas de formación innovadores para preparar a los estudiantes para carreras en la industria del juego.'
-    },
-    logo: 'https://media.licdn.com/dms/image/v2/D560BAQGOK7_EIsZLOw/company-logo_200_200/company-logo_200_200/0/1733845318007/la_horde_tech_logo?e=1756339200&v=beta&t=hfn2jdTSKzxc1j3X-plOK4WhvCsz_yqqvAcngJ2eOd0',
-    url: 'https://lahorde.tech',
-    contribution: {
-      en: 'Delivered comprehensive Unreal Engine gameplay programming lessons focused on Blueprint visual scripting. Guided students through the fundamentals of game development, including character mechanics, level design, and interactive systems. Provided hands-on training to help students develop practical skills in game creation using industry-standard tools and practices.',
-      fr: 'Dispensation de cours complets de programmation de gameplay sur Unreal Engine axés sur le script visuel Blueprint. J\'ai guidé les étudiants à travers les fondamentaux du développement de jeux, y compris la mécanique des personnages, la conception de niveaux et les systèmes interactifs. Formation pratique pour aider les étudiants à développer des compétences pratiques dans la création de jeux en utilisant des outils et des pratiques standards de l\'industrie.',
-      es: 'Impartición de lecciones completas de programación de jugabilidad en Unreal Engine centradas en la programación visual con Blueprint. Guié a los estudiantes a través de los fundamentos del desarrollo de videojuegos, incluyendo mecánicas de personajes, diseño de niveles y sistemas interactivos. Proporcioné capacitación práctica para ayudar a los estudiantes a desarrollar habilidades prácticas en la creación de juegos utilizando herramientas y prácticas estándar de la industria.'
-    },
-    role: 'Unreal Engine Instructor',
-    startDate: new Date('2024-01-01'),
-    endDate: 'Present',
-    technologies: ['Unreal Engine', 'Blueprint', 'Game Development', 'Game Design', 'Visual Scripting', 'Technical Instruction', 'Mentoring']
-  },
-  {
     name: 'GURA CORP',
     description: {
       en: 'Futuristic FPS game development studio creating immersive off-world experiences and pushing the boundaries of interactive entertainment.',
@@ -56,6 +37,44 @@ export const workExperience: WorkExperience[] = [
     startDate: new Date('2024-01-01'),
     endDate: 'Present',
     technologies: ['Steamworks', 'Game Publishing', 'Multiplayer Networking', 'API Integration', 'Technical Advisory', 'Community Management', 'Platform Requirements']
+  },
+  {
+    name: 'TEKGI',
+    description: {
+      en: 'Supply Chain Management (SCM) & Tech Talent Solutions provider that optimizes processes and operations through innovative services and expert personnel.',
+      fr: 'Fournisseur de solutions de gestion de la chaîne d\'approvisionnement (SCM) et de talents technologiques qui optimise les processus et les opérations grâce à des services innovants et à un personnel expert.',
+      es: 'Proveedor de Soluciones de Gestión de la Cadena de Suministro (SCM) y Talento Tecnológico que optimiza procesos y operaciones a través de servicios innovadores y personal experto.'
+    },
+    logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQHoZXI9FOkvcw/company-logo_100_100/company-logo_100_100/0/1729592579184/tekgi_logo?e=1756339200&v=beta&t=wnVQrMkWju7XqGuuduZMkpIvxTXfCObqvmMRC3k_Cgw',
+    url: 'https://tekgi.com',
+    contribution: {
+      en: 'Architected and developed a comprehensive sales automation SaaS platform using Next.js, featuring advanced data enrichment capabilities through Clay integration. Built end-to-end solutions for lead management, automated outreach, and sales pipeline optimization, significantly improving team productivity and conversion rates.',
+      fr: 'Conception et développement d\'une plateforme SaaS complète d\'automatisation des ventes avec Next.js, intégrant des capacités avancées d\'enrichissement de données via Clay. Développement de solutions complètes pour la gestion des prospects, la prospection automatisée et l\'optimisation du pipeline de vente, améliorant considérablement la productivité de l\'équipe et les taux de conversion.',
+      es: 'Diseño y desarrollo de una plataforma SaaS integral de automatización de ventas utilizando Next.js, con capacidades avanzadas de enriquecimiento de datos a través de la integración con Clay. Desarrollo de soluciones integrales para la gestión de leads, prospección automatizada y optimización del embudo de ventas, mejorando significativamente la productividad del equipo y las tasas de conversión.'
+    },
+    role: 'Fullstack Engineer',
+    startDate: new Date('2025-04-01'),
+    endDate: new Date('2025-06-01'),
+    technologies: ['Next.js', 'SaaS Development', 'Sales Automation', 'Clay Integration', 'Data Enrichment', 'Lead Management', 'Sales Pipeline']
+  },
+  {
+    name: 'Kakiyo',
+    description: {
+      en: 'AI-powered LinkedIn automation platform that autonomously handles personalized conversations, qualifies prospects, and books meetings at scale.',
+      fr: 'Plateforme d\'automatisation LinkedIn alimentée par l\'IA qui gère de manière autonome les conversations personnalisées, qualifie les prospects et planifie des réunions à grande échelle.',
+      es: 'Plataforma de automatización de LinkedIn impulsada por IA que maneja conversaciones personalizadas, califica prospectos y programa reuniones de forma autónoma a gran escala.'
+    },
+    logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQHkTxHwA_Hdnw/company-logo_100_100/B4EZeQerRgG4AQ-/0/1750475650674/kakiyo_logo?e=1756339200&v=beta&t=8TCebC0rQeo7in8XQJynHmStxSqNeDNvqeEv4y3oj5Y',
+    url: 'https://kakiyo.com',
+    contribution: {
+      en: 'Architected and implemented a robust API foundation and LinkedIn automation system. Provided technical leadership in refactoring their V1 API, established coding standards, and guided the team in implementing scalable architecture patterns. Advised on feature implementation strategies and best practices to ensure maintainable, high-performance code.',
+      fr: 'Conception et mise en œuvre d\'une base API robuste et d\'un système d\'automatisation LinkedIn. Leadership technique dans la refonte de leur API V1, établissement de normes de codage et accompagnement de l\'équipe dans la mise en œuvre de modèles d\'architecture évolutifs. Conseils sur les stratégies d\'implémentation des fonctionnalités et les meilleures pratiques pour assurer un code maintenable et performant.',
+      es: 'Diseño e implementación de una base de API robusta y un sistema de automatización de LinkedIn. Liderazgo técnico en la refactorización de su API V1, establecimiento de estándares de codificación y guía al equipo en la implementación de patrones de arquitectura escalables. Asesoramiento sobre estrategias de implementación de características y mejores prácticas para garantizar un código mantenible y de alto rendimiento.'
+    },
+    role: 'Backend Architect',
+    startDate: new Date('2024-06-01'),
+    endDate: new Date('2025-02-01'),
+    technologies: ['API Development', 'System Architecture', 'Code Refactoring', 'LinkedIn Automation', 'Technical Leadership', 'Best Practices', 'Scalable Systems']
   },
   {
     name: 'JUNIA',
@@ -77,44 +96,6 @@ export const workExperience: WorkExperience[] = [
     technologies: ['C Programming', 'Algorithms', 'Data Structures', 'Problem Solving']
   },
   {
-    name: 'Kakiyo',
-    description: {
-      en: 'AI-powered LinkedIn automation platform that autonomously handles personalized conversations, qualifies prospects, and books meetings at scale.',
-      fr: 'Plateforme d\'automatisation LinkedIn alimentée par l\'IA qui gère de manière autonome les conversations personnalisées, qualifie les prospects et planifie des réunions à grande échelle.',
-      es: 'Plataforma de automatización de LinkedIn impulsada por IA que maneja conversaciones personalizadas, califica prospectos y programa reuniones de forma autónoma a gran escala.'
-    },
-    logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQHkTxHwA_Hdnw/company-logo_100_100/B4EZeQerRgG4AQ-/0/1750475650674/kakiyo_logo?e=1756339200&v=beta&t=8TCebC0rQeo7in8XQJynHmStxSqNeDNvqeEv4y3oj5Y',
-    url: 'https://kakiyo.com',
-    contribution: {
-      en: 'Architected and implemented a robust API foundation and LinkedIn automation system. Provided technical leadership in refactoring their V1 API, established coding standards, and guided the team in implementing scalable architecture patterns. Advised on feature implementation strategies and best practices to ensure maintainable, high-performance code.',
-      fr: 'Conception et mise en œuvre d\'une base API robuste et d\'un système d\'automatisation LinkedIn. Leadership technique dans la refonte de leur API V1, établissement de normes de codage et accompagnement de l\'équipe dans la mise en œuvre de modèles d\'architecture évolutifs. Conseils sur les stratégies d\'implémentation des fonctionnalités et les meilleures pratiques pour assurer un code maintenable et performant.',
-      es: 'Diseño e implementación de una base de API robusta y un sistema de automatización de LinkedIn. Liderazgo técnico en la refactorización de su API V1, establecimiento de estándares de codificación y guía al equipo en la implementación de patrones de arquitectura escalables. Asesoramiento sobre estrategias de implementación de características y mejores prácticas para garantizar un código mantenible y de alto rendimiento.'
-    },
-    role: 'Backend Architect',
-    startDate: new Date('2024-05-01'),
-    endDate: new Date(),
-    technologies: ['API Development', 'System Architecture', 'Code Refactoring', 'LinkedIn Automation', 'Technical Leadership', 'Best Practices', 'Scalable Systems']
-  },
-  {
-    name: 'TEKGI',
-    description: {
-      en: 'Supply Chain Management (SCM) & Tech Talent Solutions provider that optimizes processes and operations through innovative services and expert personnel.',
-      fr: 'Fournisseur de solutions de gestion de la chaîne d\'approvisionnement (SCM) et de talents technologiques qui optimise les processus et les opérations grâce à des services innovants et à un personnel expert.',
-      es: 'Proveedor de Soluciones de Gestión de la Cadena de Suministro (SCM) y Talento Tecnológico que optimiza procesos y operaciones a través de servicios innovadores y personal experto.'
-    },
-    logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQHoZXI9FOkvcw/company-logo_100_100/company-logo_100_100/0/1729592579184/tekgi_logo?e=1756339200&v=beta&t=wnVQrMkWju7XqGuuduZMkpIvxTXfCObqvmMRC3k_Cgw',
-    url: 'https://tekgi.com',
-    contribution: {
-      en: 'Architected and developed a comprehensive sales automation SaaS platform using Next.js, featuring advanced data enrichment capabilities through Clay integration. Built end-to-end solutions for lead management, automated outreach, and sales pipeline optimization, significantly improving team productivity and conversion rates.',
-      fr: 'Conception et développement d\'une plateforme SaaS complète d\'automatisation des ventes avec Next.js, intégrant des capacités avancées d\'enrichissement de données via Clay. Développement de solutions complètes pour la gestion des prospects, la prospection automatisée et l\'optimisation du pipeline de vente, améliorant considérablement la productivité de l\'équipe et les taux de conversion.',
-      es: 'Diseño y desarrollo de una plataforma SaaS integral de automatización de ventas utilizando Next.js, con capacidades avanzadas de enriquecimiento de datos a través de la integración con Clay. Desarrollo de soluciones integrales para la gestión de leads, prospección automatizada y optimización del embudo de ventas, mejorando significativamente la productividad del equipo y las tasas de conversión.'
-    },
-    role: 'Fullstack Engineer',
-    startDate: new Date('2024-06-01'),
-    endDate: 'Present',
-    technologies: ['Next.js', 'SaaS Development', 'Sales Automation', 'Clay Integration', 'Data Enrichment', 'Lead Management', 'Sales Pipeline']
-  },
-  {
     name: 'French-Roleplay',
     description: {
       en: 'Non-profit association specialized in game server development, particularly for Garry\'s Mod DarkRP, creating a serious and friendly community around role-playing games.',
@@ -129,9 +110,28 @@ export const workExperience: WorkExperience[] = [
       es: 'Desarrollo de minijuegos atractivos y complementos exclusivos para el servidor de Garry\'s Mod DarkRP utilizando Lua. Creación de experiencias de juego únicas que mejoraron las interacciones de rol y la participación comunitaria. Contribución al mantenimiento y optimización del servidor para garantizar una experiencia de juego fluida para todos los jugadores.'
     },
     role: 'Gameplay Programmer',
-    startDate: new Date('2023-01-01'),
-    endDate: 'Present',
+    startDate: new Date('2023-04-01'),
+    endDate: new Date('2023-07-01'),
     technologies: ['Garry\'s Mod', 'Lua', 'Game Development', 'Mini-Game Design', 'DarkRP', 'Server Optimization', 'Multiplayer Systems']
+  },
+  {
+    name: 'La Horde',
+    description: {
+      en: 'Higher education institution specializing in video game development, offering innovative training programs to prepare students for careers in the gaming industry.',
+      fr: 'Établissement d\'enseignement supérieur spécialisé dans le développement de jeux vidéo, proposant des formations innovantes pour préparer les étudiants aux métiers du jeu vidéo.',
+      es: 'Institución de educación superior especializada en desarrollo de videojuegos, que ofrece programas de formación innovadores para preparar a los estudiantes para carreras en la industria del juego.'
+    },
+    logo: 'https://media.licdn.com/dms/image/v2/D560BAQGOK7_EIsZLOw/company-logo_200_200/company-logo_200_200/0/1733845318007/la_horde_tech_logo?e=1756339200&v=beta&t=hfn2jdTSKzxc1j3X-plOK4WhvCsz_yqqvAcngJ2eOd0',
+    url: 'https://lahorde.tech',
+    contribution: {
+      en: 'Delivered comprehensive Unreal Engine gameplay programming lessons focused on Blueprint visual scripting. Guided students through the fundamentals of game development, including character mechanics, level design, and interactive systems. Provided hands-on training to help students develop practical skills in game creation using industry-standard tools and practices.',
+      fr: 'Dispensation de cours complets de programmation de gameplay sur Unreal Engine axés sur le script visuel Blueprint. J\'ai guidé les étudiants à travers les fondamentaux du développement de jeux, y compris la mécanique des personnages, la conception de niveaux et les systèmes interactifs. Formation pratique pour aider les étudiants à développer des compétences pratiques dans la création de jeux en utilisant des outils et des pratiques standards de l\'industrie.',
+      es: 'Impartición de lecciones completas de programación de jugabilidad en Unreal Engine centradas en la programación visual con Blueprint. Guié a los estudiantes a través de los fundamentos del desarrollo de videojuegos, incluyendo mecánicas de personajes, diseño de niveles y sistemas interactivos. Proporcioné capacitación práctica para ayudar a los estudiantes a desarrollar habilidades prácticas en la creación de juegos utilizando herramientas y prácticas estándar de la industria.'
+    },
+    role: 'Unreal Engine Instructor',
+    startDate: new Date('2022-09-01'),
+    endDate: new Date('2022-11-01'),
+    technologies: ['Unreal Engine', 'Blueprint', 'Game Development', 'Game Design', 'Visual Scripting', 'Technical Instruction', 'Mentoring']
   },
   {
     name: 'Pixel Creator',
