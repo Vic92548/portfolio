@@ -20,6 +20,25 @@ export interface WorkExperience {
 
 export const workExperience: WorkExperience[] = [
   {
+    name: 'La Horde',
+    description: {
+      en: 'Higher education institution specializing in video game development, offering innovative training programs to prepare students for careers in the gaming industry.',
+      fr: 'Établissement d\'enseignement supérieur spécialisé dans le développement de jeux vidéo, proposant des formations innovantes pour préparer les étudiants aux métiers du jeu vidéo.',
+      es: 'Institución de educación superior especializada en desarrollo de videojuegos, que ofrece programas de formación innovadores para preparar a los estudiantes para carreras en la industria del juego.'
+    },
+    logo: 'https://media.licdn.com/dms/image/v2/D560BAQGOK7_EIsZLOw/company-logo_200_200/company-logo_200_200/0/1733845318007/la_horde_tech_logo?e=1756339200&v=beta&t=hfn2jdTSKzxc1j3X-plOK4WhvCsz_yqqvAcngJ2eOd0',
+    url: 'https://lahorde.tech',
+    contribution: {
+      en: 'Delivered comprehensive Unreal Engine gameplay programming lessons focused on Blueprint visual scripting. Guided students through the fundamentals of game development, including character mechanics, level design, and interactive systems. Provided hands-on training to help students develop practical skills in game creation using industry-standard tools and practices.',
+      fr: 'Dispensation de cours complets de programmation de gameplay sur Unreal Engine axés sur le script visuel Blueprint. J\'ai guidé les étudiants à travers les fondamentaux du développement de jeux, y compris la mécanique des personnages, la conception de niveaux et les systèmes interactifs. Formation pratique pour aider les étudiants à développer des compétences pratiques dans la création de jeux en utilisant des outils et des pratiques standards de l\'industrie.',
+      es: 'Impartición de lecciones completas de programación de jugabilidad en Unreal Engine centradas en la programación visual con Blueprint. Guié a los estudiantes a través de los fundamentos del desarrollo de videojuegos, incluyendo mecánicas de personajes, diseño de niveles y sistemas interactivos. Proporcioné capacitación práctica para ayudar a los estudiantes a desarrollar habilidades prácticas en la creación de juegos utilizando herramientas y prácticas estándar de la industria.'
+    },
+    role: 'Unreal Engine Instructor',
+    startDate: new Date('2024-01-01'),
+    endDate: 'Present',
+    technologies: ['Unreal Engine', 'Blueprint', 'Game Development', 'Game Design', 'Visual Scripting', 'Technical Instruction', 'Mentoring']
+  },
+  {
     name: 'GURA CORP',
     description: {
       en: 'Futuristic FPS game development studio creating immersive off-world experiences and pushing the boundaries of interactive entertainment.',
