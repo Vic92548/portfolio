@@ -27,6 +27,20 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
       },
       summary: websiteData.heroData.description[lang],
       experience: experience,
+      education: [
+        {
+          degree: lang === 'en' ? 'Baccalauréat Scientifique (Scientific Baccalaureate)' : 
+                   lang === 'fr' ? 'Baccalauréat Scientifique' : 
+                   'Bachillerato Científico',
+          institution: lang === 'en' ? 'High School' : 
+                      lang === 'fr' ? 'Lycée' : 
+                      'Instituto',
+          period: '2018',
+          description: lang === 'en' ? 'Specialized in Computer Science' : 
+                       lang === 'fr' ? 'Spécialité Sciences de l\'Informatique' : 
+                       'Especialidad Informática'
+        }
+      ],
       skills: skillsByCategory,
       projects: websiteData.projects.map(project => ({
         name: project.title,

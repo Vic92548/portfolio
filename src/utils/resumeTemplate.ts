@@ -1,4 +1,11 @@
 
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  period: string;
+  description: string;
+}
+
 export interface ResumeContent {
   name: string;
   title: string;
@@ -16,6 +23,7 @@ export interface ResumeContent {
     achievements: string[];
     technologies?: string[];
   }[];
+  education: EducationItem[];
   skills: {
     [category: string]: string[];
   };
@@ -37,26 +45,38 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
       en: {
         summary: 'Summary',
         experience: 'Experience',
+        education: 'Education',
         skills: 'Skills & Technologies',
         projects: 'Projects',
         techStack: 'Tech Stack',
-        stats: 'Key Metrics'
+        stats: 'Key Metrics',
+        baccalaureate: 'Baccalauréat Scientifique (High School Diploma)',
+        institution: 'High School',
+        graduationYear: '2018'
       },
       fr: {
         summary: 'Résumé',
         experience: 'Expérience',
+        education: 'Formation',
         skills: 'Compétences & Technologies',
         projects: 'Projets',
         techStack: 'Stack technique',
-        stats: 'Métriques clés'
+        stats: 'Métriques clés',
+        baccalaureate: 'Baccalauréat Scientifique',
+        institution: 'Lycée',
+        graduationYear: '2018'
       },
       es: {
         summary: 'Resumen',
         experience: 'Experiencia',
+        education: 'Educación',
         skills: 'Habilidades y Tecnologías',
         projects: 'Proyectos',
         techStack: 'Stack tecnológico',
-        stats: 'Métricas clave'
+        stats: 'Métricas clave',
+        baccalaureate: 'Bachillerato Científico',
+        institution: 'Instituto',
+        graduationYear: '2018'
       }
     };
 
@@ -331,6 +351,24 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
               </ul>
             </div>
           `).join('')}
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">${t.education}</h2>
+          <div class="experience-item">
+            <div class="job-header">
+              <div>
+                <div class="job-title">${t.baccalaureate}</div>
+                <div class="company">${t.institution}</div>
+              </div>
+              <div class="period">${t.graduationYear}</div>
+            </div>
+            <p>${language === 'en' ? 
+              'Baccalauréat Scientifique (Scientific Baccalaureate) - Specialized in Computer Science' :
+              language === 'fr' ? 
+              'Baccalauréat Scientifique - Spécialité Sciences de l\'Informatique' :
+              'Bachillerato Científico - Especialidad Informática'}</p>
+          </div>
         </div>
 
         <div class="section">

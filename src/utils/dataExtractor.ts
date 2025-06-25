@@ -115,10 +115,9 @@ const workExperience = workExperienceData.map(job => ({
 export const generateExperience = (language: 'en' | 'fr' | 'es', projectCount: number) => {
   return workExperience.map(job => {
     const formatDate = (date: Date) => {
-      return date.toLocaleDateString(
-        language === 'fr' ? 'fr-FR' : language === 'es' ? 'es-ES' : 'en-US',
-        { year: 'numeric', month: 'short' }
-      );
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const year = date.getFullYear();
+      return `${month}/${year}`;
     };
 
     const isPresent = job.endDate === 'Present';

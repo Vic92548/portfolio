@@ -26,10 +26,9 @@ export const formatDate = (date: Date | 'Present', language: 'en' | 'fr' | 'es')
   if (date === 'Present') {
     return language === 'fr' ? 'Présent' : language === 'es' ? 'Presente' : 'Present';
   }
-  return date.toLocaleDateString(
-    language === 'fr' ? 'fr-FR' : language === 'es' ? 'es-ES' : 'en-US',
-    { year: 'numeric', month: 'short' }
-  );
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}/${year}`;
 };
 
 const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
