@@ -21,9 +21,9 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
       title: websiteData.heroData.title[lang],
       contact: {
         email: 'vchanet@pm.me',
-        website: 'https://victorchanet.dev',
-        github: 'https://github.com/victorchanet',
-        linkedin: 'https://linkedin.com/in/victorchanet'
+        website: 'https://victorchanet.work',
+        github: 'https://github.com/Vic92548',
+        linkedin: 'https://www.linkedin.com/in/victor-chanet/'
       },
       summary: websiteData.heroData.description[lang],
       experience: experience,

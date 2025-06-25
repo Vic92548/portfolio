@@ -114,9 +114,9 @@ class CVService {
           fr: 'Paris, France',
           es: 'París, Francia'
         },
-        website: 'https://victorchanet.dev',
-        github: 'https://github.com/victorchanet',
-        linkedin: 'https://linkedin.com/in/victorchanet',
+        website: 'https://victorchanet.work',
+        github: 'https://github.com/Vic92548',
+        linkedin: 'https://www.linkedin.com/in/victor-chanet/',
         summary: {
           en: 'Full-stack engineer and entrepreneur. I create digital products that scale to hundreds of thousands of users, with a focus on developer experience and performance.',
           fr: 'Ingénieur full-stack et entrepreneur. Je crée des produits numériques qui évoluent vers des centaines de milliers d\'utilisateurs, en me concentrant sur l\'expérience développeur et les performances.',
