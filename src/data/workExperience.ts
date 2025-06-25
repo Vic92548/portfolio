@@ -35,7 +35,7 @@ export const workExperience: WorkExperience[] = [
     },
     role: 'Game Consultant',
     startDate: new Date('2024-01-01'),
-    endDate: 'Present',
+    endDate: new Date('2025-05-01'),
     technologies: ['Steamworks', 'Game Publishing', 'Multiplayer Networking', 'API Integration', 'Technical Advisory', 'Community Management', 'Platform Requirements']
   },
   {
