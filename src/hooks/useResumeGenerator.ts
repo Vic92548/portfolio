@@ -27,7 +27,8 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
         email: 'vchanet@pm.me',
         website: 'https://victorchanet.work',
         github: 'https://github.com/Vic92548',
-        linkedin: 'https://www.linkedin.com/in/victor-chanet/'
+        linkedin: 'https://www.linkedin.com/in/victor-chanet/',
+        steam: 'https://store.steampowered.com/developer/VictorGameStudio/'
       },
       summary: personalInfo?.summary?.[lang] || websiteData.heroData.description[lang],
       experience: experience,

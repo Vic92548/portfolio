@@ -75,6 +75,7 @@ export interface CVData {
     website: string;
     github: string;
     linkedin: string;
+    steam?: string;
     summary: LocalizedString;
   };
   skills: Skill[];

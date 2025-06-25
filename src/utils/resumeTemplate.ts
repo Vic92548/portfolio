@@ -14,6 +14,7 @@ export interface ResumeContent {
     website: string;
     github: string;
     linkedin: string;
+    steam?: string;
   };
   summary: string;
   experience: {
@@ -308,6 +309,7 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
             <a href="${content.contact.website}">${content.contact.website}</a>
             <a href="${content.contact.github}">GitHub</a>
             <a href="${content.contact.linkedin}">LinkedIn</a>
+            ${content.contact.steam ? `<a href="${content.contact.steam}">Steam</a>` : ''}
           </div>
           <div class="stats-section">
             <div class="stat-item">
