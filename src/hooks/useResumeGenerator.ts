@@ -1,6 +1,7 @@
 
 import { useEffect } from 'react';
 import { extractWebsiteData, generateExperience } from '../utils/dataExtractor';
+import { getLocalizedString } from '@/utils/localization';
 import { generateResumeHTML, type ResumeContent } from '../utils/resumeTemplate';
 import { printResume } from '../utils/pdfGenerator';
 import { cvService } from '@/services/cvService';
@@ -19,16 +20,16 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
 
     // Get the personal info from CV service to access the updated summary
     const personalInfo = cvService.getPersonalInfo();
-    
+
     const content: ResumeContent = {
-      name: websiteData.heroData.name,
-      title: websiteData.heroData.title[lang],
+      name: personalInfo.name,
+      title: getLocalizedString(personalInfo.title, lang),
       contact: {
-        email: 'vchanet@pm.me',
-        website: 'https://victorchanet.work',
-        github: 'https://github.com/Vic92548',
-        linkedin: 'https://www.linkedin.com/in/victor-chanet/',
-        steam: 'https://store.steampowered.com/developer/VictorGameStudio/'
+        email: personalInfo.email,
+        website: personalInfo.website,
+        github: personalInfo.github,
+        linkedin: personalInfo.linkedin,
+        steam: personalInfo.steam
       },
       summary: personalInfo?.summary?.[lang] || websiteData.heroData.description[lang],
       experience: experience,

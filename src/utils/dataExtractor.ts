@@ -1,4 +1,5 @@
 import { projects, getProjectCount } from '@/data/projects';
+import { cvService } from '@/services/cvService';
 
 // Utility to extract dynamic data from website components
 export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
@@ -6,18 +7,14 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
   const projectCount = getProjectCount();
 
   // Extract hero section data
+  cvService.setLanguage(language);
+  const personalInfo = cvService.getPersonalInfo();
+
+  // Extract hero section data
   const heroData = {
-    name: 'Victor Chanet',
-    title: {
-      en: 'Full-Stack Engineer & Game Developer',
-      fr: 'Ingénieur Full-Stack & Développeur de Jeux',
-      es: 'Ingeniero Full-Stack y Desarrollador de Juegos'
-    },
-    description: {
-      en: 'As a full-stack engineer and game developer, I build scalable web applications and engaging games. My passion lies in creating seamless user experiences through clean, efficient code and innovative solutions.',
-      fr: 'En tant qu\'ingénieur full-stack et développeur de jeux, je crée des applications web évolutives et des jeux captivants. Ma passion réside dans la création d\'expériences utilisateur fluides grâce à un code propre, efficace et des solutions innovantes.',
-      es: 'Como ingeniero full-stack y desarrollador de videojuegos, construyo aplicaciones web escalables y juegos cautivadores. Mi pasión es crear experiencias de usuario fluidas a través de código limpio, eficiente y soluciones innovadoras.'
-    },
+    name: personalInfo.name,
+    title: personalInfo.title,
+    description: personalInfo.summary,
     stats: {
       downloads: 150000,
       stars: 2100,
