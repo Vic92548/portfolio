@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
+import { cvService } from '@/services/cvService';
 
 interface NavigationProps {
   language: 'en' | 'fr' | 'es';
@@ -40,6 +41,8 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
   };
 
   const t = translations[language];
+  const availableLanguages = cvService.getLanguages();
+  const personalInfo = cvService.getPersonalInfo();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,7 +86,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <span className="font-semibold text-lg">Victor Chanet</span>
+          <span className="font-semibold text-lg">{personalInfo.name}</span>
         </div>
 
         {/* Desktop Menu */}
@@ -123,10 +126,10 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
             </button>
             
             <div className="absolute top-full right-0 mt-2 w-36 bg-background border border-border rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 backdrop-blur-sm">
-              {Object.entries(t.languages).map(([code, name]) => (
+              {availableLanguages.map(({ code, name }) => (
                 <button
                   key={code}
-                  onClick={() => setLanguage(code as 'en' | 'fr' | 'es')}
+                  onClick={() => setLanguage(code)}
                   className={`block w-full text-left px-4 py-3 text-sm hover:bg-muted first:rounded-t-xl last:rounded-b-xl transition-colors ${
                     language === code ? 'bg-muted font-medium text-magic-blue' : ''
                   }`}
@@ -178,10 +181,10 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
             
             <div className="pt-3 border-t border-border">
               <div className="flex gap-2">
-                {Object.entries(t.languages).map(([code, name]) => (
+                {availableLanguages.map(({ code, name }) => (
                   <button
                     key={code}
-                    onClick={() => setLanguage(code as 'en' | 'fr' | 'es')}
+                    onClick={() => setLanguage(code)}
                     className={`px-3 py-2 text-xs rounded-lg transition-colors ${
                       language === code 
                         ? 'bg-magic-blue text-white' 

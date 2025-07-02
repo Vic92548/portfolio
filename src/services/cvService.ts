@@ -84,7 +84,7 @@ class CVService {
   }
 
   public getLanguages() {
-    return this.cvData.languages;
+    return this.cvData.languages || [];
   }
 
   public getLocalizedString(string: LocalizedString | string | undefined): string {
@@ -147,18 +147,7 @@ class CVService {
         },
         featured: project.featured || false
       } as Project)),
-      languages: [
-        {
-          name: 'English',
-          level: {
-            en: 'Native or bilingual proficiency',
-            fr: 'Natif ou bilingue',
-            es: 'Nativo o bilingüe'
-          },
-          proficiency: 5
-        },
-        // Add other languages
-      ],
+      languages: user.languages.map(lang => ({ name: lang.name, code: lang.code as Language, level: { en: '', fr: '', es: ''}, proficiency: 0 })),
       meta: {
         lastUpdated: new Date().toISOString(),
         version: '1.0.0'

@@ -83,6 +83,7 @@ export interface CVData {
   education: Education[];
   projects: Project[];
   languages: Array<{
+    code: Language;
     name: string;
     level: LocalizedString;
     proficiency: number; // 1-5
