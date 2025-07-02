@@ -55,8 +55,7 @@ export const projects: ProjectBase[] = [
     image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2542010/header.jpg?t=1726438639',
     video: 'https://video.fastly.steamstatic.com/store_trailers/256984464/movie480_vp9.webm?t=1700780677',
     links: { 
-      live: 'https://store.steampowered.com/app/2542010/Only_Wish/', 
-      github: '#' 
+      live: 'https://store.steampowered.com/app/2542010/Only_Wish/' 
     }
   },
   {
@@ -73,8 +72,7 @@ export const projects: ProjectBase[] = [
     status: 'active',
     image: 'https://polyplaza-wiki.b-cdn.net/Screenshot%202025-06-22%20145627.jpg',
     links: { 
-      live: 'https://nextsaas.co/', 
-      github: '#' 
+      live: 'https://nextsaas.co/' 
     }
   },
   {
@@ -113,8 +111,7 @@ export const projects: ProjectBase[] = [
     video: 'https://video.fastly.steamstatic.com/store_trailers/257033315/movie480_vp9.webm?t=1735947222',
     links: { 
       live: 'https://store.steampowered.com/app/2716030/Poly_Plaza/', 
-      steam: 'https://store.steampowered.com/app/2716030/Poly_Plaza/',
-      github: '#' 
+      steam: 'https://store.steampowered.com/app/2716030/Poly_Plaza/'
     }
   },
   {
@@ -133,8 +130,7 @@ export const projects: ProjectBase[] = [
     image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1265300/header.jpg?t=1726438492',
     video: 'https://video.fastly.steamstatic.com/store_trailers/256841789/movie480_vp9.webm?t=1625575060',
     links: { 
-      live: 'https://store.steampowered.com/app/1265300/Broll/', 
-      github: '#' 
+      live: 'https://store.steampowered.com/app/1265300/Broll/'
     }
   }
 ];

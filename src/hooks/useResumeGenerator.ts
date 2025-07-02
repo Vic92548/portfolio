@@ -52,7 +52,8 @@ const generateResumeContent = (lang: 'en' | 'fr' | 'es'): ResumeContent => {
         name: project.title,
         description: project.description[lang],
         tech: project.tech.join(', '),
-        featured: project.featured
+        featured: project.featured,
+        links: project.links
       })),
       stats: {
         totalProjects: websiteData.projectCount,

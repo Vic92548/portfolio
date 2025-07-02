@@ -33,6 +33,7 @@ export interface ResumeContent {
     description: string;
     tech: string;
     featured: boolean;
+    links?: { live?: string; github?: string; demo?: string; steam?: string; };
   }[];
   stats: {
     totalProjects: number;
@@ -288,6 +289,20 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
             font-size: 14px;
             margin-top: 8px;
           }
+          .project-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+          }
+          .project-links a {
+            color: #5E6AD2;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+          }
+          .project-links a:hover {
+            text-decoration: underline;
+          }
           .featured-badge {
             display: inline-block;
             background-color: #4a6bff;
@@ -396,6 +411,14 @@ export const generateResumeHTML = (content: ResumeContent, language: 'en' | 'fr'
               </div>
               <div class="project-description">${project.description}</div>
               <div class="project-tech">${t.techStack}: ${project.tech}</div>
+              ${project.links && (project.links.github || project.links.live || project.links.demo || project.links.steam) ? `
+                <div class="project-links">
+                  ${project.links.github ? `<a href="${project.links.github}" target="_blank">GitHub</a>` : ''}
+                  ${project.links.live ? `<a href="${project.links.live}" target="_blank">Live Site</a>` : ''}
+                  ${project.links.demo ? `<a href="${project.links.demo}" target="_blank">Demo</a>` : ''}
+                  ${project.links.steam ? `<a href="${project.links.steam}" target="_blank">Steam</a>` : ''}
+                </div>
+              ` : ''}
             </div>
           `).join('')}
         </div>
