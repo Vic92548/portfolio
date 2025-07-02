@@ -1,5 +1,7 @@
 
 import { Mail, Calendar, Linkedin } from 'lucide-react';
+import { cvService } from '@/services/cvService';
+import { getLocalizedString } from '@/utils/localization';
 
 interface ContactSectionProps {
   language: 'en' | 'fr' | 'es';
@@ -37,6 +39,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
   };
 
   const t = translations[language];
+  const personalInfo = cvService.getPersonalInfo();
 
   return (
     <section id="contact" className="py-28 bg-nordic-gray/20 dark:bg-border-dark/20">
@@ -68,7 +71,7 @@ const ContactSection = ({ language }: ContactSectionProps) => {
               
               <div className="space-y-6">
                 <a 
-                  href="mailto:vchanet@pm.me"
+                  href={`mailto:${personalInfo.email}`}
                   className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-500"
                 >
                   <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-magic-blue/20 transition-colors">
@@ -76,12 +79,12 @@ const ContactSection = ({ language }: ContactSectionProps) => {
                   </div>
                   <div>
                     <div className="font-medium text-lg">{t.email}</div>
-                    <div className="text-sm text-muted-foreground">vchanet@pm.me</div>
+                    <div className="text-sm text-muted-foreground">{personalInfo.email}</div>
                   </div>
                 </a>
 
                 <a 
-                  href="#"
+                  href={personalInfo.booking?.url || '#'}
                   className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-600"
                 >
                   <div className="w-14 h-14 bg-magic-blue/10 rounded-2xl flex items-center justify-center group-hover:bg-magic-blue/20 transition-colors">
@@ -89,12 +92,12 @@ const ContactSection = ({ language }: ContactSectionProps) => {
                   </div>
                   <div>
                     <div className="font-medium text-lg">{t.schedule}</div>
-                    <div className="text-sm text-muted-foreground">30-minute strategy session</div>
+                    <div className="text-sm text-muted-foreground">{getLocalizedString(personalInfo.booking?.time, language)}</div>
                   </div>
                 </a>
 
                 <a 
-                  href="https://www.linkedin.com/in/victor-chanet/"
+                  href={personalInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-6 p-6 bg-background border border-border rounded-2xl hover:shadow-lg transition-all duration-300 group animate-fade-in delay-700"

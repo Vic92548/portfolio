@@ -6,6 +6,14 @@ export const user = {
     es: 'Ingeniero Full-Stack y Desarrollador de Juegos'
   },
   email: 'vchanet@pm.me',
+  booking: {
+    url: 'https://cal.com/victorchanet/quick-chat',
+    time: {
+      en: '15-minute strategy session',
+      fr: 'Session stratégique de 15 minutes',
+      es: 'Sesión de estrategia de 15 minutos'
+    }
+  },
   location: {
     en: 'Paris, France',
     fr: 'Paris, France',

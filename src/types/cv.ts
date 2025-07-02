@@ -70,12 +70,16 @@ export interface CVData {
     name: string;
     title: LocalizedString;
     email: string;
-    phone: string;
+    phone?: string;
     location: LocalizedString;
     website: string;
     github: string;
     linkedin: string;
     steam?: string;
+    booking?: {
+      url: string;
+      time: LocalizedString;
+    };
     summary: LocalizedString;
   };
   skills: Skill[];

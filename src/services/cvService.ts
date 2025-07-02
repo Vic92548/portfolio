@@ -105,12 +105,13 @@ class CVService {
         name: user.name,
         title: user.title,
         email: user.email,
-        phone: user.phone,
+        
         location: user.location,
         website: user.website,
         github: user.social.github,
         linkedin: user.social.linkedin,
         steam: user.social.steam,
+      booking: user.booking,
         summary: user.summary
       },
       skills: [
