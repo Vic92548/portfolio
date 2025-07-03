@@ -2,6 +2,24 @@ import { ProjectBase } from '@/types/cv';
 
 export const projects: ProjectBase[] = [
   {
+    id: 'portfolio',
+    title: 'Personal Portfolio',
+    description: {
+      en: 'My personal portfolio website, the one you are currently on. Built with Vite, React, and Shadcn/UI, and designed to be easily customizable. It is open-source and available for anyone to use as a template.',
+      fr: 'Mon portfolio personnel, celui sur lequel vous êtes actuellement. Construit avec Vite, React et Shadcn/UI, et conçu pour être facilement personnalisable. Il est open-source et disponible pour que quiconque puisse l\'utiliser comme modèle.',
+      es: 'Mi portafolio personal, el que estás viendo actualmente. Construido con Vite, React y Shadcn/UI, y diseñado para ser fácilmente personalizable. Es de código abierto y está disponible para que cualquiera lo use como plantilla.'
+    },
+    tech: ['Vite', 'React', 'TypeScript', 'Tailwind CSS', 'Shadcn/UI'],
+    category: 'webApps',
+    featured: true,
+    status: 'active',
+    image: 'https://opengraph.githubassets.com/1/Vic92548/portfolio',
+    links: {
+      live: 'https://victorchanet.work',
+      github: 'https://github.com/Vic92548/portfolio'
+    }
+  },
+  {
     id: 'buckshot-plus-plus',
     title: 'BuckshotPlusPlus',
     description: {
