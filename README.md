@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
+# Victor Chanet's Portfolio
 
-## Project info
+Welcome to my personal portfolio! I've designed this site to showcase my projects, skills, and professional experience. It's built with modern web technologies to be fast, responsive, and easily customizable.
 
-**URL**: https://lovable.dev/projects/230b9f4b-e4ba-441d-8391-d4482b51ff4e
+I also designed this project to serve as a template for fellow engineers, developers, and game developers. That's why I've made it incredibly easy to edit and customize. Feel free to fork it and make it your own!
 
-## How can I edit this code?
+## ✨ Features
 
-There are several ways of editing your application.
+- **Dynamic Content**: All portfolio data, from personal information to project details, is managed in simple TypeScript files, making it easy to update.
+- **Multi-language Support**: The portfolio is designed to be multilingual (English, French, Spanish).
+- **Responsive Design**: Looks great on all devices, from desktops to mobile phones.
+- **Key Sections**: Includes a Hero section, About Me, Work Experience, Projects, and Contact information.
 
-**Use Lovable**
+## 🚀 Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/230b9f4b-e4ba-441d-8391-d4482b51ff4e) and start prompting.
+Follow these instructions to get a local copy up and running for development and testing purposes.
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Vic92548/portfolio.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd portfolio
+   ```
+3. Install NPM packages:
+   ```sh
+   npm install
+   ```
 
-Follow these steps:
+### Running the Application
+
+To start the development server, run:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+This will start the application on `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Building for Production
 
-**Use GitHub Codespaces**
+To create a production-ready build, run:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+npm run build
+```
 
-## What technologies are used for this project?
+This will create a `dist` folder with the optimized static assets.
 
-This project is built with:
+## ✏️ How to Customize
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This portfolio is designed to be easily customized by editing the files in the `src/data/` directory. No need to dig into the React components to change the content.
 
-## How can I deploy this project?
+- **`src/data/user.ts`**: Edit this file to change your personal information, such as your name, title, email, social media links, and professional summary.
 
-Simply open [Lovable](https://lovable.dev/projects/230b9f4b-e4ba-441d-8391-d4482b51ff4e) and click on Share -> Publish.
+- **`src/data/hero.ts`**: This file controls the content of the main hero section on the homepage.
 
-## Can I connect a custom domain to my Lovable project?
+- **`src/data/about.ts`**: Update this file to modify the content in the "About Me" section, including your bio and skills.
 
-Yes, you can!
+- **`src/data/projects.ts`**: Add, remove, or modify your projects here. Each project object contains its title, description, tags, and links.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **`src/data/workExperience.ts`**: Manage your professional history in this file. Each entry represents a role with a company, description, and duration.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 👨‍💻 About Me
+
+I'm **Victor Chanet**, a Full-Stack Engineer and Game Developer from France. I have a passion for creating immersive gaming experiences and scalable systems, and I excel in collaborative environments, bringing game concepts to life through technical implementation and creative problem-solving.
+
+- **GitHub**: [Vic92548](https://github.com/Vic92548)
+- **LinkedIn**: [Victor Chanet](https://www.linkedin.com/in/victor-chanet/)
+- **Website**: [victorchanet.work](https://victorchanet.work)
+
+## 🛠️ Technologies Used
+
+- **[Vite](https://vitejs.dev/)**: Next-generation front-end tooling.
+- **[React](https://reactjs.org/)**: A JavaScript library for building user interfaces.
+- **[TypeScript](https://www.typescriptlang.org/)**: A typed superset of JavaScript.
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework.
+- **[Shadcn/UI](https://ui.shadcn.com/)**: Re-usable components built using Radix UI and Tailwind CSS.
+- **[Framer Motion](https://www.framer.com/motion/)**: A production-ready motion library for React.
+
+
