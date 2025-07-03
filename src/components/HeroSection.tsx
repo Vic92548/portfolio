@@ -1,149 +1,40 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { ArrowRight, Download, Code, Zap, Layers } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import CounterAnimation from '@/components/CounterAnimation';
 import { useCV } from '@/hooks/useCV';
-import type { CVData, LocalizedString, Project } from '@/types/cv';
 import { fetchGitHubStars } from '@/services/githubService';
 import { calculateTotalDownloads } from '@/utils/calculateTotalDownloads';
-
-// Define types for translations
-interface Translation {
-  badge: string;
-  title: string;
-  titleHighlight: string;
-  subtitle: string;
-  cta: string;
-  ctaSecondary: string;
-  stats: {
-    downloads: string;
-    stars: string;
-    products: string;
-  };
-  features: Array<{
-    icon: React.ComponentType<{ className?: string }>;
-    title: string;
-    desc: string;
-  }>;
-}
+import { hero } from '@/data/hero'; // Import hero data
 
 interface HeroSectionProps {
   language: 'en' | 'fr' | 'es';
 }
 
-// Move translations outside the component
-const baseTranslations = {
-  en: {
-    badge: "Available for new projects",
-    title: "Crafting digital experiences that ",
-    titleHighlight: "inspire",
-    subtitle: "As a full-stack engineer and game developer, I build scalable web applications and engaging games. My passion lies in creating seamless user experiences through clean, efficient code and innovative solutions.",
-    cta: "Explore My Work",
-    ctaSecondary: "View Resume",
-    stats: {
-      downloads: "Libraries",
-      stars: "GitHub Stars", 
-      products: "Projects Shipped"
-    },
-    features: [
-      { icon: Code, title: "Full-Stack Engineering", desc: "Next.js, TypeScript, Node.js" },
-      { icon: Zap, title: "Game Development", desc: "Unreal Engine, C++, Game Design" },
-      { icon: Layers, title: "Technical Leadership", desc: "Mentoring & Architecture" }
-    ]
-  },
-  fr: {
-    badge: "Disponible pour de nouveaux projets",
-    title: "Création d'expériences numériques qui ",
-    titleHighlight: "inspirent",
-    subtitle: "En tant qu'ingénieur full-stack et développeur de jeux, je crée des applications web évolutives et des jeux captivants. Ma passion réside dans la création d'expériences utilisateur fluides grâce à un code propre, efficace et des solutions innovantes.",
-    cta: "Découvrir mon travail",
-    ctaSecondary: "Voir le CV",
-    stats: {
-      downloads: "Bibliothèques",
-      stars: "Étoiles GitHub",
-      products: "Projets livrés"
-    },
-    features: [
-      { icon: Code, title: "Ingénierie Full-Stack", desc: "Next.js, TypeScript, Node.js" },
-      { icon: Zap, title: "Développement de Jeux", desc: "Unreal Engine, C++, Conception" },
-      { icon: Layers, title: "Leadership Technique", desc: "Mentorat & Architecture" }
-    ]
-  },
-  es: {
-    badge: "Disponible para nuevos proyectos",
-    title: "Creando experiencias digitales que ",
-    titleHighlight: "inspiran",
-    subtitle: "Como ingeniero full-stack y desarrollador de videojuegos, construyo aplicaciones web escalables y juegos cautivadores. Mi pasión es crear experiencias de usuario fluidas a través de código limpio, eficiente y soluciones innovadoras.",
-    cta: "Ver mis proyectos",
-    ctaSecondary: "Ver currículum",
-    stats: {
-      downloads: "Librerías",
-      stars: "Estrellas GitHub",
-      products: "Proyectos finalizados"
-    },
-    features: [
-      { icon: Code, title: "Ingeniería Full-Stack", desc: "Next.js, TypeScript, Node.js" },
-      { icon: Zap, title: "Desarrollo de Videojuegos", desc: "Unreal Engine, C++, Diseño" },
-      { icon: Layers, title: "Liderazgo Técnico", desc: "Mentoría & Arquitectura" }
-    ]
-  }
-};
-
-// Helper function to safely get localized string
-const getLocalizedString = (strings: LocalizedString | undefined, lang: 'en' | 'fr' | 'es' = 'en'): string => {
-  if (!strings) return '';
-  return strings[lang] || strings.en || '';
-};
-
-// Extract hook logic into a custom hook
+// Custom hook for hero section logic
 const useHeroSection = (language: 'en' | 'fr' | 'es') => {
-  // All hooks must be called unconditionally at the top level
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(0);
   const [gitHubStars, setGitHubStars] = useState<number>(0);
   const [isDownloading, setIsDownloading] = useState(false);
-  
-  // Get CV data
+
   const { data: cvData, loading, error } = useCV(language);
-  
-  // Calculate project count and total downloads
+
   const { projectCount, totalDownloads } = useMemo(() => {
     if (!cvData?.projects) return { projectCount: 0, totalDownloads: 0 };
-    
-    // Count all projects, not just featured ones
     return {
       projectCount: cvData.projects.length,
-      totalDownloads: calculateTotalDownloads(cvData.projects)
+      totalDownloads: calculateTotalDownloads(cvData.projects),
     };
   }, [cvData]);
-  
-  // Get base translations
-  const baseT = useMemo(() => baseTranslations[language] || baseTranslations.en, [language]);
-  
-  // Extract data from CV
-  const { personalInfo } = cvData || {};
-  
-  // Debug logging
-  console.log('CV Data:', cvData);
-  console.log('GitHub Stars:', gitHubStars);
-  console.log('Project Count:', projectCount);
-  const features = baseT?.features || [];
-  const featuresCount = features?.length || 0;
-  const summary = personalInfo?.summary || { en: '', fr: '', es: '' };
-  
-  // Memoize translations with all dependencies
-  const t = useMemo(() => ({
-    ...baseT,
-    features,
-    subtitle: getLocalizedString(summary, language) || baseT.subtitle || ''
-  }), [baseT, summary, language, features]);
-  
-  // Project count and total downloads are now calculated on demand
 
-  // All effects must be called unconditionally at the top level
+  // Get translations directly from the hero data file
+  const t = useMemo(() => hero[language] || hero.en, [language]);
+  const features = t.features || [];
+  const featuresCount = features.length || 0;
+
   useEffect(() => {
     setIsVisible(true);
-    
-    // Only set up the interval if we have features to rotate
+
     let interval: NodeJS.Timeout | undefined;
     if (featuresCount > 1) {
       interval = setInterval(() => {
@@ -151,7 +42,6 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
       }, 5000);
     }
 
-    // Fetch GitHub stars for all projects
     const fetchStars = async () => {
       if (cvData?.projects?.length) {
         try {
@@ -162,67 +52,52 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
         }
       }
     };
-    
+
     fetchStars();
-    
+
     return () => {
       if (interval) clearInterval(interval);
     };
   }, [featuresCount, cvData?.projects]);
-  
-  // Memoize the handleDownloadResume function to prevent unnecessary re-renders
+
   const handleDownloadResume = useCallback(async () => {
     if (isDownloading) return;
-    
     setIsDownloading(true);
-    
+
     try {
-      // If data is still loading, wait for it
       if (loading) {
-        console.log('Waiting for CV data to load...');
-        await new Promise<void>((resolve) => {
+        await new Promise<void>(resolve => {
           const checkData = () => {
-            if (!loading) {
-              resolve();
-            } else {
-              setTimeout(checkData, 100);
-            }
+            if (!loading) resolve();
+            else setTimeout(checkData, 100);
           };
           checkData();
         });
       }
-      
+
       if (error) {
         console.error('Cannot download resume due to error:', error);
         return;
       }
-      
+
       if (!cvData?.projects) {
         console.error('Projects data not available');
         return;
       }
-      
-      // Get the latest values right before dispatching the event
-      const projectCount = cvData.projects.length;
-      const totalDownloads = calculateTotalDownloads(cvData.projects);
-      const currentStars = gitHubStars; // Use the current gitHubStars value
-      
-      console.log('Dispatching download with stats:', { 
-        projectCount, 
-        totalDownloads, 
-        gitHubStars: currentStars 
-      });
-      
-      // Dispatch custom event to trigger resume download with real stats
-      window.dispatchEvent(new CustomEvent('downloadResume', { 
-        detail: { 
+
+      const currentProjectCount = cvData.projects.length;
+      const currentTotalDownloads = calculateTotalDownloads(cvData.projects);
+      const currentStars = gitHubStars;
+
+      window.dispatchEvent(new CustomEvent('downloadResume', {
+        detail: {
           language,
           stats: {
-            projectCount,
-            totalDownloads,
-            gitHubStars: currentStars
-          }
-        } 
+            projectCount: currentProjectCount,
+            totalDownloads: currentTotalDownloads,
+            gitHubStars: currentStars,
+          },
+        },
       }));
     } catch (err) {
       console.error('Error during resume download:', err);
@@ -242,65 +117,50 @@ const useHeroSection = (language: 'en' | 'fr' | 'es') => {
     gitHubStars,
     loading,
     error,
-    cvData,
-    projectCount: cvData?.projects?.length || 0,
-    totalDownloads: cvData?.projects ? calculateTotalDownloads(cvData.projects) : 0,
-    features: baseT.features,
-    featuresCount: baseT.features.length,
-    summary: personalInfo?.summary,
-    t: baseT,
+    projectCount,
+    totalDownloads,
+    features,
+    featuresCount,
+    t,
     scrollToWork,
     handleDownloadResume,
-    personalInfo,
-    isDownloading
+    isDownloading,
   };
 };
 
+// Main Component
 const HeroSection = ({ language }: HeroSectionProps) => {
-  // Use the custom hook to manage all state and effects
   const {
     isVisible,
     activeCard,
     gitHubStars,
     loading,
     error,
-    cvData,
     projectCount,
     totalDownloads,
     features,
     featuresCount,
-    summary,
     t,
     scrollToWork,
     handleDownloadResume,
-    personalInfo,
-    isDownloading
+    isDownloading,
   } = useHeroSection(language);
-  
-  // Handle loading and error states after hooks
+
   if (loading) return <div className="flex items-center justify-center min-h-[60vh]">Loading...</div>;
   if (error) return <div className="text-red-500 text-center py-10">Error loading CV data</div>;
-  if (!cvData) return null;
-  
-
-
-
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-darker-gray via-nordic-gray to-darker-gray">
-      {/* Enhanced Background with moving particles */}
+      {/* Background elements */}
       <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <div 
+        <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `
-              radial-gradient(circle at 1px 1px, rgba(94, 106, 210, 0.15) 1px, transparent 0)
-            `,
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(94, 106, 210, 0.15) 1px, transparent 0)`,
             backgroundSize: '50px 50px',
-            animation: 'grid-move 30s linear infinite'
+            animation: 'grid-move 30s linear infinite',
           }}
         />
-        {/* Floating orbs */}
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-magic-blue/20 rounded-full blur-xl animate-pulse" />
         <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-magic-blue/10 rounded-full blur-2xl animate-pulse delay-1000" />
         <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-magic-blue/30 rounded-full blur-lg animate-pulse delay-2000" />
@@ -308,10 +168,9 @@ const HeroSection = ({ language }: HeroSectionProps) => {
 
       <div className="relative container mx-auto px-6 pt-20">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
-          {/* Content */}
+          {/* Left Content */}
           <div className="text-center lg:text-left">
-            {/* Badge */}
-            <div 
+            <div
               className={`inline-flex items-center gap-3 px-4 py-2 bg-border-dark/80 border border-border-dark rounded-full text-sm font-medium text-dark-text mb-8 animate-fade-in delay-100 backdrop-blur-sm ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.1s' }}
             >
@@ -319,8 +178,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               {t.badge}
             </div>
 
-            {/* Title */}
-            <h1 
+            <h1
               className={`text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 animate-fade-in delay-200 text-dark-text ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.2s' }}
             >
@@ -331,8 +189,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
               </span>
             </h1>
 
-            {/* Subtitle */}
-            <p 
+            <p
               className={`text-xl lg:text-xl text-light-gray mb-10 leading-relaxed max-w-2xl lg:max-w-none animate-fade-in delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.3s' }}
             >
@@ -340,43 +197,26 @@ const HeroSection = ({ language }: HeroSectionProps) => {
             </p>
 
             {/* Stats */}
-            <div 
+            <div
               className={`grid grid-cols-3 gap-8 mb-10 animate-fade-in delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.4s' }}
             >
               <div className="text-center lg:text-left">
-                <CounterAnimation 
-                  target={totalDownloads} 
-                  className="text-3xl lg:text-4xl font-bold text-dark-text"
-                />
-                <div className="text-sm text-light-gray mt-1">{getLocalizedString({ 
-                  en: "Total Downloads",
-                  fr: "Téléchargements totaux",
-                  es: "Descargas totales"
-                }, language)}</div>
+                <CounterAnimation target={totalDownloads} className="text-3xl lg:text-4xl font-bold text-dark-text" />
+                <div className="text-sm text-light-gray mt-1">{t.stats.downloads}</div>
               </div>
               <div className="text-center lg:text-left">
-                <CounterAnimation 
-                  target={gitHubStars || 2100} 
-                  className="text-3xl lg:text-4xl font-bold text-dark-text"
-                />
-                <div className="text-sm text-light-gray mt-1">{getLocalizedString({ 
-                  en: "GitHub Stars",
-                  fr: "Étoiles GitHub",
-                  es: "Estrellas GitHub"
-                }, language)}</div>
+                <CounterAnimation target={gitHubStars || 2100} className="text-3xl lg:text-4xl font-bold text-dark-text" />
+                <div className="text-sm text-light-gray mt-1">{t.stats.stars}</div>
               </div>
               <div className="text-center lg:text-left">
-                <CounterAnimation 
-                  target={projectCount} 
-                  className="text-3xl lg:text-4xl font-bold text-dark-text"
-                />
+                <CounterAnimation target={projectCount} className="text-3xl lg:text-4xl font-bold text-dark-text" />
                 <div className="text-sm text-light-gray mt-1">{t.stats.products}</div>
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div 
+            {/* CTAs */}
+            <div
               className={`flex flex-col sm:flex-row gap-4 animate-fade-in delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transition: 'all 0.6s ease-out 0.5s' }}
             >
@@ -384,8 +224,8 @@ const HeroSection = ({ language }: HeroSectionProps) => {
                 {t.cta}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
-              <button 
-                onClick={handleDownloadResume} 
+              <button
+                onClick={handleDownloadResume}
                 className={`btn btn-secondary btn-lg group relative ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
                 disabled={isDownloading}
               >
@@ -398,7 +238,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
                   </>
                 ) : (
                   <>
-                    <Download className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+                    <Download className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
                     {t.ctaSecondary}
                   </>
                 )}
@@ -406,57 +246,53 @@ const HeroSection = ({ language }: HeroSectionProps) => {
             </div>
           </div>
 
-          {/* Interactive Visual - Feature Cards */}
-          <div 
-            className={`animate-fade-left delay-600 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
-            style={{ transition: 'all 0.6s ease-out 0.6s' }}
-          >
-            <div className="relative">
-              {/* Main showcase card */}
-              <div className="bg-gradient-to-br from-border-dark/90 to-border-dark/60 backdrop-blur-lg rounded-3xl p-8 border border-border-dark/50 shadow-2xl">
-                <div className="space-y-6">
-                  {t.features.map((feature, index) => {
-                    const Icon = feature.icon;
-                    return (
-                      <div 
-                        key={index}
-                        className={`flex items-center gap-4 p-4 rounded-2xl transition-all duration-500 ${
-                          activeCard === index 
-                            ? 'bg-magic-blue/20 border border-magic-blue/30 scale-105' 
-                            : 'bg-border-dark/30 border border-transparent hover:bg-border-dark/50'
-                        }`}
-                      >
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                          activeCard === index ? 'bg-magic-blue text-white' : 'bg-border-dark text-magic-blue'
-                        }`}>
-                          <Icon className="w-6 h-6" />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-dark-text">{feature.title}</div>
-                          <div className="text-sm text-light-gray">{feature.desc}</div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                
-                {/* Progress indicator */}
-                <div className="flex gap-2 mt-6 justify-center">
-                  {t.features.map((_, index) => (
-                    <div 
-                      key={index}
-                      className={`h-1 rounded-full transition-all duration-300 ${
-                        activeCard === index ? 'w-8 bg-magic-blue' : 'w-2 bg-border-dark'
-                      }`}
+          {/* Right Content (Feature Cards) */}
+          <div className="relative h-96 hidden lg:flex items-center justify-center">
+            {features.map((feature, index) => {
+              const isActive = index === activeCard;
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className={`absolute w-full p-8 bg-border-dark/50 border border-border-dark rounded-xl shadow-lg backdrop-blur-md transition-all duration-700 ease-in-out ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95 pointer-events-none'}`}
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-dark-gray rounded-lg border border-border-dark">
+                      <Icon className="w-6 h-6 text-magic-blue" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-dark-text">{feature.title}</h3>
+                      <p className="text-light-gray">{feature.desc}</p>
+                    </div>
+                  </div>
+                  <div className="relative w-full h-1 bg-dark-gray/50 rounded-full overflow-hidden mt-6">
+                    <div
+                      className="absolute top-0 left-0 h-full bg-magic-blue"
+                      style={{
+                        width: `${isActive ? '100%' : '0%'}`,
+                        transition: `${isActive ? 'width 5s linear' : 'none'}`,
+                      }}
                     />
-                  ))}
+                  </div>
                 </div>
-              </div>
+              );
+            })}
 
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-magic-blue/20 rounded-full blur-xl animate-pulse" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-magic-blue/30 rounded-full blur-lg animate-pulse delay-1000" />
+            {/* Progress indicator */}
+            <div className="absolute bottom-4 w-full flex justify-center gap-2">
+              {features.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    activeCard === index ? 'w-8 bg-magic-blue' : 'w-2 bg-border-dark'
+                  }`}
+                />
+              ))}
             </div>
+
+            {/* Floating elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-magic-blue/20 rounded-full blur-xl animate-pulse" />
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-magic-blue/30 rounded-full blur-lg animate-pulse delay-1000" />
           </div>
         </div>
       </div>
