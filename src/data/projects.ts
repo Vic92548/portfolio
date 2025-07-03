@@ -20,6 +20,26 @@ export const projects: ProjectBase[] = [
     }
   },
   {
+    id: 'poly-plaza',
+    title: 'Poly Plaza',
+    description: {
+      en: 'An open-world entrepreneurial sandbox game where you can buy properties, collect rent, and become the richest in town. Features daily updates, property management, and resource trading with dynamic NPC pricing.',
+      fr: 'Un bac à sable entrepreneurial en monde ouvert où vous pouvez acheter des propriétés, percevoir des loyers et devenir le plus riche de la ville. Comprend des mises à jour quotidiennes, une gestion immobilière et un commerce de ressources avec des prix dynamiques selon les PNJ.',
+      es: 'Un sandbox de emprendimiento en mundo abierto donde puedes comprar propiedades, cobrar alquileres y convertirte en el más rico de la ciudad. Incluye actualizaciones diarias, gestión de propiedades y comercio de recursos con precios dinámicos según los PNJ.'
+    },
+    downloads: 37384,
+    tech: ['Unreal Engine 5', 'C++', 'Blueprint', 'Game Analytics', 'JetBrains Rider'],
+    category: 'games',
+    featured: true,
+    status: 'active',
+    image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2716030/header.jpg?t=1746793041',
+    video: 'https://video.fastly.steamstatic.com/store_trailers/257033315/movie480_vp9.webm?t=1735947222',
+    links: { 
+      live: 'https://store.steampowered.com/app/2716030/Poly_Plaza/', 
+      steam: 'https://store.steampowered.com/app/2716030/Poly_Plaza/'
+    }
+  },
+  {
     id: 'buckshot-plus-plus',
     title: 'BuckshotPlusPlus',
     description: {
@@ -113,26 +133,6 @@ export const projects: ProjectBase[] = [
     }
   },
   {
-    id: 'poly-plaza',
-    title: 'Poly Plaza',
-    description: {
-      en: 'An open-world entrepreneurial sandbox game where you can buy properties, collect rent, and become the richest in town. Features daily updates, property management, and resource trading with dynamic NPC pricing.',
-      fr: 'Un bac à sable entrepreneurial en monde ouvert où vous pouvez acheter des propriétés, percevoir des loyers et devenir le plus riche de la ville. Comprend des mises à jour quotidiennes, une gestion immobilière et un commerce de ressources avec des prix dynamiques selon les PNJ.',
-      es: 'Un sandbox de emprendimiento en mundo abierto donde puedes comprar propiedades, cobrar alquileres y convertirte en el más rico de la ciudad. Incluye actualizaciones diarias, gestión de propiedades y comercio de recursos con precios dinámicos según los PNJ.'
-    },
-    downloads: 37384,
-    tech: ['Unreal Engine 5', 'C++', 'Blueprint', 'Game Analytics', 'JetBrains Rider'],
-    category: 'games',
-    featured: true,
-    status: 'active',
-    image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2716030/header.jpg?t=1746793041',
-    video: 'https://video.fastly.steamstatic.com/store_trailers/257033315/movie480_vp9.webm?t=1735947222',
-    links: { 
-      live: 'https://store.steampowered.com/app/2716030/Poly_Plaza/', 
-      steam: 'https://store.steampowered.com/app/2716030/Poly_Plaza/'
-    }
-  },
-  {
     id: 'broll',
     title: 'Broll',
     downloads: 36527,
@@ -149,6 +149,41 @@ export const projects: ProjectBase[] = [
     video: 'https://video.fastly.steamstatic.com/store_trailers/256841789/movie480_vp9.webm?t=1625575060',
     links: { 
       live: 'https://store.steampowered.com/app/1265300/Broll/'
+    }
+  },
+  {
+    id: 'lazy-browser',
+    title: 'LazyBrowser',
+    description: {
+      en: 'A simple JavaScript library to use LazyDB in your browser. Provides an easy-to-use interface for interacting with the LazyDB API.',
+      fr: 'Une bibliothèque JavaScript simple pour utiliser LazyDB dans votre navigateur. Fournit une interface facile à utiliser pour interagir avec l\'API LazyDB.',
+      es: 'Una sencilla biblioteca de JavaScript para usar LazyDB en su navegador. Proporciona una interfaz fácil de usar para interactuar con la API de LazyDB.'
+    },
+    tech: ['JavaScript', 'API', 'Open Source'],
+    category: 'openSource',
+    featured: false,
+    status: 'active',
+    image: 'https://opengraph.githubassets.com/1/LazyDB-community/LazyBrowser',
+    links: { 
+      github: 'https://github.com/LazyDB-community/LazyBrowser'
+    }
+  },
+  {
+    id: 'bpp-website',
+    title: 'Buckshot++ Official Website',
+    description: {
+      en: 'The official website for Buckshot++, a modern, simple, and efficient web development language. The website itself is built using Buckshot++.',
+      fr: 'Le site officiel de Buckshot++, un langage de développement web moderne, simple et efficace. Le site lui-même est construit avec Buckshot++.',
+      es: 'El sitio web oficial de Buckshot++, un lenguaje de desarrollo web moderno, simple y eficiente. El propio sitio web está construido con Buckshot++.'
+    },
+    tech: ['Buckshot++', 'Web Development', 'Open Source'],
+    category: 'webApps',
+    featured: true,
+    status: 'active',
+    image: 'https://opengraph.githubassets.com/1/BuckshotPlusPlus/Official-Website',
+    links: {
+      live: 'https://bpplang.com',
+      github: 'https://github.com/BuckshotPlusPlus/Official-Website'
     }
   }
 ];
