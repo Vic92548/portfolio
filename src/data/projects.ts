@@ -185,6 +185,41 @@ export const projects: ProjectBase[] = [
       live: 'https://bpplang.com',
       github: 'https://github.com/BuckshotPlusPlus/Official-Website'
     }
+  },
+  {
+    id: 'vcce',
+    title: 'VCCE',
+    description: {
+      en: 'The coolest, juiciest code editor you will ever use. VCCE is a code editor written in lua using LOVE2D. Edit any kind of file, change themes, and use the built-in terminal. Daily updates and a fun, juicy experience for work and play!',
+      fr: 'Le plus cool et juteux des éditeurs de code que vous utiliserez jamais. VCCE est un éditeur de code écrit en lua avec LOVE2D. Éditez tout type de fichier, changez de thème et utilisez le terminal intégré. Mises à jour quotidiennes et expérience amusante et juteuse pour le travail et le plaisir !',
+      es: 'El editor de código más genial y jugoso que jamás usarás. VCCE es un editor de código escrito en lua usando LOVE2D. Edita cualquier tipo de archivo, cambia temas y usa el terminal integrado. ¡Actualizaciones diarias y una experiencia divertida y jugosa para el trabajo y el ocio!'
+    },
+    tech: ['Lua', 'LOVE2D'],
+    category: 'devtools',
+    featured: true,
+    status: 'active',
+    image: 'https://public-files.gumroad.com/5447n45ij7ba7g5vfyj4d99kbj3h',
+    links: {
+      live: 'https://victorchanet.gumroad.com/l/vcce'
+    }
+  },
+  {
+    id: 'vcce-server',
+    title: 'VCCE_Server',
+    description: {
+      en: 'A lightweight TCP file-system server that powers the VCCE code editor. Written in Node.js, it enables fast, secure file operations for the VCCE editor via a local server. Easily installable from npm and used as a companion to the VCCE editor.',
+      fr: 'Un serveur léger de fichiers TCP qui alimente l\'éditeur de code VCCE. Écrit en Node.js, il permet des opérations de fichiers rapides et sécurisées pour l\'éditeur VCCE via un serveur local. Facile à installer depuis npm et utilisé comme compagnon de l\'éditeur VCCE.',
+      es: 'Un servidor de sistema de archivos TCP ligero que impulsa el editor de código VCCE. Escrito en Node.js, permite operaciones de archivos rápidas y seguras para el editor VCCE mediante un servidor local. Fácil de instalar desde npm y usado como complemento del editor VCCE.'
+    },
+    tech: ['Node.js', 'JavaScript', 'TCP', 'CLI'],
+    category: 'devtools',
+    featured: false,
+    status: 'active',
+    image: 'https://opengraph.githubassets.com/1/Vic92548/VCCE_Server',
+    links: {
+      github: 'https://github.com/Vic92548/VCCE_Server',
+      npm: 'https://www.npmjs.com/package/vcce'
+    }
   }
 ];
 

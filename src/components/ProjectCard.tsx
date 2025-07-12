@@ -161,6 +161,7 @@ const ProjectCard = ({ project, translations, getSkillWithUrl, animationDelay }:
           <span className="px-3 py-1 text-xs font-medium bg-magic-blue/10 text-magic-blue rounded-lg border border-magic-blue/20">
             {
               project.category === 'webApps' ? 'Web App' : 
+              project.category === 'devtools' ? 'Dev Tool' : 
               project.category === 'games' ? 'Game' : 'Open Source'
             }
           </span>
