@@ -220,6 +220,25 @@ export const projects: ProjectBase[] = [
       github: 'https://github.com/Vic92548/VCCE_Server',
       npm: 'https://www.npmjs.com/package/vcce'
     }
+  },
+  {
+    id: 'vapr',
+    title: 'VAPR',
+    description: {
+      en: 'VAPR is an open-source, gamified social platform for sharing and discovering gaming content. Features Discord login, post creation with images or videos, reactions, following, XP/leveling, and more! Built with Deno, MongoDB, and BunnyCDN.',
+      fr: 'VAPR est une plateforme sociale open-source et ludique pour partager et découvrir du contenu gaming. Connexion Discord, création de posts avec images ou vidéos, réactions, suivi, XP/niveaux et plus encore ! Développé avec Deno, MongoDB et BunnyCDN.',
+      es: 'VAPR es una plataforma social gamificada y de código abierto para compartir y descubrir contenido de juegos. Incluye inicio de sesión con Discord, creación de publicaciones con imágenes o videos, reacciones, seguimiento, XP/niveles y mucho más. Desarrollado con Deno, MongoDB y BunnyCDN.'
+    },
+    tech: ['Deno', 'MongoDB', 'BunnyCDN', 'Discord API', 'JavaScript', 'HTML', 'CSS'],
+    category: 'webApps',
+    featured: true,
+    status: 'active',
+    image: 'https://raw.githubusercontent.com/Vic92548/VAPR/main/public/logo.png',
+    links: {
+      live: 'https://vapr.club',
+      github: 'https://github.com/Vic92548/VAPR',
+      discord: 'https://discord.gg/vtsnj3zphd'
+    }
   }
 ];
 
