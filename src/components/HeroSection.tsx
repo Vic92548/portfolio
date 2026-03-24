@@ -206,7 +206,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
                 <div className="text-sm text-light-gray mt-1">{t.stats.downloads}</div>
               </div>
               <div className="text-center lg:text-left">
-                <CounterAnimation target={gitHubStars || 2100} className="text-3xl lg:text-4xl font-bold text-dark-text" />
+                <CounterAnimation target={gitHubStars || 86} className="text-3xl lg:text-4xl font-bold text-dark-text" />
                 <div className="text-sm text-light-gray mt-1">{t.stats.stars}</div>
               </div>
               <div className="text-center lg:text-left">

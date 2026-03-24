@@ -81,7 +81,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
         <div className="nav-logo">
           <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border-2 border-magic-blue/30 shadow-sm">
             <img 
-              src="https://polyplaza-wiki.b-cdn.net/1747869678011-5ns80w1j6la.jpeg" 
+              src="https://cdn.victorgamestudio.com/team-avatars/1-1772077204381.jpg" 
               alt="Victor Chanet"
               className="w-full h-full object-cover"
             />

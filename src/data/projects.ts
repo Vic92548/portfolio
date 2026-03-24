@@ -20,6 +20,74 @@ export const projects: ProjectBase[] = [
     }
   },
   {
+    id: 'vgs-website',
+    title: 'Victor Game Studio',
+    description: {
+      en: 'The official website for Victor Game Studio. A full-featured platform where users can purchase games, apply to jobs, view stats about all our games, and much more.',
+      fr: 'Le site officiel de Victor Game Studio. Une plateforme complète où les utilisateurs peuvent acheter des jeux, postuler à des emplois, consulter les statistiques de tous nos jeux et bien plus encore.',
+      es: 'El sitio web oficial de Victor Game Studio. Una plataforma completa donde los usuarios pueden comprar juegos, postularse a empleos, ver estadísticas de todos nuestros juegos y mucho más.'
+    },
+    tech: ['Next.js', 'React', 'TypeScript', 'Node.js'],
+    category: 'webApps',
+    featured: true,
+    status: 'active',
+    image: 'https://cdn.victorgamestudio.com/Screenshot%202026-03-24%20200651.png',
+    links: {
+      live: 'https://victorgamestudio.com'
+    }
+  },
+  {
+    id: 'vgs-hub',
+    title: 'VGS HUB',
+    description: {
+      en: 'The official game launcher for Victor Game Studio. Built solo with Rust and Tauri, it\'s lightweight, beautiful, and optimized for a low footprint on gamers\' PCs. Handles game distribution, updates, and library management.',
+      fr: 'Le lanceur de jeux officiel de Victor Game Studio. Développé seul avec Rust et Tauri, il est léger, élégant et optimisé pour un impact minimal sur le PC des joueurs. Gère la distribution, les mises à jour et la gestion de la bibliothèque de jeux.',
+      es: 'El lanzador de juegos oficial de Victor Game Studio. Desarrollado en solitario con Rust y Tauri, es ligero, elegante y optimizado para un bajo consumo de recursos en el PC de los jugadores. Gestiona la distribución, actualizaciones y biblioteca de juegos.'
+    },
+    tech: ['Rust', 'Tauri', 'TypeScript', 'React'],
+    category: 'devtools',
+    featured: true,
+    status: 'active',
+    image: 'https://cdn.victorgamestudio.com/Screenshot%202026-03-05%20022523.png',
+    links: {
+      live: 'https://victorgamestudio.com/en/download'
+    }
+  },
+  {
+    id: 'astral',
+    title: 'ASTRAL',
+    description: {
+      en: 'An FPS shooter where I worked on programming and networking, delivering fast-paced multiplayer action with robust online infrastructure.',
+      fr: 'Un FPS sur lequel j\'ai travaillé sur la programmation et le réseau, offrant une action multijoueur rapide avec une infrastructure en ligne robuste.',
+      es: 'Un FPS en el que trabajé en programación y networking, ofreciendo acción multijugador rápida con una infraestructura en línea robusta.'
+    },
+    tech: ['Unreal Engine 5', 'C++', 'Blueprint', 'Networking'],
+    category: 'games',
+    featured: true,
+    status: 'active',
+    image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3571480/dc24f655040b243aa5cf7af6311dbebdaf6bdeb3/header.jpg?t=1769812479',
+    links: {
+      live: 'https://victorgamestudio.com/en/hub/product/astral-early-access'
+    }
+  },
+  {
+    id: 'poly-plaza-ultimate',
+    title: 'Poly Plaza ULTIMATE',
+    description: {
+      en: 'A complete remake of Poly Plaza, built from the ground up as a solo project. An enhanced version of the original open-world entrepreneurial sandbox with improved gameplay and features.',
+      fr: 'Un remake complet de Poly Plaza, construit de zéro en tant que projet solo. Une version améliorée du bac à sable entrepreneurial en monde ouvert avec un gameplay et des fonctionnalités améliorés.',
+      es: 'Un remake completo de Poly Plaza, construido desde cero como proyecto en solitario. Una versión mejorada del sandbox de emprendimiento en mundo abierto con jugabilidad y características mejoradas.'
+    },
+    tech: ['Unreal Engine 5', 'C++', 'Blueprint'],
+    category: 'games',
+    featured: true,
+    status: 'active',
+    image: 'https://cdn.victorgamestudio.com/hub/products/1/thumbnail-1771262743773-epic_product_logo.png',
+    links: {
+      live: 'https://victorgamestudio.com/en/hub/product/poly-plaza-ultimate'
+    }
+  },
+  {
     id: 'poly-plaza',
     title: 'Poly Plaza',
     description: {

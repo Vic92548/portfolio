@@ -87,6 +87,7 @@
     line-height: 1.5;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    color-scheme: dark;
   }
 
   body {
@@ -172,17 +173,11 @@
   /* Navigation Components - Linear style */
   .nav {
     @apply fixed top-0 left-0 right-0 z-50;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(26, 26, 28, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid var(--border);
     transition: all var(--duration-normal) var(--ease-out);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .nav {
-      background: rgba(26, 26, 28, 0.85);
-    }
   }
 
   .nav-container {

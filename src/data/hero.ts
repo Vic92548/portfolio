@@ -3,10 +3,10 @@ import { Code, Layers, Zap } from 'lucide-react';
 export const hero = {
   en: {
     badge: 'Available for new projects',
-    title: 'Crafting digital experiences that ',
-    titleHighlight: 'inspire',
+    title: 'I ship products ',
+    titleHighlight: 'FAST',
     subtitle:
-      'As a full-stack engineer and game developer, I build scalable web applications and engaging games. My passion lies in creating seamless user experiences through clean, efficient code and innovative solutions.',
+      'Full-stack engineer and game developer. I solve complex problems with simple solutions, ship fast, and integrate seamlessly into any team or work independently. Your vision, delivered on time.',
     cta: 'Explore My Work',
     ctaSecondary: 'View Resume',
     stats: {
@@ -16,28 +16,28 @@ export const hero = {
     },
     features: [
       {
-        icon: Code,
-        title: 'Full-Stack Engineering',
-        desc: 'Next.js, TypeScript, Node.js',
+        icon: Zap,
+        title: 'Ship Fast',
+        desc: 'From idea to production, fast',
       },
       {
-        icon: Zap,
-        title: 'Game Development',
-        desc: 'Unreal Engine, C++, Game Design',
+        icon: Code,
+        title: 'Full-Stack & Games',
+        desc: 'Web apps, games, tools. End to end',
       },
       {
         icon: Layers,
-        title: 'Technical Leadership',
-        desc: 'Mentoring & Architecture',
+        title: 'Obsessed with Simplicity',
+        desc: 'Complex problems, simple solutions',
       },
     ],
   },
   fr: {
     badge: 'Disponible pour de nouveaux projets',
-    title: "Création d'expériences numériques qui ",
-    titleHighlight: 'inspirent',
+    title: 'Je livre des produits ',
+    titleHighlight: 'VITE',
     subtitle:
-      "En tant qu'ingénieur full-stack et développeur de jeux, je crée des applications web évolutives et des jeux captivants. Ma passion réside dans la création d'expériences utilisateur fluides grâce à un code propre, efficace et des solutions innovantes.",
+      'Ingénieur full-stack et développeur de jeux. Je résous des problèmes complexes avec des solutions simples, je livre vite, et je m\'intègre facilement dans n\'importe quelle équipe ou travaille en autonomie. Votre vision, livrée dans les temps.',
     cta: 'Découvrir mon travail',
     ctaSecondary: 'Voir le CV',
     stats: {
@@ -47,28 +47,28 @@ export const hero = {
     },
     features: [
       {
-        icon: Code,
-        title: 'Ingénierie Full-Stack',
-        desc: 'Next.js, TypeScript, Node.js',
+        icon: Zap,
+        title: 'Livraison rapide',
+        desc: 'De l\'idée à la production, vite',
       },
       {
-        icon: Zap,
-        title: 'Développement de Jeux',
-        desc: 'Unreal Engine, C++, Conception',
+        icon: Code,
+        title: 'Full-Stack & Jeux',
+        desc: 'Apps web, jeux, outils. De A à Z',
       },
       {
         icon: Layers,
-        title: 'Leadership Technique',
-        desc: 'Mentorat & Architecture',
+        title: 'Obsédé par la simplicité',
+        desc: 'Problèmes complexes, solutions simples',
       },
     ],
   },
   es: {
     badge: 'Disponible para nuevos proyectos',
-    title: 'Creando experiencias digitales que ',
-    titleHighlight: 'inspiran',
+    title: 'Entrego productos ',
+    titleHighlight: 'RÁPIDO',
     subtitle:
-      'Como ingeniero full-stack y desarrollador de videojuegos, construyo aplicaciones web escalables y juegos cautivadores. Mi pasión es crear experiencias de usuario fluidas a través de código limpio, eficiente y soluciones innovadoras.',
+      'Ingeniero full-stack y desarrollador de juegos. Resuelvo problemas complejos con soluciones simples, entrego rápido, y me integro fácilmente en cualquier equipo o trabajo de forma independiente. Tu visión, entregada a tiempo.',
     cta: 'Ver mis proyectos',
     ctaSecondary: 'Ver currículum',
     stats: {
@@ -78,19 +78,19 @@ export const hero = {
     },
     features: [
       {
-        icon: Code,
-        title: 'Ingeniería Full-Stack',
-        desc: 'Next.js, TypeScript, Node.js',
+        icon: Zap,
+        title: 'Entrega rápida',
+        desc: 'De la idea a producción, rápido',
       },
       {
-        icon: Zap,
-        title: 'Desarrollo de Videojuegos',
-        desc: 'Unreal Engine, C++, Diseño',
+        icon: Code,
+        title: 'Full-Stack y Juegos',
+        desc: 'Apps web, juegos, herramientas. De punta a punta',
       },
       {
         icon: Layers,
-        title: 'Liderazgo Técnico',
-        desc: 'Mentoría & Arquitectura',
+        title: 'Obsesionado con la simplicidad',
+        desc: 'Problemas complejos, soluciones simples',
       },
     ],
   },

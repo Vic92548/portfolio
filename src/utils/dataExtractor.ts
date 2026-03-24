@@ -17,7 +17,7 @@ export const extractWebsiteData = (language: 'en' | 'fr' | 'es') => {
     description: personalInfo.summary,
     stats: {
       downloads: 150000,
-      stars: 2100,
+      stars: 86,
       products: projectCount // Dynamic count
     }
   };

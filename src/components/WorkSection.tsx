@@ -52,9 +52,9 @@ const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
       es: 'Con quién he trabajado',
     },
     description: {
-      en: 'I\'ve had the privilege to collaborate with amazing companies and organizations.',
-      fr: 'J\'ai eu le privilège de collaborer avec des entreprises et organisations exceptionnelles.',
-      es: 'He tenido el privilegio de colaborar con empresas y organizaciones increíbles.',
+      en: 'Companies and teams I\'ve shipped products with, on time and keeping things simple.',
+      fr: 'Entreprises et équipes avec lesquelles j\'ai livré des produits, dans les temps et en gardant les choses simples.',
+      es: 'Empresas y equipos con los que he entregado productos, a tiempo y manteniendo las cosas simples.',
     },
     visitWebsite: {
       en: 'Visit Website',
@@ -121,24 +121,9 @@ const WorkSection: React.FC<WorkSectionProps> = ({ language }) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-center mb-4">
-                  <div className="h-16 w-16 flex-shrink-0 rounded-lg bg-white border border-border/20 overflow-hidden mr-4">
-                    <div className="relative w-full h-full">
-                      <img 
-                        src={client.logo} 
-                        alt={client.name} 
-                        className="absolute inset-0 w-full h-full object-cover"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-semibold text-foreground truncate">{client.name}</h3>
-                    <p className="text-sm text-muted-foreground truncate">{client.role}</p>
-                  </div>
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-foreground truncate">{client.name}</h3>
+                  <p className="text-sm text-muted-foreground truncate">{client.role}</p>
                 </div>
                 
                 <p className="text-muted-foreground mb-6 flex-1">

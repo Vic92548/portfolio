@@ -20,6 +20,44 @@ export interface WorkExperience {
 
 export const workExperience: WorkExperience[] = [
   {
+    name: 'Victor Game Studio',
+    description: {
+      en: 'Independent game studio founded by Victor Chanet, developing and publishing original games across multiple platforms. Builds everything from game titles to internal tools and infrastructure.',
+      fr: 'Studio de jeux indépendant fondé par Victor Chanet, développant et publiant des jeux originaux sur plusieurs plateformes. Développe tout, des jeux aux outils internes et à l\'infrastructure.',
+      es: 'Estudio de juegos independiente fundado por Victor Chanet, desarrollando y publicando juegos originales en múltiples plataformas. Desarrolla desde títulos de juegos hasta herramientas internas e infraestructura.'
+    },
+    logo: '',
+    url: 'https://victorgamestudio.com',
+    contribution: {
+      en: 'Founded and lead the studio end-to-end: game development, publishing, website and launcher development, infrastructure, and business operations. Created multiple shipped titles including Poly Plaza, Poly Plaza ULTIMATE, ASTRAL, and the VGS HUB game launcher.',
+      fr: 'Fondation et direction du studio de bout en bout : développement de jeux, publication, développement du site web et du lanceur, infrastructure et opérations commerciales. Création de plusieurs titres publiés dont Poly Plaza, Poly Plaza ULTIMATE, ASTRAL et le lanceur VGS HUB.',
+      es: 'Fundación y dirección del estudio de principio a fin: desarrollo de juegos, publicación, desarrollo del sitio web y lanzador, infraestructura y operaciones comerciales. Creación de múltiples títulos publicados incluyendo Poly Plaza, Poly Plaza ULTIMATE, ASTRAL y el lanzador VGS HUB.'
+    },
+    role: 'Founder & Lead Developer',
+    startDate: new Date('2020-01-01'),
+    endDate: 'Present',
+    technologies: ['Unreal Engine 5', 'C++', 'Rust', 'Tauri', 'Next.js', 'React', 'TypeScript', 'Steam', 'Game Publishing']
+  },
+  {
+    name: 'Realup',
+    description: {
+      en: 'Architectural visualization studio that blends human creativity with AI to deliver high-end 3D renderings, AI visual transformations, real estate animations, and design solutions for architects and developers.',
+      fr: 'Studio de visualisation architecturale qui allie créativité humaine et IA pour produire des rendus 3D haut de gamme, des transformations visuelles par IA, des animations immobilières et des solutions de design pour architectes et promoteurs.',
+      es: 'Estudio de visualización arquitectónica que combina creatividad humana con IA para ofrecer renders 3D de alta gama, transformaciones visuales con IA, animaciones inmobiliarias y soluciones de diseño para arquitectos y promotores.'
+    },
+    logo: '',
+    url: 'https://realupvisuals.com',
+    contribution: {
+      en: 'Built the website that matched exactly the vision of the founders. Designed and developed a simple system that makes it easy for the team to add new project visuals without any developer intervention. Clean, fast, and easy to maintain.',
+      fr: 'Création du site web correspondant exactement à la vision des fondateurs. Conception et développement d\'un système simple permettant à l\'équipe d\'ajouter facilement de nouveaux visuels de projets sans intervention développeur. Propre, rapide et facile à maintenir.',
+      es: 'Creación del sitio web que correspondía exactamente a la visión de los fundadores. Diseño y desarrollo de un sistema simple que permite al equipo añadir nuevos visuales de proyectos fácilmente sin intervención de un desarrollador. Limpio, rápido y fácil de mantener.'
+    },
+    role: 'Web Developer',
+    startDate: new Date('2025-01-01'),
+    endDate: new Date('2025-06-01'),
+    technologies: ['Next.js', 'React', 'TypeScript', 'CMS', 'Responsive Design']
+  },
+  {
     name: 'GURA CORP',
     description: {
       en: 'Futuristic FPS game development studio creating immersive off-world experiences and pushing the boundaries of interactive entertainment.',

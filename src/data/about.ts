@@ -1,61 +1,61 @@
-import { Code, Database, Globe, Zap } from 'lucide-react';
+import { Code, Globe, Layers, Zap } from 'lucide-react';
 
 export const about = {
   en: {
     title: 'About Me',
-    subtitle: 'Crafting exceptional digital experiences through code',
-    description: "I'm a versatile full-stack engineer and game developer with a passion for building scalable applications and immersive gaming experiences. With a strong foundation in both web technologies and game development, I specialize in creating high-performance solutions that push technical boundaries while delivering exceptional user experiences.",
+    subtitle: 'Complex problems. Simple solutions. Shipped fast.',
+    description: "I'm a full-stack engineer and game developer obsessed with simplicity. I build products that are simple for users, simple for other developers to jump into, simple to deploy, and simple to maintain. Whether I'm leading a project solo or joining your team, I ship fast and keep things clean. From web platforms to published games and developer tools, I've delivered products used by tens of thousands.",
     skills: [
       {
-        icon: Code,
-        title: 'Full-Stack Development',
-        description: 'Next.js, TypeScript, Node.js, and modern web technologies',
+        icon: Zap,
+        title: 'Ship Fast',
+        description: 'Rapid iteration from prototype to production-ready product',
       },
       {
-        icon: Database,
-        title: 'Game Development',
-        description: 'Unreal Engine, C++, Lua, and game system architecture',
+        icon: Layers,
+        title: 'Obsessed with Simplicity',
+        description: 'Simple for users, developers, deployment, and maintenance',
+      },
+      {
+        icon: Code,
+        title: 'Full-Stack & Games',
+        description: 'Web apps, game engines, tools. Whatever the project needs',
       },
       {
         icon: Globe,
-        title: 'Technical Leadership',
-        description: 'Mentoring teams and establishing development best practices',
-      },
-      {
-        icon: Zap,
-        title: 'Performance & Scale',
-        description: 'Optimizing applications for thousands of concurrent users',
+        title: 'Team Player or Solo',
+        description: 'I plug into your team seamlessly or own the project end to end',
       },
     ],
     stats: [
       { value: '11+', label: 'Years Experience' },
-      { label: 'Projects Delivered' },
+      { label: 'Projects Shipped' },
     ],
   },
   fr: {
     title: 'À propos de moi',
-    subtitle: "Création d'expériences numériques exceptionnelles à travers le code",
-    description: "Je suis un ingénieur full-stack et développeur de jeux polyvalent, passionné par la création d'applications évolutives et d'expériences de jeu immersives. Fort d'une solide expérience dans les technologies web et le développement de jeux, je me spécialise dans la création de solutions hautes performances qui repoussent les limites techniques tout en offrant des expériences utilisateur exceptionnelles.",
+    subtitle: 'Problèmes complexes. Solutions simples. Livrées vite.',
+    description: "Je suis un ingénieur full-stack et développeur de jeux obsédé par la simplicité. Je crée des produits simples pour les utilisateurs, simples pour les développeurs qui rejoignent le projet, simples à déployer et simples à maintenir. Que je dirige un projet seul ou que je rejoigne votre équipe, je livre vite et je garde les choses propres. Des plateformes web aux jeux publiés en passant par les outils de développement, j'ai livré des produits utilisés par des dizaines de milliers de personnes.",
     skills: [
       {
-        icon: Code,
-        title: 'Développement Full-Stack',
-        description: 'Next.js, TypeScript, Node.js et technologies web modernes',
+        icon: Zap,
+        title: 'Livraison rapide',
+        description: 'Itération rapide du prototype au produit prêt pour la production',
       },
       {
-        icon: Database,
-        title: 'Développement de Jeux',
-        description: 'Unreal Engine, C++, Lua et architecture de systèmes de jeu',
+        icon: Layers,
+        title: 'Obsédé par la simplicité',
+        description: 'Simple pour les utilisateurs, les développeurs, le déploiement et la maintenance',
+      },
+      {
+        icon: Code,
+        title: 'Full-Stack & Jeux',
+        description: 'Apps web, moteurs de jeu, outils. Ce que le projet demande',
       },
       {
         icon: Globe,
-        title: 'Leadership Technique',
-        description: "Encadrement d'équipes et établissement de bonnes pratiques",
-      },
-      {
-        icon: Zap,
-        title: 'Performance et Évolutivité',
-        description: "Optimisation d'applications pour des milliers d'utilisateurs",
+        title: 'En équipe ou en solo',
+        description: 'Je m\'intègre dans votre équipe ou je gère le projet de bout en bout',
       },
     ],
     stats: [
@@ -65,28 +65,28 @@ export const about = {
   },
   es: {
     title: 'Acerca de mí',
-    subtitle: 'Creando experiencias digitales excepcionales a través del código',
-    description: "Soy un ingeniero full-stack y desarrollador de videojuegos versátil, apasionado por crear aplicaciones escalables y experiencias de juego inmersivas. Con una sólida base en tecnologías web y desarrollo de juegos, me especializo en crear soluciones de alto rendimiento que superan los límites técnicos mientras ofrecen experiencias de usuario excepcionales.",
+    subtitle: 'Problemas complejos. Soluciones simples. Entregadas rápido.',
+    description: "Soy un ingeniero full-stack y desarrollador de juegos obsesionado con la simplicidad. Creo productos simples para los usuarios, simples para que otros desarrolladores se integren, simples de desplegar y simples de mantener. Ya sea liderando un proyecto solo o uniéndome a tu equipo, entrego rápido y mantengo todo limpio. Desde plataformas web hasta juegos publicados y herramientas de desarrollo, he entregado productos usados por decenas de miles de personas.",
     skills: [
       {
-        icon: Code,
-        title: 'Desarrollo Full-Stack',
-        description: 'Next.js, TypeScript, Node.js y tecnologías web modernas',
+        icon: Zap,
+        title: 'Entrega rápida',
+        description: 'Iteración rápida del prototipo al producto listo para producción',
       },
       {
-        icon: Database,
-        title: 'Desarrollo de Videojuegos',
-        description: 'Unreal Engine, C++, Lua y arquitectura de sistemas de juego',
+        icon: Layers,
+        title: 'Obsesionado con la simplicidad',
+        description: 'Simple para usuarios, desarrolladores, despliegue y mantenimiento',
+      },
+      {
+        icon: Code,
+        title: 'Full-Stack y Juegos',
+        description: 'Apps web, motores de juego, herramientas. Lo que el proyecto necesite',
       },
       {
         icon: Globe,
-        title: 'Liderazgo Técnico',
-        description: 'Mentoría de equipos y establecimiento de mejores prácticas',
-      },
-      {
-        icon: Zap,
-        title: 'Rendimiento y Escalabilidad',
-        description: 'Optimización de aplicaciones para miles de usuarios',
+        title: 'En equipo o en solitario',
+        description: 'Me integro en tu equipo o gestiono el proyecto de principio a fin',
       },
     ],
     stats: [
